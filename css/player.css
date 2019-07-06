@@ -1,0 +1,71 @@
+.playerprofile{
+	width: 75%;
+    height: auto;
+    color: #4e4e4e;
+    -moz-transition: box-shadow 600ms; /* Firefox */
+    -webkit-transition: box-shadow 600ms; /* Safari and Chrome */
+    -o-transition: box-shadow 600ms; 
+    background-color: whitesmoke;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #e3e3e3;
+}
+.playerimg{
+    padding: 15px;
+    cursor: pointer;
+    display: inline-block;
+    background-size: cover;
+}
+.playerImgSrc{
+    width: 150px;
+    height: 150px;
+}
+.playerMeny{
+    width: 75%;
+    height: 60px;
+    color: #4e4e4e;
+    -moz-transition: box-shadow 600ms; /* Firefox */
+    -webkit-transition: box-shadow 600ms; /* Safari and Chrome */
+    -o-transition: box-shadow 600ms; 
+    background-color: whitesmoke;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #e3e3e3;
+}
+.nickname{
+    position: relative;
+    bottom: 100px;
+}
+.age{
+    position: relative;
+    left: 182px;
+    bottom: 100px;
+   display: inline-block;
+}
+.rating{
+    position: relative;
+    left: 182px;
+    bottom: 90px;
+    display: inline-block;
+}
+.playerSocialmedia{
+    padding: 10px;
+    float: right;
+    position: relative;
+    bottom: 200px;
+}
+img{
+    -moz-transition: box-shadow 600ms; 
+    -webkit-transition: box-shadow 600ms; 
+    -o-transition: box-shadow 600ms; 
+    border-radius: 100px;
+}
+img:hover{
+    -webkit-box-shadow: -1px 1px 11px -1px rgba(0,0,0,0.47);
+    -moz-box-shadow: -1px 1px 11px -1px rgba(0,0,0,0.47);
+    box-shadow: -1px 1px 11px -1px rgba(0,0,0,0.47);
+}
