@@ -54,6 +54,7 @@
     width: 85%;
     height: auto;
     color: #4e4e4e;
+    margin-top: 10px;
     -moz-transition: box-shadow 600ms; /* Firefox */
     -webkit-transition: box-shadow 600ms; /* Safari and Chrome */
     -o-transition: box-shadow 600ms; 
@@ -81,4 +82,35 @@
     top: -15px;
     padding-right: 10px;
     padding-bottom: 20px;
+}
+
+.team1before{
+    width: 82.5%;
+    height: auto;
+    color: #4e4e4e;
+    -moz-transition: box-shadow 600ms; /* Firefox */
+    -webkit-transition: box-shadow 600ms; /* Safari and Chrome */
+    -o-transition: box-shadow 600ms; 
+    background-color: whitesmoke;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #e3e3e3;
+}
+.playersteam1{
+    width: 95%;
+}
+.playerpicture{
+    width: 16%;
+    background-color: whitesmoke;
+    border: 1px solid #e3e3e3;
+    margin-top: 10px;
+    margin-left: 10px;
+    display: inline-block;
+}
+.playernickname{
+    font-weight: bold;
+    padding-left: 10px;
+    margin-bottom: 5px;
 }

@@ -63,7 +63,7 @@
     <!----Start utav mid content----->
 		<div id="midcontent">
       <div class="matchesFix">
-
+        <!----- Start på huvudet ---->
         <div class="fullmatchbox">
 
           <div class="team1"> 
@@ -85,10 +85,12 @@
             <span class="teamnameright">Granit</span>
           </div> 
         </div> 
+        <!---- Slut på live info ----->
 
-        <br />
 
-        <div class="statsBox">
+        <!----- Stats med mera ----->
+
+        <div class="statsBox" style="">
            <img src="https://static.hltv.org/images/team/logo/9735" style="width: 32px; height: 32px; position: relative; top: 5px; left: 4px" />
             <span class="team1Logo">Lilmix</span> 
             <div class="line"></div>
@@ -124,11 +126,10 @@
             <span class="statsline">30 kills</span>  
           </div>  
         </div>
-        <br />
 
         <!---- Team 2 ----->
 
-         <div class="statsBox">
+         <div class="statsBox" style="">
            <img src="https://static.hltv.org/images/team/logo/8930" style="width: 32px; height: 32px; position: relative; top: 5px; left: 4px" />
             <span class="team1Logo">Granit</span> 
             <div class="line"></div>
@@ -164,9 +165,72 @@
             <span class="statsline" >30 kills</span>  
           </div>  
         </div>
-        <br />
       </div>
+      <!--- Slutet på stats efter gamet ---->
 
+      <!---- Start på prematch ----->
+      <div class="matchesFix" style="display: none;">
+         <div class="team1before">
+            <img src="https://static.hltv.org/images/team/logo/9735" style="width: 32px; height: 32px; position: relative; top: 5px; left: 4px" />
+            <span class="team1Logo">Lilmix</span> 
+         </div>
+
+       
+         <div class="playersteam1">
+             <div class="playerpicture"><img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="max-width: 100%; max-height: 100%; padding: 10px; " />
+              <span class="playernickname">b0denmaster</span>
+             </div>
+
+             <div class="playerpicture"><img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="max-width: 100%; max-height: 100%; padding: 10px;" />
+              <span class="playernickname">b0denmaster</span>
+             </div>
+
+             <div class="playerpicture"><img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="max-width: 100%; max-height: 100%; padding: 10px;" />
+              <span class="playernickname">b0denmaster</span>
+             </div>
+
+             <div class="playerpicture"><img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="max-width: 100%; max-height: 100%; padding: 10px;" />
+              <span class="playernickname">b0denmaster</span>
+             </div>
+
+             <div class="playerpicture"><img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="max-width: 100%; max-height: 100%; padding: 10px;" />
+              <span class="playernickname">b0denmaster</span>
+             </div>
+         </div>
+
+    </div>
+
+     <div class="matchesFix" style="display: none;">
+         <div class="team1before">
+            <img src="https://static.hltv.org/images/team/logo/8930" style="width: 32px; height: 32px; position: relative; top: 5px; left: 4px" />
+            <span class="team1Logo">Granit</span> 
+         </div>
+
+         <div class="playersteam1">
+             <div class="playerpicture"><img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="max-width: 100%; max-height: 100%; padding: 10px; " />
+              <span class="playernickname">b0denmaster</span>
+             </div>
+
+             <div class="playerpicture"><img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="max-width: 100%; max-height: 100%; padding: 10px;" />
+              <span class="playernickname">b0denmaster</span>
+             </div>
+
+             <div class="playerpicture"><img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="max-width: 100%; max-height: 100%; padding: 10px;" />
+              <span class="playernickname">b0denmaster</span>
+             </div>
+
+             <div class="playerpicture"><img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="max-width: 100%; max-height: 100%; padding: 10px;" />
+              <span class="playernickname">b0denmaster</span>
+             </div>
+
+             <div class="playerpicture"><img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="max-width: 100%; max-height: 100%; padding: 10px;" />
+              <span class="playernickname">b0denmaster</span>
+             </div>
+         </div>
+
+    </div>
+
+    <!----- Slut på prematch ---->
 
 
         <!---InTE LäNGRE nEr----->
