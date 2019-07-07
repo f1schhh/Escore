@@ -2,9 +2,6 @@
 	width: 85%;
     height: 225px;
     color: #4e4e4e;
-    -moz-transition: box-shadow 600ms; /* Firefox */
-    -webkit-transition: box-shadow 600ms; /* Safari and Chrome */
-    -o-transition: box-shadow 600ms; 
     background-color: whitesmoke;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -31,7 +28,7 @@
 .teamname{
     font-weight: bold;
     font-size: 28px;
-    padding: 20px;
+    padding: 10px;
 }
 .teamnameright{
     font-weight: bold;
@@ -54,10 +51,7 @@
     width: 85%;
     height: auto;
     color: #4e4e4e;
-    margin-top: 10px;
-    -moz-transition: box-shadow 600ms; /* Firefox */
-    -webkit-transition: box-shadow 600ms; /* Safari and Chrome */
-    -o-transition: box-shadow 600ms; 
+    margin-top: 10px; 
     background-color: whitesmoke;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -94,23 +88,65 @@
     background-color: whitesmoke;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
     border: 1px solid #e3e3e3;
 }
+.logosize{
+    width: 92px;
+    height: 92px;
+}
 .playersteam1{
-    width: 95%;
+    width: 87.5%;
 }
 .playerpicture{
     width: 16%;
     background-color: whitesmoke;
     border: 1px solid #e3e3e3;
-    margin-top: 10px;
-    margin-left: 10px;
+    margin-top: 7px;
+    margin-right: 1.7vw;
+    -moz-transition: box-shadow 600ms; 
+    -webkit-transition: box-shadow 600ms; 
+    -o-transition: box-shadow 600ms;
     display: inline-block;
+}
+.playerpicture:hover{
+    -webkit-box-shadow: -1px 1px 11px -1px rgba(0,0,0,0.47);
+    -moz-box-shadow: -1px 1px 11px -1px rgba(0,0,0,0.47);
+    box-shadow: -1px 1px 11px -1px rgba(0,0,0,0.47);
+    cursor: pointer;
 }
 .playernickname{
     font-weight: bold;
     padding-left: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+}
+@media screen and (max-width:800px){
+
+    .fullmatchbox{
+        width: 100%;
+    }
+    .statsbox{
+        width: 100%;
+        font-size: 2vw;
+    }
+    .team1before{
+        width: 100%;
+    }
+    .playernickname{
+        font-size: 2vw;
+        padding-left: 5px;
+    }
+    .playersteam1{
+        width: 100%;
+    }
+    .playerpicture{
+        padding-right: 5px;
+        margin-right: 3vw;
+    }
+
+} 
+
+@media screen and(max-width: 500px){
+    .statsbox{
+        font-size: 1vw;
+    }
 }

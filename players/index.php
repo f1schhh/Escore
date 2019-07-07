@@ -1,3 +1,8 @@
+<?php
+include '../inc/main.inc.php';
+$settings = new SiteSettings();
+
+?>
 <html lang="sv">
 <head>
 	<title>lOGO</title>
@@ -34,7 +39,7 @@
       <a href="#"><div id="logo">Logo</div></a>
 
                 <div class="fixmobilepos">
-                  test
+                  <?php $settings->getMenyOutside(); ?>
               </div>
        
       <!--- Slut av mobilmeny--->
@@ -51,11 +56,7 @@
 				        
             </div>
             <div id="meny-content">
-              <li><a href="index.php">Hem</a></li><br />
-                <li><a href="portfolio.php">Stats</a></li><br />
-                <!----- <li><a href="contact.php">Kontakta</a></li><br /> ------>
-            		<li class="copyright_cl">2019 © </li><br />
-            	
+              <?php $settings->getMenyOutside(); ?>
             </div>
 		</div>
     <!----Slut utav menyn----->

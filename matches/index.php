@@ -1,3 +1,7 @@
+<?php
+include '../inc/main.inc.php';
+$settings = new SiteSettings();
+?>
 <html lang="sv">
 <head>
 	<title>lOGO</title>
@@ -34,7 +38,7 @@
       <a href="#"><div id="logo">Logo</div></a>
 
                 <div class="fixmobilepos">
-                  test
+                   <?php $settings->getMenyOutside(); ?>
               </div>
        
       <!--- Slut av mobilmeny--->
@@ -51,11 +55,7 @@
 				        
             </div>
             <div id="meny-content">
-              <li><a href="index.php">Hem</a></li><br />
-                <li><a href="portfolio.php">Stats</a></li><br />
-                <!----- <li><a href="contact.php">Kontakta</a></li><br /> ------>
-            		<li class="copyright_cl">2019 © </li><br />
-            	
+               <?php $settings->getMenyOutside(); ?>
             </div>
 		</div>
     <!----Slut utav menyn----->
@@ -67,7 +67,7 @@
         <div class="fullmatchbox">
 
           <div class="team1"> 
-            <img src="https://static.hltv.org/images/team/logo/9735" style="width: 124px; height: 124px;" /><br />
+            <img src="https://static.hltv.org/images/team/logo/9735" class="logosize" /><br />
             <span class="teamname">Lilmix</span>
           </div> 
 
@@ -81,7 +81,7 @@
           </div>  
           
           <div class="team2">
-            <img src="https://static.hltv.org/images/team/logo/8930" style="width: 124px; height: 124px; float: right;" /><br />
+            <img src="https://static.hltv.org/images/team/logo/8930" class="logosize" style="float: right;" /><br />
             <span class="teamnameright">Granit</span>
           </div> 
         </div> 
@@ -90,7 +90,7 @@
 
         <!----- Stats med mera ----->
 
-        <div class="statsBox" style="">
+        <div class="statsBox" style="display: none;">
            <img src="https://static.hltv.org/images/team/logo/9735" style="width: 32px; height: 32px; position: relative; top: 5px; left: 4px" />
             <span class="team1Logo">Lilmix</span> 
             <div class="line"></div>
@@ -129,7 +129,7 @@
 
         <!---- Team 2 ----->
 
-         <div class="statsBox" style="">
+         <div class="statsBox" style="display: none;">
            <img src="https://static.hltv.org/images/team/logo/8930" style="width: 32px; height: 32px; position: relative; top: 5px; left: 4px" />
             <span class="team1Logo">Granit</span> 
             <div class="line"></div>
@@ -169,7 +169,7 @@
       <!--- Slutet på stats efter gamet ---->
 
       <!---- Start på prematch ----->
-      <div class="matchesFix" style="display: none;">
+      <div class="matchesFix" style="">
          <div class="team1before">
             <img src="https://static.hltv.org/images/team/logo/9735" style="width: 32px; height: 32px; position: relative; top: 5px; left: 4px" />
             <span class="team1Logo">Lilmix</span> 
@@ -200,14 +200,14 @@
 
     </div>
 
-     <div class="matchesFix" style="display: none;">
+     <div class="matchesFix" style="">
          <div class="team1before">
             <img src="https://static.hltv.org/images/team/logo/8930" style="width: 32px; height: 32px; position: relative; top: 5px; left: 4px" />
             <span class="team1Logo">Granit</span> 
          </div>
 
          <div class="playersteam1">
-             <div class="playerpicture"><img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="max-width: 100%; max-height: 100%; padding: 10px; " />
+             <div class="playerpicture" style="margin-left: none;"><img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="max-width: 100%; max-height: 100%; padding: 10px; " />
               <span class="playernickname">b0denmaster</span>
              </div>
 

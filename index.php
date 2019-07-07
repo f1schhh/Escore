@@ -1,3 +1,8 @@
+<?php
+include 'inc/main.inc.php';
+$settings = new SiteSettings();
+
+?>
 <html lang="sv">
 <head>
 	<title>lOGO</title>
@@ -50,11 +55,9 @@
 				        
             </div>
             <div id="meny-content">
-              <li><a href="index.php">Hem</a></li><br />
-                <li><a href="portfolio.php">Stats</a></li><br />
-                <!----- <li><a href="contact.php">Kontakta</a></li><br /> ------>
-            		<li class="copyright_cl">2019 © </li><br />
-            	
+
+              <?php $settings->getMeny(); ?>
+
             </div>
 		</div>
     <!----Slut utav menyn----->
@@ -71,9 +74,9 @@
               <span class="startTime"><font color="green">LIVE </font></span> 
 
 
-            <img src="https://static.hltv.org/images/team/logo/9735" class="leftteamicon" />
+            <img src="https://static.hltv.org/images/team/logo/9735" class="leftteamicon"  />
             Lilmix VS  GranitGaming 
-             <img src="https://static.hltv.org/images/team/logo/8930" class="rightteamicon" />
+             <img src="https://static.hltv.org/images/team/logo/8930" class="rightteamicon"  />
 
              <span class="activeScore"><font color="green">1</font> - 0 </span>
            </span>
@@ -202,7 +205,7 @@
 
             <img src="https://static.hltv.org/images/team/logo/9735" class="leftteamicon" />
             Lilmix VS  GranitGaming 
-             <img src="https://static.hltv.org/images/team/logo/8930" class="rightteamicon" />
+             <img src="https://static.hltv.org/images/team/logo/8930" class="rightteamicon"  />
 
              <span class="activeScore"><font color="green">1</font> - 0 </span>
            </span>
@@ -210,20 +213,6 @@
          </div>
 
           <br />
-         <div class="matchtitle">
-            <span class="matchTitlefix">
- 
-              <span class="startTime"><font color="green">LIVE </font></span> 
-
-
-            <img src="https://static.hltv.org/images/team/logo/9735" class="leftteamicon" />
-            Lilmix VS  GranitGaming 
-             <img src="https://static.hltv.org/images/team/logo/8930" class="rightteamicon" />
-
-             <span class="activeScore"><font color="green">1</font> - 0 </span>
-           </span>
-
-         </div>
         <!---InTE LäNGRE nEr----->
         </div>  
 
