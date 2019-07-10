@@ -53,9 +53,11 @@
     padding-bottom: 20px;
 }
 .teamname{
-    max-width: 100%; max-height: 100%;
+    max-width: 100%;
+    max-height: 100%;
     font-weight: bold;
     font-size: 1.25vw;
+    margin-top: 5px;
 }
 
 .upcomingmatches{
@@ -84,4 +86,25 @@
 .matchtitle{
     width: 92%;
     margin-top: 10px;
+}
+@media screen and (max-width:800px){
+    .upcomingmatches{
+        width: 100%;
+    }
+    .upcomingmatchestext{
+        font-size: 3vw;
+    }
+    .matchtitle{
+        width: 100%;
+    }
+
+}
+@media screen and (max-width:580px){
+    .playerbox{
+        margin-top: 5px;
+    }
+    .teamname{
+        margin-top: 7px;
+        font-size: 2vw;
+    }
 }

@@ -1,34 +1,42 @@
 .playerprofile{
-	width: 75%;
+	width: 100%;
+    height: auto;
+    display: inline-block;
+}
+.playerimg{
+    width: 20%;
     height: auto;
     color: #4e4e4e;
-    -moz-transition: box-shadow 600ms; /* Firefox */
-    -webkit-transition: box-shadow 600ms; /* Safari and Chrome */
-    -o-transition: box-shadow 600ms; 
+    float: left;
     background-color: whitesmoke;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     border: 1px solid #e3e3e3;
-}
-.playerimg{
-    padding: 15px;
-    cursor: pointer;
     display: inline-block;
-    background-size: cover;
 }
 .playerImgSrc{
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    background-size: cover;
+    padding: 15px;
+    border-radius: 100%;
+    -moz-transition: box-shadow 600ms; 
+    -webkit-transition: box-shadow 600ms; 
+    -o-transition: box-shadow 600ms; 
+    max-width: 100%; 
+    max-height: 100%;
+}
+.playerImgSrc:hover{
+    -webkit-box-shadow: -1px 1px 11px -1px rgba(0,0,0,0.47);
+    -moz-box-shadow: -1px 1px 11px -1px rgba(0,0,0,0.47);
+    box-shadow: -1px 1px 11px -1px rgba(0,0,0,0.47);
 }
 .playerMeny{
     width: 75%;
     height: 60px;
     color: #4e4e4e;
-    -moz-transition: box-shadow 600ms; /* Firefox */
-    -webkit-transition: box-shadow 600ms; /* Safari and Chrome */
-    -o-transition: box-shadow 600ms; 
+    margin-top: 5px;
     background-color: whitesmoke;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -36,36 +44,45 @@
     border-bottom-left-radius: 5px;
     border: 1px solid #e3e3e3;
 }
+.userinfobox{
+    width: 50%;
+    color: #4e4e4e;
+    background-color: whitesmoke;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    display: block;
+    float: left;
+    padding: 10px;
+    margin-left: 5px;
+    margin-top: 5px;
+    text-align: left;
+    border: 1px solid #e3e3e3;
+}
 .nickname{
-    position: relative;
-    bottom: 100px;
-}
-.age{
-    position: relative;
-    left: 182px;
-    bottom: 100px;
-   display: inline-block;
-}
-.rating{
-    position: relative;
-    left: 182px;
-    bottom: 90px;
-    display: inline-block;
+    padding: 5px;
 }
 .playerSocialmedia{
-    padding: 10px;
-    float: right;
-    position: relative;
-    bottom: 200px;
+
 }
-img{
-    -moz-transition: box-shadow 600ms; 
-    -webkit-transition: box-shadow 600ms; 
-    -o-transition: box-shadow 600ms; 
-    border-radius: 100px;
-}
-img:hover{
-    -webkit-box-shadow: -1px 1px 11px -1px rgba(0,0,0,0.47);
-    -moz-box-shadow: -1px 1px 11px -1px rgba(0,0,0,0.47);
-    box-shadow: -1px 1px 11px -1px rgba(0,0,0,0.47);
+@media screen and (max-width:800px){
+    .playerprofile{
+        width: 100%;
+    }
+    .playermeny{
+        width: 100%;
+    }
+    .nickname{
+        font-size: 3vw;
+    }
+    .playerimg{
+        width: 30%;
+    }
+    .userinfobox{
+        width: 65%;
+    }
+    .activeScore{
+        font-size: 1.2vw;
+    }
 }

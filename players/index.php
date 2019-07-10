@@ -68,21 +68,20 @@ $settings = new SiteSettings();
           <div class="playerimg">
           <a href="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" data-lightbox="Player"><img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" class="playerImgSrc" /></a>
         </div>
-        <span class="nickname"> Jonathan "<b>b0denmaster</b>" Bodenmalm </span><br />
-        <span class="age">Ålder: <b>21</b></span><br />
-        <span class="rating">K/D Ratio: <b>1.62</b> </span>
-
-        <div class="playerSocialmedia">
-          <a href="#"><img src="../img/icons/twitchicon.png" /></a>
-          <a href="#"><img src="../img/icons/twittericon.png" /></a>
-          <a href="#"><img src="../img/icons/steamicon.png" /></a>
+          <div class="userinfobox" style="margin-top: 0px;">
+              <span class="nickname"> Jonathan "<b>b0denmaster</b>" Bodenmalm </span><br />
+           </div>
+           <div class="userinfobox">
+              <span class="nickname"> Ålder <b>21</b></span><br />
+           </div>
+           <div class="userinfobox">
+              <span class="nickname"> K/D Ratio <b>1.62</b> </span><br />
+           </div>
         </div> 
-        </div> 
-        <br />
         <div class="playerMeny">
           <div class="playerMenyFix">
-          <a href="" class="waves-effect waves-light btn buttoncolor" style="background-color: #1087e8;"> Matcher</a>
-          <a href="" class="waves-effect waves-light btn buttoncolor" style="background-color: #1087e8;">  Statistik</a>
+          <a href="" class="waves-effect waves-light btn buttoncolor" style="display: inline-block; background-color: #1087e8;"> Matcher</a>
+          <a href="" class="waves-effect waves-light btn buttoncolor" style="display: inline-block; background-color: #1087e8;">  Statistik</a>
         </div>
       </div>
     </div>

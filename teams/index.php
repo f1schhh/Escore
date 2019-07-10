@@ -39,7 +39,7 @@ $settings = new SiteSettings();
       <a href="#"><div id="logo">Logo</div></a>
 
                 <div class="fixmobilepos">
-                  test
+                  <?php $settings->getMenyOutside(); ?>
               </div>
        
       <!--- Slut av mobilmeny--->
@@ -117,15 +117,12 @@ $settings = new SiteSettings();
           <div class="matchtitle">
             <span class="matchTitlefix">
  
-              <span class="startTime"><font color="green">LIVE </font></span> 
+              <span class="startTime">18/07 19:15 </span> 
 
 
             <img src="https://static.hltv.org/images/team/logo/9735" class="leftteamicon" />
             Lilmix VS  GranitGaming 
              <img src="https://static.hltv.org/images/team/logo/8930" class="rightteamicon" />
-
-             <span class="activeScore"><font color="green">1</font> - 0 </span>
-           </span>
 
          </div>
 

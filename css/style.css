@@ -6,6 +6,9 @@ html,body{
 	font-family: pacfic;
 	src: url(../fonts/monsta.ttf);
 }
+a:hover{
+	color: #1087e8;
+}
 #smh{
 	width: 80%;
 	margin: auto;
@@ -83,7 +86,7 @@ img{
     -webkit-transition: color 500ms; /* Safari and Chrome */
     -o-transition: color 500ms; /* Opera */
     transition: color 500ms;
-	color: #26a69a
+    color: #1087e8;
 }
 #midcontent{
 	float: left;
@@ -121,7 +124,7 @@ img{
 	width: 70%;
     height: 6.5%;
     max-height: 60px;
-    min-height: 48.5px;
+    min-height: 55px;
     color: #4e4e4e;
     -moz-transition: box-shadow 600ms; 
     -webkit-transition: box-shadow 600ms; 

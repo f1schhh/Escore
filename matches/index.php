@@ -18,7 +18,6 @@ $settings = new SiteSettings();
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../js/lightbox.js"></script>
     <script src="../js/mobile.js"></script>
-            
 </head>
 <body>
 
@@ -42,9 +41,6 @@ $settings = new SiteSettings();
               </div>
        
       <!--- Slut av mobilmeny--->
-      
-
-
     </div> 
 
     <!----- Start utav menyn ------->
