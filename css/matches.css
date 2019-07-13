@@ -88,6 +88,8 @@
     background-color: whitesmoke;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
     border: 1px solid #e3e3e3;
 }
 .logosize{
@@ -106,6 +108,10 @@
     -moz-transition: box-shadow 600ms; 
     -webkit-transition: box-shadow 600ms; 
     -o-transition: box-shadow 600ms;
+     border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
     display: inline-block;
 }
 .playerpicture:hover{
@@ -117,7 +123,69 @@
 .playernickname{
     font-weight: bold;
     padding-left: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+}
+.mvptitle{
+    width: 85%;
+    height: auto;
+    color: #4e4e4e; 
+    background-color: whitesmoke;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 10px;
+    border: 1px solid #e3e3e3;
+}
+.mvpbox{
+    width: 100%;
+    height: auto;
+    display: inline-block;
+}
+.mvppicture{
+    width: 25%;
+    float: left;
+    display: inline-block;
+}
+.mvppicture{
+    width: 20%;
+    height: auto;
+    color: #4e4e4e;
+    float: left;
+    background-color: whitesmoke;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #e3e3e3;
+    display: inline-block;
+}
+.mvpimgsrc{
+    width: 100%;
+    background-size: cover;
+    padding: 15px;
+    border-radius: 100%;
+    -moz-transition: box-shadow 600ms;
+    -webkit-transition: box-shadow 600ms;
+    -o-transition: box-shadow 600ms;
+    max-width: 100%;
+    max-height: 100%
+}
+.mvpstats{
+    width: 50%;
+    color: #4e4e4e;
+    background-color: whitesmoke;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    display: block;
+    float: left;
+    padding: 10px;
+    margin-left: 5px;
+    margin-top: 10px;
+    text-align: left;
+    border: 1px solid #e3e3e3;
 }
 @media screen and (max-width:800px){
 
@@ -141,6 +209,16 @@
     .playerpicture{
         padding-right: 5px;
         margin-right: 3vw;
+    }
+    .mvptitle{
+        width: 100%;
+    }
+    .mvpstats{
+        width: 75%;
+        float: right;
+    }
+    .mvpimgsrc{
+        padding: 5px;
     }
 
 } 

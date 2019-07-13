@@ -7,7 +7,6 @@ if($matchid == ""){
 header("location: ../index.php");
 }
 $matches->getMatchInformation($matchid);
-
 ?>
 <html lang="sv">
 <head>
@@ -109,78 +108,19 @@ $matches->getMatchInformation($matchid);
 
         <div class="statsBox" style="<?php echo @$show; ?>">
            <img src="https://static.hltv.org/images/team/logo/9735" style="width: 32px; height: 32px; position: relative; top: 5px; left: 4px" />
-            <span class="team1Logo">Lilmix</span> 
+            <span class="team1Logo"><?php echo $matches->getTeamOne(); ?></span> 
             <div class="line"></div>
-            <div class="matchesFix">
-            <a href="../players/">Alex <b>"PALM1"</b> Palm </a> 
-            <span class="statsline">2 kd</span>   
-            <span class="statsline">10 deaths</span> 
-            <span class="statsline">30 kills</span>  
-          </div>  
-          <div class="line"></div>
-
-          <div class="matchesFix">
-            <a href="../players/">Jonathan <b>"b0denmaster"</b> Bodenmalm </a> 
-            <span class="statsline">2 kd</span>   
-            <span class="statsline">10 deaths</span> 
-            <span class="statsline">15 kills</span>  
-          </div>  
-          <div class="line"></div>
-
-          <div class="matchesFix">
-            <a href="../players/">Alex <b>"PALM1"</b> Palm </a> 
-            <span class="statsline">2 kd</span>   
-            <span class="statsline">10 deaths</span> 
-            <span class="statsline">30 kills</span>  
-          </div>  
-          <div class="line"></div>
-
-
-          <div class="matchesFix">
-            <a href="../players/">Alex <b>"PALM1"</b> Palm </a> 
-            <span class="statsline">2 kd</span>   
-            <span class="statsline">10 deaths</span> 
-            <span class="statsline">30 kills</span>  
-          </div>  
+            <?php $matches->getMatchStatsTeamOne($matchid,$matches->getTeamOne()); 
+            ?> 
         </div>
 
         <!---- Team 2 ----->
 
          <div class="statsBox" style="<?php echo @$show; ?>">
            <img src="https://static.hltv.org/images/team/logo/8930" style="width: 32px; height: 32px; position: relative; top: 5px; left: 4px" />
-            <span class="team1Logo">Granit</span> 
+            <span class="team1Logo"><?php echo $matches->getTeamTwo(); ?></span> 
             <div class="line"></div>
-            <div class="matchesFix">
-            <a href="../players/">Alex <b>"PALM1"</b> Palm </a> 
-            <span class="statsline">2 kd</span>   
-            <span class="statsline">10 deaths</span> 
-            <span class="statsline">30 kills</span>  
-          </div>  
-          <div class="line"></div>
-
-          <div class="matchesFix">
-            <a href="../players/">Alex <b>"PALM1"</b> Palm </a> 
-            <span class="statsline">2 kd</span>   
-            <span class="statsline">10 deaths</span> 
-            <span class="statsline">30 kills</span>  
-          </div>  
-          <div class="line"></div>
-
-          <div class="matchesFix">
-            <a href="../players/">Alex <b>"PALM1"</b> Palm </a> 
-            <span class="statsline">2 kd</span>   
-            <span class="statsline">10 deaths</span> 
-            <span class="statsline">30 kills</span>  
-          </div>  
-          <div class="line"></div>
-
-
-          <div class="matchesFix">
-            <a href="../players/">Alex <b>"PALM1"</b> Palm </a> 
-            <span class="statsline">2 kd</span>   
-            <span class="statsline">10 deaths</span> 
-            <span class="statsline" >30 kills</span>  
-          </div>  
+            <?php $matches->getMatchStatsTeamTwo($matchid,$matches->getTeamTwo()); ?> 
         </div>
       </div>
       <!--- Slutet på stats efter gamet ---->
@@ -247,6 +187,16 @@ $matches->getMatchInformation($matchid);
 
     </div>
 
+
+    <div class="matchesFix" style="<?php echo $show;?>">
+      <div class="mvptitle"><span class="team1Logo">Mest värdefulla spelare</span></div> <br />
+      <div class="mvpbox">
+        <?php
+        $matches->showMVP($matchid); 
+        ?>    
+      </div>  
+    </div>  
+
     <!----- Slut på prematch ---->
 
 
@@ -259,7 +209,6 @@ $matches->getMatchInformation($matchid);
   </div>
 
   <div id="footer">
-
   </div>
 
   <script src="js/jquery.timeago.js"></script>

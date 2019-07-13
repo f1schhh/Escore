@@ -19,7 +19,7 @@ class Players extends DB{
 
 		if($playerinfo->num_rows == 1){
 
-			$playerinfo->bind_Result($id,$steamid,$first_name,$nickname,$last_name,$age,$player_picture,$total_kills,$total_deaths,$kdratio,$team,$twitch_url,$twitter_url);
+			$playerinfo->bind_Result($id,$steamid,$first_name,$nickname,$last_name,$age,$player_picture,$total_kills,$total_deaths,$kdratio,$team,$standin,$twitch_url,$twitter_url);
 
 			while($playerinfo->fetch()){
 

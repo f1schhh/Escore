@@ -62,8 +62,7 @@ class Matches extends DB{
                 }
 
 				echo '
-
-
+				<a href="matches/index.php?matchid='.$matchid.'">
 				<div class="matchtitle">
                 <span class="matchTitlefix">
  
@@ -78,6 +77,7 @@ class Matches extends DB{
            </span>
 
          </div>
+         </a>
          <br />
 
 				';
@@ -171,13 +171,232 @@ class Matches extends DB{
 
                 return $matchscore;
 	}
+    
+    }
+
+    private $statsid;
+    private $team;
+    public $playernick;
+    public function getMatchStatsTeamOne($matchid, $teamname){
+
+    	$DB = new DB();
+		$DB->connect();
+		$this->statsid = $DB->secret($matchid);
+		$this->team = $DB->secret($teamname);
+
+		$statsteamone = $DB->prepare("SELECT * FROM match_stats WHERE matchid = ? AND teamname = ? ORDER BY kills DESC LIMIT 5");
+		$statsteamone->bind_Param("ss", $this->statsid, $this->team);
+		$statsteamone->execute();
+		$statsteamone->store_result();
+
+		if($statsteamone->num_rows == 0){
+
+		}else{
+
+			$statsteamone->bind_result($id,$matchid,$playername,$kills,$deaths,$teamname);
+
+			while($statsteamone->fetch()){
+
+				$countkd = $kills / $deaths;
+
+				$realkd = round($countkd, 2);
+
+				
+				$playerinfo = $DB->prepare("SELECT first_name,nickname,last_name FROM players WHERE nickname = ?");
+		        $playerinfo->bind_Param("s", $playername);
+		        $playerinfo->execute();
+		 
+		        if($playerinfo->num_rows == 0){
+
+			    $playerinfo->bind_result($first_name,$nickname,$last_name);
+
+			    while($playerinfo->fetch()){
+				$this->getname = $first_name;
+				$this->getnick = $nickname;
+				$this->getlast = $last_name;
+				
+			   }
+		       }else{
+
+		       	echo "Fel.....";
+			 
+		      }
+
+
+				echo '
+
+				<div class="matchesFix">
+                <a href="../players/">'.$this->getname.' "<b>'.$this->getnick.'</b>" '.$this->getlast.'</a> 
+                <span class="statsline">'.$realkd.' K/D</span>   
+                <span class="statsline">'.$deaths.' Deaths</span> 
+                <span class="statsline">'.$kills.' Kills</span>  
+                </div>  
+                <div class="line"></div>
+				';
+
+
+			}
+
+		}
+    }
+
+    public function nicknameGet(){
+    	return $this->playernick;
+    }
+
+    private $statsid2;
+    private $team2;
+    public $getname;
+    public $getnick;
+    public $getlast;
+    public function getMatchStatsTeamTwo($matchid, $teamname){
+
+    	$DB = new DB();
+		$DB->connect();
+		$this->statsid2= $DB->secret($matchid);
+		$this->team2 = $DB->secret($teamname);
+
+		$statsteamone = $DB->prepare("SELECT * FROM match_stats WHERE matchid = ? AND teamname = ? ORDER BY kills DESC LIMIT 5");
+		$statsteamone->bind_Param("ss", $this->statsid2, $this->team2);
+		$statsteamone->execute();
+		$statsteamone->store_result();
+
+		if($statsteamone->num_rows == 0){
+
+		}else{
+
+			$statsteamone->bind_result($id,$matchid,$playername,$kills,$deaths,$teamname);
+
+			while($statsteamone->fetch()){
+
+				$countkd = $kills / $deaths;
+
+				$realkd = round($countkd, 2);
+
+				$playerinfo = $DB->prepare("SELECT first_name,nickname,last_name FROM players WHERE nickname = ?");
+		        $playerinfo->bind_Param("s", $playername);
+		        $playerinfo->execute();
+		 
+		        if($playerinfo->num_rows == 0){
+
+			    $playerinfo->bind_result($first_name,$nickname,$last_name);
+
+			    while($playerinfo->fetch()){
+				$this->getname = $first_name;
+				$this->getnick = $nickname;
+				$this->getlast = $last_name;
+				
+			   }
+		       }else{
+
+		       	echo "Fel....";
+			 
+		     }
+
+
+				echo '
+				<div class="matchesFix">
+				<a href="../players/">'.$this->getname.' "<b>'.$this->getnick.'</b>" '.$this->getlast.'</a> 
+                <span class="statsline">'.$realkd.' K/D</span>   
+                <span class="statsline">'.$deaths.' Deaths</span> 
+                <span class="statsline">'.$kills.' Kills</span>  
+                </div>  
+                <div class="line"></div>
+				';
+
+
+			}
+
+		}
+
+
+    }
+
+    private $mvpid;
+    private $playerp;
+
+    public function showMVP($matchid){
+
+    	$DB = new DB();
+		$DB->connect();
+
+		$this->mvpid = $DB->secret($matchid);
+
+
+		$getmvp = $DB->prepare("SELECT mvp FROM matches WHERE matchid = ?");
+		$getmvp->bind_Param("s", $this->mvpid);
+		$getmvp->execute();
+		$getmvp->store_result();
+
+		if($getmvp->num_rows == 1){
+
+			$getmvp->bind_result($mvp);
+
+			while ($getmvp->fetch()) {
+
+				// Get stats from the game
+
+				$mvpmatchstats = $DB->prepare("SELECT matchid,playername,kills,deaths FROM match_stats WHERE playername = ? AND matchid = ?");
+				$mvpmatchstats->bind_Param("ss", $mvp, $this->mvpid);
+				$mvpmatchstats->execute();
+				$mvpmatchstats->store_result();
+
+				if($mvpmatchstats->num_rows == 1){
+
+					$mvpmatchstats->bind_Result($matchid,$playername,$kills,$deaths);
+
+					while ($mvpmatchstats->fetch()){
+
+						$countkd = $kills / $deaths;
+
+				        $realkd = round($countkd, 2);
+
+				        $playerinfo = $DB->prepare("SELECT first_name,nickname,last_name,player_picture FROM players WHERE nickname = ?");
+		                $playerinfo->bind_Param("s", $playername);
+		                $playerinfo->execute();
+		 
+		                if($playerinfo->num_rows == 0){
+
+			            $playerinfo->bind_result($first_name,$nickname,$last_name,$player_picture);
+
+			            while($playerinfo->fetch()){
+				          $this->getname = $first_name;
+				          $this->getnick = $nickname;
+				          $this->getlast = $last_name;
+				          $this->playerp = $player_picture;
+				 
+			            }
+		                }else{
+
+		       	         echo "Fel....";
+
+		       	      }
+			 
+						echo '
+						<div class="mvppicture"><img src="'.$this->playerp.'" class="mvpimgsrc" /></div>
+					   <div class="mvpstats" style="margin-top: 0px;">
+                       <span class="#">'.$this->getname.' "<b>'.$this->getnick.'</b>" '.$this->getlast.'</span>
+                       </div>
+                       <div class="mvpstats">
+                       <span class="#">Totala kills: <b>'.$kills.'</b> </span>
+                       </div>  
+                       <div class="mvpstats">
+                       <span class="#">K/D Ratio: <b>'.$realkd.'</b></span>
+                       </div> 
+
+					';
+					}
+
+				}
+
+			}
+
+		}
+
+
+    }
 
 
 
-
-
-
-
-}
 }
 ?>
