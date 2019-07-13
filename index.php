@@ -1,7 +1,8 @@
 <?php
 include 'inc/main.inc.php';
 $settings = new SiteSettings();
-
+$players = new Players();
+$matches = new Matches();
 ?>
 <html lang="sv">
 <head>
@@ -68,151 +69,10 @@ $settings = new SiteSettings();
       <div class="matchesFix">
 
         <div class="matchInfo">
-          <div class="matchtitle">
-            <span class="matchTitlefix">
- 
-              <span class="startTime"><font color="green">LIVE </font></span> 
+        <?php
+        $matches->ShowMatchesFront();
+        ?>
 
-
-            <img src="https://static.hltv.org/images/team/logo/9735" class="leftteamicon"  />
-            Lilmix VS  GranitGaming 
-             <img src="https://static.hltv.org/images/team/logo/8930" class="rightteamicon"  />
-
-             <span class="activeScore"><font color="green">1</font> - 0 </span>
-           </span>
-
-         </div>
-
-         <br />
-         <div class="matchtitle">
-            <span class="matchTitlefix">
- 
-              <span class="startTime"><font color="green">LIVE </font></span> 
-
-
-            <img src="https://static.hltv.org/images/team/logo/9735" class="leftteamicon" />
-            Lilmix VS  GranitGaming 
-             <img src="https://static.hltv.org/images/team/logo/8930" class="rightteamicon" />
-
-             <span class="activeScore"><font color="green">1</font> - 0 </span>
-           </span>
-
-         </div>
-
-          <br />
-         <div class="matchtitle">
-            <span class="matchTitlefix">
- 
-              <span class="startTime"><font color="green">LIVE </font></span> 
-
-
-            <img src="https://static.hltv.org/images/team/logo/9735" class="leftteamicon" />
-            Lilmix VS  Wind and Rain 
-             <img src="https://static.hltv.org/images/team/logo/8823" class="rightteamicon" />
-
-             <span class="activeScore"><font color="green">1</font> - 0 </span>
-           </span>
-
-         </div>
-
-          <br />
-         <div class="matchtitle">
-            <span class="matchTitlefix">
- 
-              <span class="startTime"><font color="green">LIVE </font></span> 
-
-
-            <img src="https://static.hltv.org/images/team/logo/9735" class="leftteamicon" />
-            Lilmix VS  GranitGaming 
-             <img src="https://static.hltv.org/images/team/logo/8930" class="rightteamicon" />
-
-             <span class="activeScore"><font color="green">1</font> - 0 </span>
-           </span>
-
-         </div>
-
-          <br />
-         <div class="matchtitle">
-            <span class="matchTitlefix">
- 
-              <span class="startTime"><font color="green">LIVE </font></span> 
-
-
-            <img src="https://static.hltv.org/images/team/logo/9735" class="leftteamicon" />
-            Lilmix VS  GranitGaming 
-             <img src="https://static.hltv.org/images/team/logo/8930" class="rightteamicon" />
-
-             <span class="activeScore"><font color="green">1</font> - 0 </span>
-           </span>
-
-         </div>
-
-          <br />
-         <div class="matchtitle">
-            <span class="matchTitlefix">
- 
-              <span class="startTime"><font color="green">LIVE </font></span> 
-
-
-            <img src="https://static.hltv.org/images/team/logo/9735" class="leftteamicon" />
-            Lilmix VS  GranitGaming 
-             <img src="https://static.hltv.org/images/team/logo/8930" class="rightteamicon" />
-
-             <span class="activeScore"><font color="green">1</font> - 0 </span>
-           </span>
-
-         </div>
-
-          <br />
-         <div class="matchtitle">
-            <span class="matchTitlefix">
- 
-              <span class="startTime"><font color="green">LIVE </font></span> 
-
-
-            <img src="https://static.hltv.org/images/team/logo/9735" class="leftteamicon" />
-            Lilmix VS  GranitGaming 
-             <img src="https://static.hltv.org/images/team/logo/8930" class="rightteamicon" />
-
-             <span class="activeScore"><font color="green">1</font> - 0 </span>
-           </span>
-
-         </div>
-
-          <br />
-         <div class="matchtitle">
-            <span class="matchTitlefix">
- 
-              <span class="startTime"><font color="green">LIVE </font></span> 
-
-
-            <img src="https://static.hltv.org/images/team/logo/9735" class="leftteamicon" />
-            Lilmix VS  GranitGaming 
-             <img src="https://static.hltv.org/images/team/logo/8930" class="rightteamicon" />
-
-             <span class="activeScore"><font color="green">1</font> - 0 </span>
-           </span>
-
-         </div>
-
-          <br />
-         <div class="matchtitle">
-
-            <span class="matchTitlefix">
- 
-              <span class="startTime"><font color="green">LIVE </font></span> 
-
-
-            <img src="https://static.hltv.org/images/team/logo/9735" class="leftteamicon" />
-            Lilmix VS  GranitGaming 
-             <img src="https://static.hltv.org/images/team/logo/8930" class="rightteamicon"  />
-
-             <span class="activeScore"><font color="green">1</font> - 0 </span>
-           </span>
-
-         </div>
-
-          <br />
         <!---InTE LäNGRE nEr----->
         </div>  
 

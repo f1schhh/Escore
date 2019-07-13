@@ -1,6 +1,13 @@
 <?php
 include '../inc/main.inc.php';
 $settings = new SiteSettings();
+$matches = new Matches();
+$matchid = $_GET['matchid'];
+if($matchid == ""){
+header("location: ../index.php");
+}
+$matches->getMatchInformation($matchid);
+
 ?>
 <html lang="sv">
 <head>
@@ -64,21 +71,35 @@ $settings = new SiteSettings();
 
           <div class="team1"> 
             <img src="https://static.hltv.org/images/team/logo/9735" class="logosize" /><br />
-            <span class="teamname">Lilmix</span>
+            <span class="teamname"><?php echo $matches->getTeamOne(); ?></span>
           </div> 
 
           <div class="middleinfo">
             <center>
-              <h4> <font color="red">Avslutad</font> </h4>
-              <span class="currentScore">16 - 14</span><br />
-              de_mirage<br />
+              <h4> 
+              <?php
+              if($matches->getMatchStatus() == "live"){
+                echo '<font color="green">LIVE</font>';
+                $show = "display: none";
+              }else if($matches->getMatchStatus() == "upcoming"){
+                echo $matches->getStartTime(); 
+                $show = "display:none";
+              }else if($matches->getMatchStatus() == "ended"){
+                echo '<font color="red">Avslutad</font>';
+                $show = "";
+                $showpre = "display:none";
+              }
+              ?>
+              </h4>
+              <span class="currentScore"><?php echo $matches->getScore(); ?> </span><br />
+              <?php echo $matches->getMap(); ?><br />
               <img src="http://www.secsgo.se/wp-content/uploads/2018/04/iel_large.png" style="width: 64px; height: 64px;">
             </center>
           </div>  
           
           <div class="team2">
             <img src="https://static.hltv.org/images/team/logo/8930" class="logosize" style="float: right;" /><br />
-            <span class="teamnameright">Granit</span>
+            <span class="teamnameright"><?php echo $matches->getTeamTwo(); ?></span>
           </div> 
         </div> 
         <!---- Slut på live info ----->
@@ -86,7 +107,7 @@ $settings = new SiteSettings();
 
         <!----- Stats med mera ----->
 
-        <div class="statsBox" style="display: none;">
+        <div class="statsBox" style="<?php echo @$show; ?>">
            <img src="https://static.hltv.org/images/team/logo/9735" style="width: 32px; height: 32px; position: relative; top: 5px; left: 4px" />
             <span class="team1Logo">Lilmix</span> 
             <div class="line"></div>
@@ -125,7 +146,7 @@ $settings = new SiteSettings();
 
         <!---- Team 2 ----->
 
-         <div class="statsBox" style="display: none;">
+         <div class="statsBox" style="<?php echo @$show; ?>">
            <img src="https://static.hltv.org/images/team/logo/8930" style="width: 32px; height: 32px; position: relative; top: 5px; left: 4px" />
             <span class="team1Logo">Granit</span> 
             <div class="line"></div>
@@ -165,7 +186,7 @@ $settings = new SiteSettings();
       <!--- Slutet på stats efter gamet ---->
 
       <!---- Start på prematch ----->
-      <div class="matchesFix" style="">
+      <div class="matchesFix" style="<?php echo @$showpre; ?>">
          <div class="team1before">
             <img src="https://static.hltv.org/images/team/logo/9735" style="width: 32px; height: 32px; position: relative; top: 5px; left: 4px" />
             <span class="team1Logo">Lilmix</span> 
@@ -196,7 +217,7 @@ $settings = new SiteSettings();
 
     </div>
 
-     <div class="matchesFix" style="">
+     <div class="matchesFix" style="<?php echo @$showpre; ?>">
          <div class="team1before">
             <img src="https://static.hltv.org/images/team/logo/8930" style="width: 32px; height: 32px; position: relative; top: 5px; left: 4px" />
             <span class="team1Logo">Granit</span> 

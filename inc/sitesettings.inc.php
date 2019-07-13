@@ -26,5 +26,9 @@ class SiteSettings extends DB{
 		';
 	}
 
+	public function footercopy(){
+		return '';
+	}
+
 }
 ?>

@@ -66,6 +66,9 @@
 .playerSocialmedia{
 
 }
+.playerMenyFix a:hover{
+    color: white;
+}
 @media screen and (max-width:800px){
     .playerprofile{
         width: 100%;

@@ -1,7 +1,7 @@
 <?php
 include '../inc/main.inc.php';
 $settings = new SiteSettings();
-
+$players = new Players();
 ?>
 <html lang="sv">
 <head>
@@ -64,26 +64,15 @@ $settings = new SiteSettings();
     <!----Start utav mid content----->
 		<div id="midcontent">
       <div class="matchesFix">
-        <div class="playerprofile">
-          <div class="playerimg">
-          <a href="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" data-lightbox="Player"><img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" class="playerImgSrc" /></a>
-        </div>
-          <div class="userinfobox" style="margin-top: 0px;">
-              <span class="nickname"> Jonathan "<b>b0denmaster</b>" Bodenmalm </span><br />
-           </div>
-           <div class="userinfobox">
-              <span class="nickname"> Ålder <b>21</b></span><br />
-           </div>
-           <div class="userinfobox">
-              <span class="nickname"> K/D Ratio <b>1.62</b> </span><br />
-           </div>
-        </div> 
-        <div class="playerMeny">
-          <div class="playerMenyFix">
-          <a href="" class="waves-effect waves-light btn buttoncolor" style="display: inline-block; background-color: #1087e8;"> Matcher</a>
-          <a href="" class="waves-effect waves-light btn buttoncolor" style="display: inline-block; background-color: #1087e8;">  Statistik</a>
-        </div>
-      </div>
+        <?php
+        $nickname = $_GET['nickname'];
+
+        if($nickname == ""){
+          header("location: ../index.php");
+        }else{
+          $players->getPlayerInformation($nickname);
+        }
+        ?>
     </div>
 
 
