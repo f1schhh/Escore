@@ -110,7 +110,7 @@ $matches->getMatchInformation($matchid);
            <img src="https://static.hltv.org/images/team/logo/9735" style="width: 32px; height: 32px; position: relative; top: 5px; left: 4px" />
             <span class="team1Logo"><?php echo $matches->getTeamOne(); ?></span> 
             <div class="line"></div>
-            <?php $matches->getMatchStatsTeamOne($matchid,$matches->getTeamOne()); 
+            <?php $matches->getMatchStatsTeamOne($matchid,$matches->getTeamOne(),$matches->getScoreForKR()); 
             ?> 
         </div>
 
@@ -120,7 +120,7 @@ $matches->getMatchInformation($matchid);
            <img src="https://static.hltv.org/images/team/logo/8930" style="width: 32px; height: 32px; position: relative; top: 5px; left: 4px" />
             <span class="team1Logo"><?php echo $matches->getTeamTwo(); ?></span> 
             <div class="line"></div>
-            <?php $matches->getMatchStatsTeamTwo($matchid,$matches->getTeamTwo()); ?> 
+            <?php $matches->getMatchStatsTeamTwo($matchid,$matches->getTeamTwo(),$matches->getScoreForKR()); ?> 
         </div>
       </div>
       <!--- Slutet på stats efter gamet ---->
@@ -192,7 +192,7 @@ $matches->getMatchInformation($matchid);
       <div class="mvptitle"><span class="team1Logo">Mest värdefulla spelare</span></div> <br />
       <div class="mvpbox">
         <?php
-        $matches->showMVP($matchid); 
+        $matches->showMVP($matchid,$matches->getScoreForKR()); 
         ?>    
       </div>  
     </div>  

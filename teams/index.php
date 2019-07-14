@@ -1,7 +1,15 @@
 <?php
 include '../inc/main.inc.php';
 $settings = new SiteSettings();
+$matches = new Matches();
+$teams = new Teams();
+$teamsearch = $_GET['team'];
 
+if($teamsearch == ""){
+  header("location: ../index.php");
+}
+
+$teams->showTeamName($teamsearch);
 ?>
 <html lang="sv">
 <head>
@@ -67,64 +75,18 @@ $settings = new SiteSettings();
       <div class="matchesFix">
 
         <div class="fullteambox">
-
           <div class="teamlogo">
-            <img src="https://static.hltv.org/images/team/logo/9735" style="max-width: 100%; max-height: 100%;" /> 
-            <center class="teamname">Lilmix</center>
+            <img src="<?php echo $teams->getTeamLogo(); ?>" style="max-width: 100%; max-height: 100%;" /> 
+            <center class="teamname"><?php echo $teams->getFullTeamName(); ?></center>
           </div> 
-
         </div>
 
-          <div class="playerbox">
-            <div class="playerimg">
-               <img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="max-width: 100%; max-height: 100%;" />
-               <center class="teamname">b0denmaster</center>
-          </div>
-          </div>  
-
-           <div class="playerbox">
-            <div class="playerimg">
-               <img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="max-width: 100%; max-height: 100%;" />
-               <center class="teamname">b0denmaster</center>
-          </div>
-          </div> 
-
-           <div class="playerbox">
-            <div class="playerimg">
-               <img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="max-width: 100%; max-height: 100%;" />
-               <center class="teamname">b0denmaster</center>
-          </div>
-          </div> 
-
-           <div class="playerbox">
-            <div class="playerimg">
-               <img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="max-width: 100%; max-height: 100%;" />
-               <center class="teamname">b0denmaster</center>
-          </div>
-          </div> 
-
-           <div class="playerbox">
-            <div class="playerimg">
-               <img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="max-width: 100%; max-height: 100%;" />
-               <center class="teamname">b0denmaster</center>
-          </div>
-          </div> 
+        <?php $teams->getPlayersOfTeam($teamsearch); ?>
 
           <div class="upcomingmatches">
-           <span class="upcomingmatchestext"> Kommande matcher</span>
+           <span class="upcomingmatchestext"> Tidigare resultat</span>
           </div>  
-
-          <div class="matchtitle">
-            <span class="matchTitlefix">
- 
-              <span class="startTime">18/07 19:15 </span> 
-
-
-            <img src="https://static.hltv.org/images/team/logo/9735" class="leftteamicon" />
-            Lilmix VS  GranitGaming 
-             <img src="https://static.hltv.org/images/team/logo/8930" class="rightteamicon" />
-
-         </div>
+          <?php $teams->getMatchesOfTeam($teamsearch); ?>
 
         </div>  
 

@@ -174,10 +174,20 @@ class Matches extends DB{
     
     }
 
+    public function getScoreForKR(){
+		        
+		        $scoreresult = array_map('intval', explode('-', $this->scorematch));
+
+                $matchscore = $scoreresult[0] + $scoreresult[1];
+
+                return $matchscore;
+	}
+    
+
     private $statsid;
     private $team;
     public $playernick;
-    public function getMatchStatsTeamOne($matchid, $teamname){
+    public function getMatchStatsTeamOne($matchid, $teamname, $score){
 
     	$DB = new DB();
 		$DB->connect();
@@ -200,6 +210,10 @@ class Matches extends DB{
 				$countkd = $kills / $deaths;
 
 				$realkd = round($countkd, 2);
+
+				$kpr = $kills / $score;
+
+				$realkpr = round($kpr, 2);
 
 				
 				$playerinfo = $DB->prepare("SELECT first_name,nickname,last_name FROM players WHERE nickname = ?");
@@ -226,10 +240,11 @@ class Matches extends DB{
 				echo '
 
 				<div class="matchesFix">
-                <a href="../players/">'.$this->getname.' "<b>'.$this->getnick.'</b>" '.$this->getlast.'</a> 
+                <a href="../players/">'.$this->getname.' "<b>'.$this->getnick.'</b>" '.$this->getlast.'</a>
+                <span class="statsline">'.$realkpr.' K/R</span>  
                 <span class="statsline">'.$realkd.' K/D</span>   
                 <span class="statsline">'.$deaths.' Deaths</span> 
-                <span class="statsline">'.$kills.' Kills</span>  
+                <span class="statsline">'.$kills.' Kills</span> 
                 </div>  
                 <div class="line"></div>
 				';
@@ -249,7 +264,7 @@ class Matches extends DB{
     public $getname;
     public $getnick;
     public $getlast;
-    public function getMatchStatsTeamTwo($matchid, $teamname){
+    public function getMatchStatsTeamTwo($matchid, $teamname, $score){
 
     	$DB = new DB();
 		$DB->connect();
@@ -272,6 +287,10 @@ class Matches extends DB{
 				$countkd = $kills / $deaths;
 
 				$realkd = round($countkd, 2);
+
+				$kpr = $kills / $score;
+
+				$realkpr = round($kpr, 2);
 
 				$playerinfo = $DB->prepare("SELECT first_name,nickname,last_name FROM players WHERE nickname = ?");
 		        $playerinfo->bind_Param("s", $playername);
@@ -315,7 +334,7 @@ class Matches extends DB{
     private $mvpid;
     private $playerp;
 
-    public function showMVP($matchid){
+    public function showMVP($matchid, $score){
 
     	$DB = new DB();
 		$DB->connect();
@@ -351,6 +370,10 @@ class Matches extends DB{
 
 				        $realkd = round($countkd, 2);
 
+				        $kpr = $kills / $score;
+
+				        $realkpr = round($kpr, 2);
+ 
 				        $playerinfo = $DB->prepare("SELECT first_name,nickname,last_name,player_picture FROM players WHERE nickname = ?");
 		                $playerinfo->bind_Param("s", $playername);
 		                $playerinfo->execute();
@@ -382,6 +405,9 @@ class Matches extends DB{
                        </div>  
                        <div class="mvpstats">
                        <span class="#">K/D Ratio: <b>'.$realkd.'</b></span>
+                       </div> 
+                       <div class="mvpstats">
+                       <span class="#">K/R Ratio: <b>'.$realkpr.'</b></span>
                        </div> 
 
 					';
