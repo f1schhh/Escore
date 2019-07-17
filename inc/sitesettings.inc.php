@@ -6,6 +6,10 @@ class SiteSettings extends DB{
 	
 	}
 
+	public function getTitle(){
+		return "EScore.se";
+	}
+
 	public function getMeny(){
 
 		echo '

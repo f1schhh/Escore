@@ -6,7 +6,7 @@ $matches = new Matches();
 ?>
 <html lang="sv">
 <head>
-	<title>lOGO</title>
+	<title><?php echo $settings->getTitle(); ?></title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <meta http-equiv="Content-Language" content="sv" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,7 +36,7 @@ $matches = new Matches();
       </a>
 
       </div>
-      <a href="#"><div id="logo">Logo</div></a>
+      <a href="#"><div id="logo"><?php echo $settings->getTitle(); ?></div></a>
 
                 <div class="fixmobilepos">
                   test
@@ -51,7 +51,7 @@ $matches = new Matches();
     <!----- Start utav menyn ------->
 
 		<div id="leftmeny">
-			<a href="#"><div id="logo">Logo</div></a>
+			<a href="#"><div id="logo"><?php echo $settings->getTitle(); ?></div></a>
 			<div class="info-text"> 
 				        
             </div>

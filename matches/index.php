@@ -2,6 +2,7 @@
 include '../inc/main.inc.php';
 $settings = new SiteSettings();
 $matches = new Matches();
+$teams = new Teams();
 $matchid = $_GET['matchid'];
 if($matchid == ""){
 header("location: ../index.php");
@@ -10,7 +11,7 @@ $matches->getMatchInformation($matchid);
 ?>
 <html lang="sv">
 <head>
-	<title>lOGO</title>
+	<title><?php echo $settings->getTitle(); ?></title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <meta http-equiv="Content-Language" content="sv" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,7 +41,7 @@ $matches->getMatchInformation($matchid);
       </a>
 
       </div>
-      <a href="#"><div id="logo">Logo</div></a>
+      <a href="#"><div id="logo"><?php echo $settings->getTitle(); ?></div></a>
 
                 <div class="fixmobilepos">
                    <?php $settings->getMenyOutside(); ?>
@@ -52,7 +53,7 @@ $matches->getMatchInformation($matchid);
     <!----- Start utav menyn ------->
 
 		<div id="leftmeny">
-			<a href="#"><div id="logo">Logo</div></a>
+			<a href="#"><div id="logo"><?php echo $settings->getTitle(); ?></div></a>
 			<div class="info-text"> 
 				        
             </div>
@@ -67,9 +68,11 @@ $matches->getMatchInformation($matchid);
       <div class="matchesFix">
         <!----- Start på huvudet ---->
         <div class="fullmatchbox">
-
+          <?php 
+         
+          ?>
           <div class="team1"> 
-            <img src="https://static.hltv.org/images/team/logo/9735" class="logosize" /><br />
+            <img src="<?php echo $teams->TeamLogo($matches->getTeamOne()); ?>" class="logosize" /><br />
             <span class="teamname"><?php echo $matches->getTeamOne(); ?></span>
           </div> 
 
@@ -94,10 +97,9 @@ $matches->getMatchInformation($matchid);
               <?php echo $matches->getMap(); ?><br />
               <img src="http://www.secsgo.se/wp-content/uploads/2018/04/iel_large.png" style="width: 64px; height: 64px;">
             </center>
-          </div>  
-          
+          </div> 
           <div class="team2">
-            <img src="https://static.hltv.org/images/team/logo/8930" class="logosize" style="float: right;" /><br />
+            <img src="<?php echo $teams->TeamLogo($matches->getTeamTwo()); ?>" class="logosize" style="float: right;" /><br />
             <span class="teamnameright"><?php echo $matches->getTeamTwo(); ?></span>
           </div> 
         </div> 

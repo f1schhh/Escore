@@ -154,5 +154,27 @@ class Teams extends DB{
 
 	}
 
+	public function TeamLogo($team){
+		$DB = new DB();
+		$DB->connect();
+		$this->team1 = $DB->secret($team);
+
+		$getTeamInfo = $DB->prepare("SELECT * FROM teams WHERE teamname = ? OR fullteamname = ?");
+		$getTeamInfo->bind_Param("ss", $this->team1, $this->team1);
+		$getTeamInfo->execute();
+		$getTeamInfo->store_result();
+
+		if($getTeamInfo->num_rows == 1){
+
+			$getTeamInfo->bind_result($id,$teamname,$teamlogo,$fullteamname);
+
+			while ($getTeamInfo->fetch()) {
+
+				return $teamlogo;
+
+			}
+		}
+	}
+
 }
 ?>
