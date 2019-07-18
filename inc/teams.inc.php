@@ -103,8 +103,11 @@ class Teams extends DB{
 
 		if($getmatches->num_rows == 0){
 			echo '
-
-			error
+			<div class="upcomingmatches">
+           <span class="upcomingmatchestext">'.$this->teamid.' har inga tidigare matcher spelade...</span>
+          </div>  
+          
+        </div>  
 			';
 		}else{
 			$getmatches->bind_result($id,$matchid,$starttime,$team1,$team2,$match_status,$map,$score,$league,$mvp);

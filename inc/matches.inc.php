@@ -1,4 +1,25 @@
 <?php 
+function getTeamLogo($teamname){
+	$DB = new DB();
+		$DB->connect();
+		$team = $DB->secret($teamname);
+
+		$getTeamInfo = $DB->prepare("SELECT * FROM teams WHERE teamname = ? OR fullteamname = ?");
+		$getTeamInfo->bind_Param("ss", $team, $team);
+		$getTeamInfo->execute();
+		$getTeamInfo->store_result();
+
+		if($getTeamInfo->num_rows == 1){
+
+			$getTeamInfo->bind_result($id,$teamname,$teamlogo,$fullteamname);
+
+			while ($getTeamInfo->fetch()) {
+
+				return $teamlogo;
+
+			}
+		}
+	}
 class Matches extends DB{
 
 	private $matchstatusen;
@@ -61,17 +82,18 @@ class Matches extends DB{
 
                 }
 
+
 				echo '
-				<a href="matches/index.php?matchid='.$matchid.'">
+				<a href="matches/'.$matchid.'">
 				<div class="matchtitle">
                 <span class="matchTitlefix">
  
                 <span class="startTime">'.$status.' </span> 
 
 
-                <img src="https://static.hltv.org/images/team/logo/9735" class="leftteamicon"  />
+                <img src="'.getTeamLogo($team1).'" class="leftteamicon"  />
                     '.$team1.' VS  '.$team2.' 
-                <img src="https://static.hltv.org/images/team/logo/8930" class="rightteamicon"  />
+                <img src="'.getTeamLogo($team2).'" class="rightteamicon"  />
 
              <span class="activeScore">'.$matchscore.'</span>
            </span>
@@ -240,7 +262,7 @@ class Matches extends DB{
 				echo '
 
 				<div class="matchesFix">
-                <a href="../players/">'.$this->getname.' "<b>'.$this->getnick.'</b>" '.$this->getlast.'</a>
+                <a href="../players/'.$this->getnick.'">'.$this->getname.' "<b>'.$this->getnick.'</b>" '.$this->getlast.'</a>
                 <span class="statsline">'.$realkpr.' K/R</span>  
                 <span class="statsline">'.$realkd.' K/D</span>   
                 <span class="statsline">'.$deaths.' Deaths</span> 
@@ -315,7 +337,7 @@ class Matches extends DB{
 
 				echo '
 				<div class="matchesFix">
-				<a href="../players/">'.$this->getname.' "<b>'.$this->getnick.'</b>" '.$this->getlast.'</a> 
+				<a href="../players/'.$this->getnick.'">'.$this->getname.' "<b>'.$this->getnick.'</b>" '.$this->getlast.'</a> 
                 <span class="statsline">'.$realkd.' K/D</span>   
                 <span class="statsline">'.$deaths.' Deaths</span> 
                 <span class="statsline">'.$kills.' Kills</span>  

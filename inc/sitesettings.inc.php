@@ -10,6 +10,11 @@ class SiteSettings extends DB{
 		return "EScore.se";
 	}
 
+
+	public function getFooter(){
+		return "<i>&copy; Copyright Escore.se - 2019</i>";
+	}
+
 	public function getMeny(){
 
 		echo '

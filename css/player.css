@@ -14,6 +14,9 @@
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     border: 1px solid #e3e3e3;
+    min-height: 188px;
+    max-width: 188px;
+    min-width: 188px;
     display: inline-block;
 }
 .playerImgSrc{
@@ -26,6 +29,8 @@
     -o-transition: box-shadow 600ms; 
     max-width: 100%; 
     max-height: 100%;
+    min-height: 188px;
+    max-width: 188px;
 }
 .playerImgSrc:hover{
     -webkit-box-shadow: -1px 1px 11px -1px rgba(0,0,0,0.47);
@@ -81,6 +86,15 @@
     }
     .playerimg{
         width: 30%;
+        min-height: 30%;
+        max-width: 30%;
+        min-width: 30%;
+    }
+    .playerImgSrc{
+        max-width: 100%; 
+        max-height: 100%;
+        min-height: 100%;
+         max-width: 100%;
     }
     .userinfobox{
         width: 65%;

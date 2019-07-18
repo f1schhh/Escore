@@ -1,8 +1,15 @@
 <?php
-include 'inc/main.inc.php';
+include '../inc/main.inc.php';
 $settings = new SiteSettings();
-$players = new Players();
 $matches = new Matches();
+$teams = new Teams();
+$teamsearch = $_GET['team'];
+
+if($teamsearch == ""){
+  header("location: ../index.php");
+}
+
+$teams->showTeamName($teamsearch);
 ?>
 <html lang="sv">
 <head>
@@ -11,14 +18,15 @@ $matches = new Matches();
   <meta http-equiv="Content-Language" content="sv" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href="css/style.css" /> 
+	<link rel="stylesheet" href="../css/style.css" /> 
 	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,600,700" rel="stylesheet">
-  <link href="css/lightbox.css" rel="stylesheet" />
+  <link href="../css/lightbox.css" rel="stylesheet" />
+  <link href="../css/teams.css" rel="stylesheet" />
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="js/lightbox.js"></script>
-    <script src="js/mobile.js"></script>
+    <script src="../js/lightbox.js"></script>
+    <script src="../js/mobile.js"></script>
             
 </head>
 <body>
@@ -39,7 +47,7 @@ $matches = new Matches();
       <a href="#"><div id="logo"><?php echo $settings->getTitle(); ?></div></a>
 
                 <div class="fixmobilepos">
-                  test
+                  <?php $settings->getMenyOutside(); ?>
               </div>
        
       <!--- Slut av mobilmeny--->
@@ -56,38 +64,41 @@ $matches = new Matches();
 				        
             </div>
             <div id="meny-content">
-
-              <?php $settings->getMeny(); ?>
-
+              <?php $settings->getMenyOutside(); ?>
+            	
             </div>
 		</div>
     <!----Slut utav menyn----->
 
     <!----Start utav mid content----->
 		<div id="midcontent">
-      <h4 class="upcomingMatchesTitle">Matcher</h4>
       <div class="matchesFix">
 
-        <div class="matchInfo">
-        <?php
-        $matches->ShowMatchesFront();
-        ?>
-        <!---InTE LäNGRE nEr----->
+        <div class="fullteambox">
+          <div class="teamlogo">
+            <img src="<?php echo $teams->getTeamLogo(); ?>" style="max-width: 100%; max-height: 100%;" /> 
+            <center class="teamname"><?php echo $teams->getFullTeamName(); ?></center>
+          </div> 
         </div>
-             <div class="line" style="width: 70%; color: grey;"> </div><br />
-        <a class="waves-effect waves-light btn" style="background-color: #1087e8;">Tidigare resultat</a>  
+
+        <?php $teams->getPlayersOfTeam($teamsearch); ?>
+
+          <div class="upcomingmatches">
+           <span class="upcomingmatchestext"> Tidigare resultat</span>
+          </div>  
+          <?php $teams->getMatchesOfTeam($teamsearch); ?>
+
+        </div>  
 
       </div>
+        <!---InTE LäNGRE nEr----->
+        </div>  
 
-    </div> 
+      </div>
   </div>
 
   <div id="footer">
-    <span class="insidefooter">
-    <?php
-    echo $settings->getFooter();
-    ?>
-  </span>
+
   </div>
 
   <script src="js/jquery.timeago.js"></script>
