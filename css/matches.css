@@ -46,6 +46,7 @@
 .currentScore{
     font-size: 28px;
     font-weight: bold;
+    padding-bottom: -10px;
 }
 .statsbox{
     width: 85%;
@@ -114,16 +115,22 @@
     border-bottom-left-radius: 5px;
     display: inline-block;
 }
-.playerpicture:hover{
-    -webkit-box-shadow: -1px 1px 11px -1px rgba(0,0,0,0.47);
-    -moz-box-shadow: -1px 1px 11px -1px rgba(0,0,0,0.47);
-    box-shadow: -1px 1px 11px -1px rgba(0,0,0,0.47);
-    cursor: pointer;
-}
 .playernickname{
     font-weight: bold;
-    padding-left: 10px;
-    margin-bottom: 15px;
+    text-align: center;
+    color: #5d5d5d;
+}
+.logoposs{
+    width: 32px; 
+    height: 32px; 
+    position: relative; 
+    top: 5px; 
+    left: 4px
+}
+.playerpos{
+    max-width: 100%; 
+    max-height: 100%; 
+    padding: 10px;
 }
 .mvptitle{
     width: 85%;

@@ -1,0 +1,53 @@
+#fullstats{
+	width: 100%;
+}
+.bykd{
+    width: 33%;
+    height: auto;
+    color: #4e4e4e;
+    margin-top: 10px; 
+    background-color: whitesmoke;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    display: inline-block;
+    border: 1px solid #e3e3e3;
+}
+.bykd a:hover{
+	color: #18678e;
+}
+.statsfix{
+	font-weight: bolder;
+    font-size: 15px;
+    padding: 10px;
+}
+.statsline{
+    border-left: 1px solid #e3e3e3;
+    float: right;
+    position: relative;
+    padding-left: 10px;
+    padding-top: 10px;
+    top: -15px;
+    padding-bottom: 35px;
+}
+.namefix{
+	position: relative;
+	top: -7px;
+}
+.line{
+    border-bottom: 1px solid #e3e3e3;
+    display: block;
+}
+@media screen and (max-width:1000px){
+	.bykd{
+		width: 45%;
+		font-size: 2vw;
+	}
+	.statsfix{
+		font-size: 2vw;
+	}
+	.statsline{
+		padding-bottom: auto;
+	}
+}

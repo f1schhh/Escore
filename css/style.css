@@ -168,6 +168,7 @@ img{
 	left: -7px;
 	top: 1px;
 	height: 100%;
+	word-spacing: 0px;
 	border-right: 1px solid #e3e3e3;
 }
 .activeScore{

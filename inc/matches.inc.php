@@ -1,6 +1,6 @@
 <?php 
 function getTeamLogo($teamname){
-	$DB = new DB();
+	    $DB = new DB();
 		$DB->connect();
 		$team = $DB->secret($teamname);
 
@@ -20,6 +20,43 @@ function getTeamLogo($teamname){
 			}
 		}
 	}
+function getPlayer($player){
+
+	$DB = new DB();
+	$DB->connect();
+
+	$playerid = $DB->secret($player);
+
+	$getplayerinfo = $DB->prepare("SELECT nickname,player_picture FROM players WHERE nickname = ?");
+	$getplayerinfo->bind_Param("s", $playerid);
+	$getplayerinfo->execute();
+	$getplayerinfo->store_result();
+
+	if($getplayerinfo->num_rows == 1){
+
+		$getplayerinfo->bind_result($nickname,$player_picture);
+
+		while ($getplayerinfo->fetch()) {
+
+			echo '
+			<a href="../players/'.$nickname.'">
+			 <div class="playerpicture"><img src="'.$player_picture.'" class="playerpos" />
+              <span class="playernickname"><center>'.$nickname.'</center></span>
+             </div>
+             </a>
+			';
+
+		}
+
+	}else{
+		echo '
+		 <div class="playerpicture"><img src="https://cdn2.iconfinder.com/data/icons/business-388/1010/avatar-512.png" class="playerpos" />
+              <span class="playernickname"><center>'.$playerid.'</center></span>
+             </div>
+		';
+	}
+
+}	
 class Matches extends DB{
 
 	private $matchstatusen;
@@ -48,14 +85,14 @@ class Matches extends DB{
 		}else{
 
 
-			$matchesinfo->bind_Result($id,$matchid,$starttime,$team1,$team2,$match_status,$map,$score,$league,$mvp);
+			$matchesinfo->bind_Result($id,$matchid,$starttime,$starttdate,$team1,$team2,$match_status,$map,$score,$league,$mvp);
 
 			while($matchesinfo->fetch()){
 
 				if($match_status == "live"){
 					$status = "<font color='green'>LIVE</font>";
 				}else{
-					$status = $starttime;
+					$status = "$starttdate - $starttime";
 				}
 
                 $matches = array_map('intval', explode('-', $score));
@@ -118,6 +155,7 @@ class Matches extends DB{
 	public $team_two;
 	public $start_time;
 	public $upmap;
+	public $start_date;
 
 
 	public function getMatchInformation($matchid){
@@ -136,7 +174,7 @@ class Matches extends DB{
 		if($showmatchinfo->num_rows == 1){
 
 
-			$showmatchinfo->bind_result($id,$matchid,$starttime,$team1,$team2,$match_status,$map,$score,$league,$mvp);
+			$showmatchinfo->bind_result($id,$matchid,$starttime,$starttdate,$team1,$team2,$match_status,$map,$score,$league,$mvp);
 
 			while($showmatchinfo->fetch()){
 
@@ -146,6 +184,7 @@ class Matches extends DB{
 				$this->team_two = $team2;
 				$this->start_time = $starttime;
 				$this->upmap = $map;
+				$this->start_date = $starttdate;
 			}
 		}else{
 			header("location: ../index.php");
@@ -163,6 +202,9 @@ class Matches extends DB{
 	}
 	public function getStartTime(){
 		return $this->start_time;
+	}
+	public function getStartDate(){
+		return $this->start_date;
 	}
 	public function getMap(){
 		return $this->upmap;
@@ -350,6 +392,38 @@ class Matches extends DB{
 
 		}
 
+
+    }
+
+    private $teamid;
+    private $matchline;
+    public function getLineup($team,$matchid){
+
+    	$DB = new DB();
+		$DB->connect();
+
+		$this->teamid = $DB->secret($team);
+		$this->matchline = $DB->secret($matchid);
+
+		$getLineup = $DB->prepare("SELECT * FROM match_lineup WHERE matchid = ? AND team = ?");
+		$getLineup->bind_Param("ss", $this->matchline, $this->teamid);
+		$getLineup->execute();
+		$getLineup->store_result();
+
+		if($getLineup->num_rows == 1){
+
+			$getLineup->bind_result($id,$matchid,$team,$player1,$player2,$player3,$player4,$player5);
+
+			while ($getLineup->fetch()) {
+
+				getPlayer($player1);
+				getPlayer($player2);
+				getPlayer($player3);
+				getPlayer($player4);
+				getPlayer($player5);
+			}
+
+		}
 
     }
 

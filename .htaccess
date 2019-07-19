@@ -14,3 +14,8 @@ RewriteCond $1 ^teams/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ teams.php?team=$1 [L]
+
+RewriteCond $1 ^stats/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ stats.php?statsid=$1 [L]

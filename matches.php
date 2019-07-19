@@ -80,24 +80,29 @@ $matches->getMatchInformation($matchid);
 
           <div class="middleinfo">
             <center>
-              <h4> 
+              
               <?php
               if($matches->getMatchStatus() == "live"){
-                echo '<font color="green">LIVE</font>';
+                echo '<h4>'.$matches->getStartTime().'</h4>'; 
+                echo '<span class="startdate"> '.$matches->getStartDate().'</span><br />';
+                $live = '<font color="green">LIVE</font>';
                 $show = "display: none";
               }else if($matches->getMatchStatus() == "upcoming"){
-                echo $matches->getStartTime(); 
+                echo '<h4>'.$matches->getStartTime().'</h4>';  
+                echo '<span class="startdate"> '.$matches->getStartDate().'</span><br />';
+                
                 $show = "display:none";
               }else if($matches->getMatchStatus() == "ended"){
-                echo '<font color="red">Avslutad</font>';
+                echo '<font color="#4e4e4e">'.$matches->getStartTime().'</font>';
+                echo '<span class="startdate"> '.$matches->getStartDate().'</span><br />';
                 $show = "";
                 $showpre = "display:none";
               }
               ?>
-              </h4>
-              <span class="currentScore"><?php echo $matches->getScore(); ?> </span><br />
+              
               <?php echo $matches->getMap(); ?><br />
-              <img src="http://www.secsgo.se/wp-content/uploads/2018/04/iel_large.png" style="width: 64px; height: 64px;">
+              <span class="currentScore"><?php echo $matches->getScore(); ?> </span>
+              <h5><?php echo @$live; ?></h5>
             </center>
           </div> 
           <div class="team2">
@@ -132,66 +137,33 @@ $matches->getMatchInformation($matchid);
       <!---- Start på prematch ----->
       <div class="matchesFix" style="<?php echo @$showpre; ?>">
          <div class="team1before">
-            <img src="<?php echo $teams->TeamLogo($matches->getTeamOne()); ?>" style="width: 32px; height: 32px; position: relative; top: 5px; left: 4px" />
+            <img src="<?php echo $teams->TeamLogo($matches->getTeamOne()); ?>" class="logoposs" />
             <span class="team1Logo"><?php echo $matches->getTeamOne(); ?></span> 
          </div>
-
-       
+      
          <div class="playersteam1">
-             <div class="playerpicture"><img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="max-width: 100%; max-height: 100%; padding: 10px; " />
-              <span class="playernickname">b0denmaster</span>
-             </div>
-
-             <div class="playerpicture"><img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="max-width: 100%; max-height: 100%; padding: 10px;" />
-              <span class="playernickname">b0denmaster</span>
-             </div>
-
-             <div class="playerpicture"><img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="max-width: 100%; max-height: 100%; padding: 10px;" />
-              <span class="playernickname">b0denmaster</span>
-             </div>
-
-             <div class="playerpicture"><img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="max-width: 100%; max-height: 100%; padding: 10px;" />
-              <span class="playernickname">b0denmaster</span>
-             </div>
-
-             <div class="playerpicture"><img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="max-width: 100%; max-height: 100%; padding: 10px;" />
-              <span class="playernickname">b0denmaster</span>
-             </div>
+          <?php $matches->getLineup($matches->getTeamOne(), $matchid); ?>
          </div>
 
     </div>
 
      <div class="matchesFix" style="<?php echo @$showpre; ?>">
          <div class="team1before">
-            <img src="<?php echo $teams->TeamLogo($matches->getTeamTwo()); ?>" style="width: 32px; height: 32px; position: relative; top: 5px; left: 4px" />
+            <img src="<?php echo $teams->TeamLogo($matches->getTeamTwo()); ?>" class="logoposs" />
             <span class="team1Logo"><?php echo $matches->getTeamTwo(); ?></span> 
          </div>
 
          <div class="playersteam1">
-             <div class="playerpicture" style="margin-left: none;"><img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="max-width: 100%; max-height: 100%; padding: 10px; " />
-              <span class="playernickname">b0denmaster</span>
-             </div>
 
-             <div class="playerpicture"><img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="max-width: 100%; max-height: 100%; padding: 10px;" />
-              <span class="playernickname">b0denmaster</span>
-             </div>
+          <?php $matches->getLineup($matches->getTeamTwo(), $matchid); ?>
 
-             <div class="playerpicture"><img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="max-width: 100%; max-height: 100%; padding: 10px;" />
-              <span class="playernickname">b0denmaster</span>
-             </div>
-
-             <div class="playerpicture"><img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="max-width: 100%; max-height: 100%; padding: 10px;" />
-              <span class="playernickname">b0denmaster</span>
-             </div>
-
-             <div class="playerpicture"><img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="max-width: 100%; max-height: 100%; padding: 10px;" />
-              <span class="playernickname">b0denmaster</span>
-             </div>
          </div>
 
     </div>
 
+    <!----- Slut på prematch ---->
 
+    <!--- Visa mvp of the match ---->
     <div class="matchesFix" style="<?php echo $show;?>">
       <div class="mvptitle"><span class="team1Logo">Mest värdefulla spelare</span></div> <br />
       <div class="mvpbox">
@@ -200,11 +172,7 @@ $matches->getMatchInformation($matchid);
         ?>    
       </div>  
     </div>  
-
-    <!----- Slut på prematch ---->
-
-
-        <!---InTE LäNGRE nEr----->
+    <!----- Slut----->
         </div>  
 
       </div>
