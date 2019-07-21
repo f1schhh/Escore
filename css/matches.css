@@ -204,6 +204,7 @@
     text-align: left;
     border: 1px solid #e3e3e3;
 }
+
 @media screen and (max-width:900px){
 
     .fullmatchbox{

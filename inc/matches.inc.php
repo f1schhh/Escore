@@ -89,8 +89,6 @@ class Matches extends DB{
 
 			while($matchesinfo->fetch()){
 
-				$matchtime = array_map('intval', explode('2019', $starttdate));
-
 				if($match_status == "live"){
 					$status = "<font color='green'>LIVE</font>";
 				}else{
@@ -520,6 +518,124 @@ class Matches extends DB{
 
 			}
 
+		}
+
+    }
+
+    public $startfrom;
+
+    public function AllMatches($page){
+
+    	$DB = new DB();
+		$DB->connect();
+
+		$status = "ended";
+		$perpage = "8";
+
+		$this->startfrom = ($page-1) * $perpage;
+
+
+		$getmatches = $DB->prepare("SELECT * FROM matches WHERE match_status = ? ORDER by starttdate DESC, starttime desc LIMIT ?, ?");
+		$getmatches->bind_Param("sss", $status, $this->startfrom, $perpage);
+		$getmatches->execute();
+		$getmatches->store_result();
+
+		if($getmatches->num_rows == 0){
+			header("location: 1");
+		}else{
+
+			$getmatches->bind_result($id,$matchid,$starttime,$starttdate,$startyear,$team1,$team2,$match_status,$map,$score,$league,$mvp);
+
+			while ($getmatches->fetch()) {
+
+				if($match_status == "live"){
+					$status = "<font color='green'>LIVE</font>";
+				}else{
+					$status = "$starttdate $starttime";
+				}
+
+                $matches = array_map('intval', explode('-', $score));
+
+                if($score == "not started"){
+                	$matchscore = "";
+                }else{
+
+                if($matches[0] == $matches[1]){
+
+                }else{
+
+                if($matches[0]>$matches[1]){
+                	$matches[0] = '<font color="green">'.$matches[0].' </font>';
+                	$matches[1] = '<font color="red">'.$matches[1].' </font>';
+                }else{
+
+                	$matches[1] = '<font color="green">'.$matches[1].' </font>';
+                	$matches[0] = '<font color="red">'.$matches[0].' </font>';
+                }
+                }
+
+                $matchscore = "$matches[0] - $matches[1]";
+
+                }
+
+				echo '
+				<a href="../matches/'.$matchid.'">
+				<div class="matchtitle">
+                <span class="matchTitlefix">
+ 
+                <span class="startTime">'.$starttdate.' '.$starttime.' </span> 
+
+
+                <img src="'.getTeamLogo($team1).'" class="leftteamicon"  />
+                    '.$team1.' VS  '.$team2.' 
+                <img src="'.getTeamLogo($team2).'" class="rightteamicon"  />
+
+             <span class="activeScore">'.$matchscore.'</span>
+           </span>
+
+         </div>
+         </a>
+         <br />
+
+				';
+
+			}
+
+
+
+		}
+
+    }
+
+    public function AllMatchesMeny($page){
+
+    	$DB = new DB();
+		$DB->connect();
+
+		$status = "ended";
+		$perpage = 8;
+
+		$getmeny = $DB->prepare("SELECT COUNT(id) AS total FROM matches WHERE match_status = ?");
+		$getmeny->bind_Param("s", $status);
+		$getmeny->execute();
+		$getmeny->store_result();
+
+
+		if($getmeny->num_rows == 0){
+
+		}else{
+			$getmeny->bind_Result($total);
+
+			while($getmeny->fetch()){
+				$total_pages = ceil($total / 8);
+				
+			}
+
+			for($i=1; $i<=$total_pages; $i++){
+				echo "<a href='$i' class='pagebtn'";
+				if($i == $page) echo " id='markedpage'";
+				echo ">$i </a>";
+			}
 		}
 
 

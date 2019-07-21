@@ -19,3 +19,8 @@ RewriteCond $1 ^stats/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ stats.php?statsid=$1 [L]
+
+RewriteCond $1 ^results/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ results.php?page=$1 [L]
