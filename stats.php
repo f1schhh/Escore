@@ -2,8 +2,9 @@
 include 'inc/main.inc.php';
 $settings = new SiteSettings();
 $players = new Players();
+$stats = new Stats();
 $statsid = $_GET['statsid'];
-$stats = str_replace("stats/", "", $statsid);
+$statsen = str_replace("stats/", "", $statsid);
 ?>
 <html lang="sv">
 <head>
@@ -74,141 +75,32 @@ $stats = str_replace("stats/", "", $statsid);
               <div>
               </div>
             </span>
-            <div class="line"></div> 
-            <div class="matchesFix">
-              <img src="https://pbs.twimg.com/profile_images/1132997571989987329/6uLOQd8Z_400x400.jpg" style="height: 30px;" />
-                <a href="../players/'.$this->getnick.'" class="namefix">hns</a> 
-                <span class="statsline">2 K/D</span>
-             </div>   
-             <div class="line"></div> 
-             <div class="matchesFix">
-                <img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="height: 30px;" />
-                <a href="../players/'.$this->getnick.'" class="namefix">b0denmaster</a> 
-                <span class="statsline">2 K/D</span>
-                  
-                     </div>  
-                     <div class="line"></div> 
-
-                     <div class="matchesFix">
-                <img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="height: 30px;" />
-                <a href="../players/'.$this->getnick.'" class="namefix">b0denmaster</a> 
-                <span class="statsline">2 K/D</span>
-                  
-                     </div>  
-                     <div class="line"></div> 
-
-                     <div class="matchesFix">
-                <img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="height: 30px;" />
-                <a href="../players/'.$this->getnick.'" class="namefix">b0denmaster</a> 
-                <span class="statsline">2 K/D</span>
-                  
-                     </div>  
-                     <div class="line"></div> 
-
-                     <div class="matchesFix">
-                <img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="height: 30px;" />
-                <a href="../players/'.$this->getnick.'" class="namefix">b0denmaster</a> 
-                <span class="statsline">2 K/D</span>
-                  
-                     </div>  
-                     <div class="line"></div> 
-
+            <div class="line"></div>  
+            <?php $stats->getStatsKD(); ?>
                  </div>  
 
 
 
                     <div class="bykd">
             <br />
-            <span class="statsfix">Top 5 K/D Spelarna <a href="#" class="all" style="float: right; margin-right: 5px;">Visa alla</a>
+            <span class="statsfix">Top 5 K/R Spelarna <a href="#" class="all" style="float: right; margin-right: 5px;">Visa alla</a>
               <div>
               </div>
             </span>
             <div class="line"></div> 
-            <div class="matchesFix">
-              <img src="https://pbs.twimg.com/profile_images/1132997571989987329/6uLOQd8Z_400x400.jpg" style="height: 30px;" />
-                <a href="../players/'.$this->getnick.'" class="namefix">hns</a> 
-                <span class="statsline">2 K/D</span>
-             </div>   
-             <div class="line"></div> 
-             <div class="matchesFix">
-                <img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="height: 30px;" />
-                <a href="../players/'.$this->getnick.'" class="namefix">b0denmaster</a> 
-                <span class="statsline">2 K/D</span>
-                  
-                     </div>  
-                     <div class="line"></div> 
-
-                     <div class="matchesFix">
-                <img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="height: 30px;" />
-                <a href="../players/'.$this->getnick.'" class="namefix">b0denmaster</a> 
-                <span class="statsline">2 K/D</span>
-                  
-                     </div>  
-                     <div class="line"></div> 
-
-                     <div class="matchesFix">
-                <img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="height: 30px;" />
-                <a href="../players/'.$this->getnick.'" class="namefix">b0denmaster</a> 
-                <span class="statsline">2 K/D</span>
-                  
-                     </div>  
-                     <div class="line"></div> 
-
-                     <div class="matchesFix">
-                <img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="height: 30px;" />
-                <a href="../players/'.$this->getnick.'" class="namefix">b0denmaster</a> 
-                <span class="statsline">2 K/D</span>
-                  
-                     </div>  
-                     <div class="line"></div> 
+            <?php $stats->getStatsKR(); ?>
 
                  </div>  
 
 
-                    <div class="bykd">
+                <div class="bykd">
             <br />
-            <span class="statsfix">Top 5 K/D Spelarna <a href="#" class="all" style="float: right; margin-right: 5px;">Visa alla</a>
+            <span class="statsfix">Top 5 Mest kills <a href="#" class="all" style="float: right; margin-right: 5px;">Visa alla</a>
               <div>
               </div>
             </span>
             <div class="line"></div> 
-            <div class="matchesFix">
-              <img src="https://pbs.twimg.com/profile_images/1132997571989987329/6uLOQd8Z_400x400.jpg" style="height: 30px;" />
-                <a href="../players/'.$this->getnick.'" class="namefix">hns</a> 
-                <span class="statsline">2 K/D</span>
-             </div>   
-             <div class="line"></div> 
-             <div class="matchesFix">
-                <img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="height: 30px;" />
-                <a href="../players/'.$this->getnick.'" class="namefix">b0denmaster</a> 
-                <span class="statsline">2 K/D</span>
-                  
-                     </div>  
-                     <div class="line"></div> 
-
-                     <div class="matchesFix">
-                <img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="height: 30px;" />
-                <a href="../players/'.$this->getnick.'" class="namefix">b0denmaster</a> 
-                <span class="statsline">2 K/D</span>
-                  
-                     </div>  
-                     <div class="line"></div> 
-
-                     <div class="matchesFix">
-                <img src="https://i.gyazo.com/c0367e02e4e053b0912614549576b279.png" style="height: 30px;" />
-                <a href="../players/'.$this->getnick.'" class="namefix">b0denmaster</a> 
-                <span class="statsline">2 K/D</span>
-                  
-                     </div>  
-                     <div class="line"></div> 
-
-                     <div class="matchesFix">
-                <img src="https://cdn2.iconfinder.com/data/icons/business-388/1010/avatar-512.png" style="height: 30px;" />
-                <a href="../players/'.$this->getnick.'" class="namefix">b0denmaster</a> 
-                <span class="statsline">2 K/D</span>
-                  
-                     </div>  
-                     <div class="line"></div> 
+            <?php $stats->getStatsKills(); ?>
 
                  </div>  
 
