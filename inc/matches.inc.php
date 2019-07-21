@@ -11,7 +11,7 @@ function getTeamLogo($teamname){
 
 		if($getTeamInfo->num_rows == 1){
 
-			$getTeamInfo->bind_result($id,$teamname,$teamlogo,$fullteamname);
+			$getTeamInfo->bind_result($id,$teamname,$teamlogo,$fullteamname,$played,$wins,$loses);
 
 			while ($getTeamInfo->fetch()) {
 
@@ -70,7 +70,7 @@ class Matches extends DB{
 		$DB = new DB();
 		$DB->connect();
 
-		$matchesinfo = $DB->prepare("SELECT * FROM matches WHERE match_status = ? OR match_status = ? ORDER by match_status asc, id desc LIMIT 5");
+		$matchesinfo = $DB->prepare("SELECT * FROM matches WHERE match_status = ? OR match_status = ? ORDER by starttdate asc, starttime asc LIMIT 8");
 		$matchesinfo->bind_Param("ss", $this->matchstatusen, $this->matchstatusen2);
 		$matchesinfo->execute();
 		$matchesinfo->store_result();
@@ -85,14 +85,16 @@ class Matches extends DB{
 		}else{
 
 
-			$matchesinfo->bind_Result($id,$matchid,$starttime,$starttdate,$team1,$team2,$match_status,$map,$score,$league,$mvp);
+			$matchesinfo->bind_Result($id,$matchid,$starttime,$starttdate,$startyear,$team1,$team2,$match_status,$map,$score,$league,$mvp);
 
 			while($matchesinfo->fetch()){
+
+				$matchtime = array_map('intval', explode('2019', $starttdate));
 
 				if($match_status == "live"){
 					$status = "<font color='green'>LIVE</font>";
 				}else{
-					$status = "$starttdate - $starttime";
+					$status = "$starttdate $starttime";
 				}
 
                 $matches = array_map('intval', explode('-', $score));
@@ -156,6 +158,7 @@ class Matches extends DB{
 	public $start_time;
 	public $upmap;
 	public $start_date;
+	public $start_year;
 
 
 	public function getMatchInformation($matchid){
@@ -174,7 +177,7 @@ class Matches extends DB{
 		if($showmatchinfo->num_rows == 1){
 
 
-			$showmatchinfo->bind_result($id,$matchid,$starttime,$starttdate,$team1,$team2,$match_status,$map,$score,$league,$mvp);
+			$showmatchinfo->bind_result($id,$matchid,$starttime,$starttdate,$startyear,$team1,$team2,$match_status,$map,$score,$league,$mvp);
 
 			while($showmatchinfo->fetch()){
 
@@ -183,6 +186,7 @@ class Matches extends DB{
 				$this->team_one = $team1;
 				$this->team_two = $team2;
 				$this->start_time = $starttime;
+				$this->start_year = $startyear;
 				$this->upmap = $map;
 				$this->start_date = $starttdate;
 			}
@@ -205,6 +209,9 @@ class Matches extends DB{
 	}
 	public function getStartDate(){
 		return $this->start_date;
+	}
+	public function getStartYear(){
+		return $this->start_year;
 	}
 	public function getMap(){
 		return $this->upmap;

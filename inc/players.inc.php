@@ -48,8 +48,20 @@ class Players extends DB{
           <div class="playerMenyFix">
           <a href="" class="waves-effect waves-light btn buttoncolor" style="display: inline-block; background-color: #1087e8;"> Matcher</a>
           <a href="" class="waves-effect waves-light btn buttoncolor" style="display: inline-block; background-color: #1087e8;">  Statistik</a>
-          <a href="'.$twitter_url.'" target="_blank" style="float: right;"><img src="../img/icons/twittericon.png" /></a>
-          <a href="'.$twitch_url.'" target="_blank" style="float: right; margin-right: 5px;"><img src="../img/icons/twitchicon.png" /></a>
+
+          ';
+          if($twitter_url == ""){
+
+          }else {
+            echo '<a href="'.$twitter_url.'" target="_blank" style="float: right;"><img src="../img/icons/twittericon.png" /></a>';
+          }
+
+          if($twitch_url == ""){
+
+          }else{
+            echo '<a href="'.$twitch_url.'" target="_blank" style="float: right; margin-right: 5px;"><img src="../img/icons/twitchicon.png" /></a>';
+          }
+          echo '
         </div>
       </div>
       ';

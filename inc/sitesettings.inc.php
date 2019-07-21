@@ -21,7 +21,7 @@ class SiteSettings extends DB{
 
 		        <li><a href="index.php">Hem</a></li><br />
                 <li><a href="portfolio.php">Matcher</a></li><br />
-                <li><a href="contact.php">Statistik</a></li><br />
+                <li><a href="stats/">Statistik</a></li><br />
 		';
 	}
 	
@@ -29,9 +29,9 @@ class SiteSettings extends DB{
 
 		echo '
 
-		        <li><a href="index.php">Hem</a></li><br />
-                <li><a href="portfolio.php">Stats</a></li><br />
-                <!----- <li><a href="contact.php">Kontakta</a></li><br /> ------>
+		        <li><a href="../index.php">Hem</a></li><br />
+                <li><a href="portfolio.php">Matcher</a></li><br />
+                <li><a href="../stats/">Statistik</a></li><br />
 		';
 	}
 

@@ -19,7 +19,7 @@ class Teams extends DB{
 
 		if($getTeamInfo->num_rows == 1){
 
-			$getTeamInfo->bind_result($id,$teamname,$teamlogo,$fullteamname);
+			$getTeamInfo->bind_result($id,$teamname,$teamlogo,$fullteamname,$played,$wins,$loses);
 
 			while ($getTeamInfo->fetch()) {
 
@@ -69,14 +69,14 @@ class Teams extends DB{
 			while ($getPlayers->fetch()) {
 
 				echo '
-
-
+				 <a href="../players/'.$nickname.'">				
 				 <div class="playerbox">
                  <div class="playerimg">
                     <img src="'.$player_picture.'" style="max-width: 100%; max-height: 100%; border-top-right-radius: 5px; border-top-left-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;" />
                     <center class="teamname">'.$nickname.'</center>
                  </div>
                  </div> 
+                 </a>
                  
 
 				';
@@ -143,7 +143,7 @@ class Teams extends DB{
 					$status = "$starttdate - $starttime";
 
 				echo '
-				<a href="#">
+				<a href="../matches/'.$matchid.'">
 				<div class="matchtitle">
                 <span class="matchTitlefix">
                   <span class="startTime">'.$status.' </span> 
@@ -172,7 +172,7 @@ class Teams extends DB{
 
 		if($getTeamInfo->num_rows == 1){
 
-			$getTeamInfo->bind_result($id,$teamname,$teamlogo,$fullteamname);
+			$getTeamInfo->bind_result($id,$teamname,$teamlogo,$fullteamname,$played,$wins,$loses);
 
 			while ($getTeamInfo->fetch()) {
 

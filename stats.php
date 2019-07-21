@@ -66,6 +66,7 @@ $statsen = str_replace("stats/", "", $statsid);
 
     <!----Start utav mid content----->
 		<div id="midcontent">
+      <h4 class="upcomingMatchesTitle">Statistik</h4>
       <div class="matchesFix">
         <div id="fullstats">
 

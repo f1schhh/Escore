@@ -73,28 +73,30 @@ $matches->getMatchInformation($matchid);
           <?php 
          
           ?>
+          <a href="../teams/<?php echo $matches->getTeamOne(); ?>">
           <div class="team1"> 
             <img src="<?php echo $teams->TeamLogo($matches->getTeamOne()); ?>" class="logosize" /><br />
             <span class="teamname"><?php echo $matches->getTeamOne(); ?></span>
-          </div> 
+          </div>
+          </a> 
 
           <div class="middleinfo">
             <center>
               
               <?php
               if($matches->getMatchStatus() == "live"){
-                echo '<h4>'.$matches->getStartTime().'</h4>'; 
-                echo '<span class="startdate"> '.$matches->getStartDate().'</span><br />';
+                echo '<h4>'.$matches->getStartTime().'</h4>';  
+                echo '<span class="startdate"> '.$matches->getStartDate().' '.$matches->getStartYear().'</span><br />';
                 $live = '<font color="green">LIVE</font>';
                 $show = "display: none";
               }else if($matches->getMatchStatus() == "upcoming"){
                 echo '<h4>'.$matches->getStartTime().'</h4>';  
-                echo '<span class="startdate"> '.$matches->getStartDate().'</span><br />';
+                echo '<span class="startdate"> '.$matches->getStartDate().' '.$matches->getStartYear().'</span><br />';
                 
                 $show = "display:none";
               }else if($matches->getMatchStatus() == "ended"){
-                echo '<font color="#4e4e4e">'.$matches->getStartTime().'</font>';
-                echo '<span class="startdate"> '.$matches->getStartDate().'</span><br />';
+                echo '<h4>'.$matches->getStartTime().'</h4>';  
+                echo '<span class="startdate"> '.$matches->getStartDate().' '.$matches->getStartYear().'</span><br />';
                 $show = "";
                 $showpre = "display:none";
               }
@@ -105,18 +107,20 @@ $matches->getMatchInformation($matchid);
               <h5><?php echo @$live; ?></h5>
             </center>
           </div> 
+          <a href="../teams/<?php echo $matches->getTeamTwo(); ?>">
           <div class="team2">
             <img src="<?php echo $teams->TeamLogo($matches->getTeamTwo()); ?>" class="logosize" style="float: right;" /><br />
             <span class="teamnameright"><?php echo $matches->getTeamTwo(); ?></span>
           </div> 
-        </div> 
+        </a>
+        </div>
         <!---- Slut på live info ----->
 
 
         <!----- Stats med mera ----->
 
         <div class="statsBox" style="<?php echo @$show; ?>">
-           <img src="https://static.hltv.org/images/team/logo/9735" style="width: 32px; height: 32px; position: relative; top: 5px; left: 4px" />
+           <img src="https://static.hltv.org/images/team/logo/9735" class="statslogo" />
             <span class="team1Logo"><?php echo $matches->getTeamOne(); ?></span> 
             <div class="line"></div>
             <?php $matches->getMatchStatsTeamOne($matchid,$matches->getTeamOne(),$matches->getScoreForKR()); 
@@ -126,7 +130,7 @@ $matches->getMatchInformation($matchid);
         <!---- Team 2 ----->
 
          <div class="statsBox" style="<?php echo @$show; ?>">
-           <img src="<?php echo $teams->TeamLogo($matches->getTeamTwo()); ?>" style="width: 32px; height: 32px; position: relative; top: 5px; left: 4px" />
+           <img src="<?php echo $teams->TeamLogo($matches->getTeamTwo()); ?>" class="statslogo" />
             <span class="team1Logo"><?php echo $matches->getTeamTwo(); ?></span> 
             <div class="line"></div>
             <?php $matches->getMatchStatsTeamTwo($matchid,$matches->getTeamTwo(),$matches->getScoreForKR()); ?> 
