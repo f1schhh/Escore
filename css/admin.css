@@ -1,0 +1,21 @@
+#login{
+    width: 40%;
+    height: 30px;
+    color: #4e4e4e;
+    background-color: whitesmoke;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #e3e3e3;
+    padding: 10px;
+    display: block;
+}
+#login:focus{
+    box-shadow: none;
+}
+input[type=submit]{
+    color: white;
+    cursor: pointer;
+    padding-top: 10px;
+}

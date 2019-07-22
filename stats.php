@@ -3,6 +3,9 @@ include 'inc/main.inc.php';
 $settings = new SiteSettings();
 $players = new Players();
 $stats = new Stats();
+if($settings->checkMaintenanace() == 1){
+  header("location: maintenance/");
+}
 $statsid = $_GET['statsid'];
 $statsen = str_replace("stats/", "", $statsid);
 ?>

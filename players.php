@@ -2,6 +2,9 @@
 include 'inc/main.inc.php';
 $settings = new SiteSettings();
 $players = new Players();
+if($settings->checkMaintenanace() == 1){
+  header("location: maintenance/");
+}
 $nicknameid = $_GET['nickname'];
 $nickname = str_replace("players/", "", $nicknameid);
 ?>

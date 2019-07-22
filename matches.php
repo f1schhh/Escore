@@ -3,6 +3,9 @@ include 'inc/main.inc.php';
 $settings = new SiteSettings();
 $matches = new Matches();
 $teams = new Teams();
+if($settings->checkMaintenanace() == 1){
+  header("location: maintenance/");
+}
 $id = $_GET['matchid'];
 $matchid = str_replace("matches/", "", $id);
 
@@ -120,7 +123,7 @@ $matches->getMatchInformation($matchid);
         <!----- Stats med mera ----->
 
         <div class="statsBox" style="<?php echo @$show; ?>">
-           <img src="https://static.hltv.org/images/team/logo/9735" class="statslogo" />
+           <img src="<?php echo $teams->TeamLogo($matches->getTeamOne()); ?>" class="statslogo" />
             <span class="team1Logo"><?php echo $matches->getTeamOne(); ?></span> 
             <div class="line"></div>
             <?php $matches->getMatchStatsTeamOne($matchid,$matches->getTeamOne(),$matches->getScoreForKR()); 

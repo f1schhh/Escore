@@ -110,7 +110,7 @@ class Teams extends DB{
         </div>  
 			';
 		}else{
-			$getmatches->bind_result($id,$matchid,$starttime,$starttdate,$team1,$team2,$match_status,$map,$score,$league,$mvp);
+			$getmatches->bind_result($id,$matchid,$starttime,$starttdate,$startyear,$team1,$team2,$match_status,$map,$score,$league,$mvp);
 
 			while($getmatches->fetch()){
 
@@ -147,9 +147,9 @@ class Teams extends DB{
 				<div class="matchtitle">
                 <span class="matchTitlefix">
                   <span class="startTime">'.$status.' </span> 
-                  <img src="https://static.hltv.org/images/team/logo/9735" class="leftteamicon" />
+                  <img src="'.getTeamLogo($team1).'" class="leftteamicon" />
                   '.$team1.' VS  '.$team2.' 
-                 <img src="https://static.hltv.org/images/team/logo/8930" class="rightteamicon" />
+                 <img src="'.getTeamLogo($team2).'" class="rightteamicon" />
 
                  <span class="activeScore">'.$matchscore.'</span>
              </div></a>

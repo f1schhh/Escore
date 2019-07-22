@@ -2,6 +2,9 @@
 include 'inc/main.inc.php';
 $settings = new SiteSettings();
 $matches = new Matches();
+if($settings->checkMaintenanace() == 1){
+  header("location: maintenance/");
+}
 @$page = $_GET['page'];
 @$pageid = str_replace("results/", "", $page);
 if(isset($_GET['page'])){

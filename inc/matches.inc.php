@@ -56,6 +56,33 @@ function getPlayer($player){
 		';
 	}
 
+}
+
+function getFullTeamName($team){
+
+	$DB = new DB();
+	$DB->connect();
+
+	$teamid = $DB->secret($team);
+
+	$getteamname = $DB->prepare("SELECT fullteamname FROM teams WHERE teamname = ?");
+	$getteamname->bind_Param("s", $teamid);
+	$getteamname->execute();
+	$getteamname->store_result();
+
+	if($getteamname->num_rows == 1){
+
+		$getteamname->bind_result($fullteamname);
+
+		while ($getteamname->fetch()) {
+
+			return $fullteamname;
+
+		}
+
+	}else{
+	}
+
 }	
 class Matches extends DB{
 
@@ -262,9 +289,10 @@ class Matches extends DB{
 		$DB->connect();
 		$this->statsid = $DB->secret($matchid);
 		$this->team = $DB->secret($teamname);
+		$fullname = getFullTeamName($teamname);
 
-		$statsteamone = $DB->prepare("SELECT * FROM match_stats WHERE matchid = ? AND teamname = ? ORDER BY kills DESC LIMIT 5");
-		$statsteamone->bind_Param("ss", $this->statsid, $this->team);
+		$statsteamone = $DB->prepare("SELECT * FROM match_stats WHERE matchid = ? AND teamname = ? OR matchid = ? AND teamname = ? ORDER BY kills DESC LIMIT 5");
+		$statsteamone->bind_Param("ssss", $this->statsid, $this->team, $this->statsid, $fullname);
 		$statsteamone->execute();
 		$statsteamone->store_result();
 
@@ -339,9 +367,10 @@ class Matches extends DB{
 		$DB->connect();
 		$this->statsid2= $DB->secret($matchid);
 		$this->team2 = $DB->secret($teamname);
+		$fullname = getFullTeamName($teamname);
 
-		$statsteamone = $DB->prepare("SELECT * FROM match_stats WHERE matchid = ? AND teamname = ? ORDER BY kills DESC LIMIT 5");
-		$statsteamone->bind_Param("ss", $this->statsid2, $this->team2);
+		$statsteamone = $DB->prepare("SELECT * FROM match_stats WHERE matchid = ? AND teamname = ? OR matchid = ? AND teamname = ? ORDER BY kills DESC LIMIT 5");
+		$statsteamone->bind_Param("ssss", $this->statsid2, $this->team2, $this->statsid2, $fullname);
 		$statsteamone->execute();
 		$statsteamone->store_result();
 
@@ -385,6 +414,7 @@ class Matches extends DB{
 				echo '
 				<div class="matchesFix">
 				<a href="../players/'.$this->getnick.'">'.$this->getname.' "<b>'.$this->getnick.'</b>" '.$this->getlast.'</a> 
+				<span class="statsline">'.$realkpr.' K/D</span>
                 <span class="statsline">'.$realkd.' K/D</span>   
                 <span class="statsline">'.$deaths.' Deaths</span> 
                 <span class="statsline">'.$kills.' Kills</span>  

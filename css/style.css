@@ -203,6 +203,16 @@ img{
 	padding: 12.5px;
 	font-weight: bold;
 }
+.messageshow{
+	width: 95%;
+	height: auto;
+	border-radius: 5px;
+	padding: 15px;
+	color: #a94442;
+	margin: 10px;
+	border: 1px solid #ebccd1;
+	background-color: #f2dede;
+}
 @media screen and (max-width:800px){
 
 #logo{

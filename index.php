@@ -3,6 +3,10 @@ include 'inc/main.inc.php';
 $settings = new SiteSettings();
 $players = new Players();
 $matches = new Matches();
+
+if($settings->checkMaintenanace() == 1){
+  header("location: maintenance/");
+}
 ?>
 <html lang="sv">
 <head>
@@ -65,6 +69,7 @@ $matches = new Matches();
 
     <!----Start utav mid content----->
 		<div id="midcontent">
+      <?php $settings->getSiteMessage(); ?>
       <h4 class="upcomingMatchesTitle">Matcher</h4>
       <div class="matchesFix">
 

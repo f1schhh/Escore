@@ -3,6 +3,9 @@ include 'inc/main.inc.php';
 $settings = new SiteSettings();
 $matches = new Matches();
 $teams = new Teams();
+if($settings->checkMaintenanace() == 1){
+  header("location: maintenance/");
+}
 $teamsearchid = $_GET['team'];
 $teamsearch = str_replace("teams/", "", $teamsearchid);
 
