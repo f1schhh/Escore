@@ -3,6 +3,8 @@ include '../inc/main.inc.php';
 include '../inc/admin.inc.php';
 $settings = new SiteSettings();
 $admin = new Admin();
+$adminsettings = new AdminSettings();
+$admin->CheckIfUserIsInlogged($_SESSION['loginsession']);
 ?>
 <html lang="sv">
 <head>
@@ -23,7 +25,6 @@ $admin = new Admin();
             
 </head>
 <body>
-
 	<div id="smh">
     <!---Start utav mobil menyn---->
 
@@ -40,7 +41,9 @@ $admin = new Admin();
       <a href="login.php"><div id="logo"><?php echo $settings->getTitle(); ?></div></a>
 
                 <div class="fixmobilepos">
-                  
+              <?php
+              echo $adminsettings->AdminMeny();
+              ?>
               </div>
        
       <!--- Slut av mobilmeny--->
@@ -58,7 +61,9 @@ $admin = new Admin();
             </div>
             <div id="meny-content">
 
-              
+              <?php
+              echo $adminsettings->AdminMeny();
+              ?>
 
             </div>
 		</div>
@@ -66,32 +71,8 @@ $admin = new Admin();
 
     <!----Start utav mid content----->
 		<div id="midcontent">
-      <h4 class="upcomingMatchesTitle">Logga in</h4>
+      <h4 class="upcomingMatchesTitle">Välkommen in <?php echo $_SESSION['loginsession']; ?></h4>
       <div class="matchesFix">
-
-        <?php
-        @$username = $_POST['username'];
-        @$password = $_POST['password'];
-        @$subbtn = $_POST['subbtn'];
-
-        if(isset($subbtn)){
-
-          if($username && $password){
-            $admin->login($username,$password);
-          }else{
-              echo "Du har inte fyllt i alla fält...";
-          }
-        }
-        ?>
-
-        <form method="POST" action="login.php">
-
-          <input type="text" id="login" required="" name="username" placeholder="Användarnamn..." />
-          <input type="password" id="login" required="" name="password" placeholder="Lösenord..." />
-          <input type="submit" name="subbtn" class="waves-effect waves-light btn" style="background-color: #1087e8; color: white;" value="Logga in" />
-
-        </form>  
-
       </div>
 
     </div> 

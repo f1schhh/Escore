@@ -19,3 +19,74 @@ input[type=submit]{
     cursor: pointer;
     padding-top: 10px;
 }
+.pagebtn{
+    width: auto;
+    height: 30px;
+    color: #4e4e4e;
+    background-color: whitesmoke;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #e3e3e3;
+    padding: 10px;
+    margin-right: 5px;
+}
+#markedpage{
+    font-weight: bold;
+    text-decoration: underline;
+}
+.matchtitle{
+    width: 100%;
+}
+.editmatches{
+    width: 100%;
+}
+#editinput{
+    width: 30%;
+    height: 30px;
+    color: #4e4e4e;
+    background-color: whitesmoke;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #e3e3e3;
+    padding: 10px;
+    display: inline-block;
+}
+#editinput:focus{
+    box-shadow: none;
+}
+.lineupteam{
+    width: 95%; 
+    font-weight: bold; 
+    font-size: 20px;
+}
+.teamlineup{
+    width: 100%;
+    height: auto;
+    color: #4e4e4e;
+    -moz-transition: box-shadow 600ms; /* Firefox */
+    -webkit-transition: box-shadow 600ms; /* Safari and Chrome */
+    -o-transition: box-shadow 600ms; 
+    background-color: whitesmoke;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #e3e3e3;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+.team1Logo{
+    font-weight: bolder;
+    font-size: 20px;
+}
+.statslogo{
+    width: 32px; 
+    height: 32px; 
+    position: relative; 
+    top: 5px; 
+    left: 4px
+}
