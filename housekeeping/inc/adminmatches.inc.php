@@ -15,7 +15,7 @@ class AdminMatches extends DB{
 		$this->startfrom = ($this->pagecheck-1) * $perpage;
 
 
-		$getmatches = $DB->prepare("SELECT * FROM matches ORDER by starttdate DESC, starttime desc LIMIT ?, ?");
+		$getmatches = $DB->prepare("SELECT * FROM matches ORDER by match_status DESC, starttdate DESC, starttime desc LIMIT ?, ?");
 		$getmatches->bind_Param("ss", $this->startfrom, $perpage);
 		$getmatches->execute();
 		$getmatches->store_result();
@@ -275,6 +275,50 @@ class AdminMatches extends DB{
 				';
 
 			}
+
+		}
+	}
+
+	private $editid;
+	private $team1_edit;
+	private $team2_edit;
+	private $status_edit;
+	private $map_edit;
+	private $startime_edit;
+	private $startdate_edit;
+	private $score_edit;
+	private $mvp_edit;
+
+
+	public function saveMatchInfo($matchid, $team1, $team2, $matchstatus, $map, $score, $startime, $startdate, $mvp){
+
+		$DB = new DB();
+		$DB->connect();
+
+		$this->editid = $DB->secret($matchid);
+		$this->team1_edit = $DB->secret($team1);
+		$this->team2_edit = $DB->secret($team2);
+		$this->status_edit = $DB->secret($matchstatus);
+		$this->map_edit = $DB->secret($map);
+		$this->startime_edit = $DB->secret($startime);
+		$this->startdate_edit = $DB->secret($startdate);
+		$this->mvp_edit = $DB->secret($mvp);
+		$this->score_edit = $DB->secret($score);
+
+		$saveinfo = $DB->prepare("SELECT * FROM matches WHERE matchid = ? ");
+		$saveinfo->bind_Param("s", $this->editid);
+		$saveinfo->execute();
+		$saveinfo->store_result();
+
+		if($saveinfo->num_rows == 1){
+
+			$editinfo = $DB->prepare("UPDATE matches SET team1 = ?, team2 = ?, match_status = ?, map = ?, starttime = ?, starttdate = ?, score = ?, mvp = ? WHERE matchid = ?");
+			$editinfo->bind_Param("sssssssss", $this->team1_edit, $this->team2_edit, $this->status_edit, $this->map_edit, $this->startime_edit, $this->startdate_edit, $this->score_edit, $this->mvp_edit, $this->editid);
+			if($editinfo->execute()){
+				echo "<font color='green'>Matchinformationen är nu uppdaterad!</font>";
+				echo ' <script>$(document).ready(function(){ $("#editinfo").load(location.href + " #editinfo");  }); </script>  ';
+			}
+
 
 		}
 	}

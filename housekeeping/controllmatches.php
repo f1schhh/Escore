@@ -89,18 +89,36 @@ if(isset($_GET['page'])){
               $adminmatches->getAllMatchInfo($matchid);
              ?>
              <div class="editmatches">
-             <form method="POST" action="controllmatches.php?matchid=<?php echo $matchid; ?>">
+              <?php
+              @$submatchinfo = $_POST['submatchinfo'];
+              @$team1 = $_POST['team1'];
+              @$team2 = $_POST['team2'];
+              @$matchstatus = $_POST['matchstatus'];
+              @$map = $_POST['map'];
+              @$starttime = $_POST['starttime'];
+              @$startdate = $_POST['startdate'];
+              @$matchscore = $_POST['matchscore'];
+              @$mvp = $_POST['mvp'];
+
+
+              if(isset($submatchinfo)){
+                if($team1 && $team2 && $matchstatus && $starttime && $startdate && $matchscore){
+                  $adminmatches->saveMatchInfo($matchid, $team1, $team2, $matchstatus, $map, $matchscore, $starttime, $startdate, $mvp);
+                }
+              }
+              ?>
+             <form method="POST" action="controllmatches.php?matchid=<?php echo $matchid; ?>" id="editinfo">
 
               <input type="text" id="editinput" class="matchinfo" name="team1" placeholder="Lag 1..." value="<?php echo $adminmatches->getTeamOne(); ?>" />
-              <input type="text" id="editinput" class="matchinfo" name="team1" placeholder="Lag 2..." value="<?php echo $adminmatches->getTeamTwo(); ?>" />
-              <input type="text" id="editinput" class="matchinfo" name="team1" placeholder="Status..." value="<?php echo $adminmatches->getMatchStatus(); ?>" />
-              <input type="text" id="editinput" class="matchinfo" name="team1" placeholder="Karta..." value="<?php echo $adminmatches->getMap(); ?>" />
-              <input type="text" id="editinput" class="matchinfo" name="team1" placeholder="Starttid..." value="<?php echo $adminmatches->getStartTime(); ?>" />
-              <input type="text" id="editinput" class="matchinfo" name="team1" placeholder="Startdatum..." value="<?php echo $adminmatches->getStartDate(); ?>" />
-              <input type="text" id="editinput" class="matchinfo" name="team1" placeholder="Score..." value="<?php echo $adminmatches->getScore(); ?>" />
-              <input type="text" id="editinput" class="matchinfo" name="team1" placeholder="MVP..." value="<?php echo $adminmatches->getMVP(); ?>" />
-              <input type="text" id="editinput" class="matchinfo" name="team1" placeholder="Matchid..." value="<?php echo $adminmatches->getMatchId(); ?>" />
-              <input type="submit" class="waves-effect waves-light btn" style="background-color: #1087e8; color: white;" value="Spara" />
+              <input type="text" id="editinput" class="matchinfo" name="team2" placeholder="Lag 2..." value="<?php echo $adminmatches->getTeamTwo(); ?>" />
+              <input type="text" id="editinput" class="matchinfo" name="matchstatus" placeholder="Status..." value="<?php echo $adminmatches->getMatchStatus(); ?>" />
+              <input type="text" id="editinput" class="matchinfo" name="map" title="Karta" placeholder="Karta..." value="<?php echo $adminmatches->getMap(); ?>" />
+              <input type="text" id="editinput" class="matchinfo" name="starttime" placeholder="Starttid..." value="<?php echo $adminmatches->getStartTime(); ?>" />
+              <input type="text" id="editinput" class="matchinfo" name="startdate" placeholder="Startdatum..." value="<?php echo $adminmatches->getStartDate(); ?>" />
+              <input type="text" id="editinput"  name="matchscore" placeholder="Score..." value="<?php echo $adminmatches->getScore(); ?>" />
+              <input type="text" id="editinput" class="matchinfo" name="mvp" placeholder="MVP..." value="<?php echo $adminmatches->getMVP(); ?>" />
+              <input type="text" id="editinput" class="matchinfo" placeholder="Matchid..." value="<?php echo $adminmatches->getMatchId(); ?>" readonly/>
+              <input type="submit" id="submatchinfo" name="submatchinfo" class="waves-effect waves-light btn" style="background-color: #1087e8; color: white;" value="Spara" />
              </form> 
 
              <div class="line"></div>
