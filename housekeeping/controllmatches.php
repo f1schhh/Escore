@@ -123,7 +123,7 @@ if(isset($_GET['page'])){
 
              <div class="line"></div>
              <h5>Lineup</h5>
-             <form>
+             <form method="POST" action="controllmatches.php?matchid=<?php echo $matchid; ?>" id="editlineup"> 
              <div class="teamlineup">
              <img src="<?php echo $teams->TeamLogo($adminmatches->getTeamOne()); ?>" class="statslogo" />
              <span class="team1Logo"><?php echo $adminmatches->getTeamOne(); ?></span> 
@@ -132,6 +132,11 @@ if(isset($_GET['page'])){
              <?php 
              $adminmatches->ShowLineUpTeam1($matchid,$adminmatches->getTeamOne());
              ?>
+             <input type="text" id="editinput" class="matchinfo" name="player1" placeholder="Spelare 1..." value="<?php echo $adminmatches->player1(); ?>" />
+             <input type="text" id="editinput" class="matchinfo" name="player2" placeholder="Spelare 2..." value="<?php echo $adminmatches->player2(); ?>" />
+             <input type="text" id="editinput" class="matchinfo" name="player3" placeholder="Spelare 3..." value="<?php echo $adminmatches->player3(); ?>" />
+             <input type="text" id="editinput" class="matchinfo" name="player4" placeholder="Spelare 4..." value="<?php echo $adminmatches->player4(); ?>" />
+             <input type="text" id="editinput" class="matchinfo" name="player5" placeholder="Spelare 5..." value="<?php echo $adminmatches->player5(); ?>" />
              <div class="teamlineup">
              <img src="<?php echo $teams->TeamLogo($adminmatches->getTeamTwo()); ?>" class="statslogo" />
              <span class="team1Logo"><?php echo $adminmatches->getTeamTwo(); ?></span> 
@@ -139,8 +144,13 @@ if(isset($_GET['page'])){
              <?php
              $adminmatches->ShowLineUpTeam2($matchid,$adminmatches->getTeamTwo());
              ?>
+             <input type="text" id="editinput" class="matchinfo" name="player6" placeholder="Spelare 1..." value="<?php echo $adminmatches->player6(); ?>" />
+             <input type="text" id="editinput" class="matchinfo" name="player7" placeholder="Spelare 2..." value="<?php echo $adminmatches->player7(); ?>" />
+             <input type="text" id="editinput" class="matchinfo" name="player8" placeholder="Spelare 3..." value="<?php echo $adminmatches->player8(); ?>" />
+             <input type="text" id="editinput" class="matchinfo" name="player9" placeholder="Spelare 4..." value="<?php echo $adminmatches->player9(); ?>" />
+             <input type="text" id="editinput" class="matchinfo" name="player10" placeholder="Spelare 5...." value="<?php echo $adminmatches->player10(); ?>" />
              <br />
-             <input type="submit" class="waves-effect waves-light btn" style="background-color: #1087e8; color: white;" value="Spara" />
+             <input type="submit" name="sublineup" class="waves-effect waves-light btn" style="background-color: #1087e8; color: white;" value="Spara" />
            </form>
            </div>
 

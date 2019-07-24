@@ -106,6 +106,14 @@ $matches->getMatchInformation($matchid);
               ?>
               
               <?php echo $matches->getMap(); ?><br />
+              <?php if($matches->getLeague() == "SECSGO S3"){
+               $league = "Svenska Eliteserien Höstsäsongen 2019"; 
+               echo $league;
+               }else{
+                echo $matches->getleague();
+              } 
+              ?>
+              <br />
               <span class="currentScore"><?php echo $matches->getScore(); ?> </span>
               <h5><?php echo @$live; ?></h5>
             </center>

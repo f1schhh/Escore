@@ -184,6 +184,7 @@ class Matches extends DB{
 	public $upmap;
 	public $start_date;
 	public $start_year;
+	public $league;
 
 
 	public function getMatchInformation($matchid){
@@ -214,6 +215,7 @@ class Matches extends DB{
 				$this->start_year = $startyear;
 				$this->upmap = $map;
 				$this->start_date = $starttdate;
+				$this->league = $league;
 			}
 		}else{
 			header("location: ../index.php");
@@ -240,6 +242,9 @@ class Matches extends DB{
 	}
 	public function getMap(){
 		return $this->upmap;
+	}
+	public function getLeague(){
+		return $this->league;
 	}
 	public function getScore(){
 		        

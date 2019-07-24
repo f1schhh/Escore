@@ -215,6 +215,11 @@ class AdminMatches extends DB{
 
 	private $matchlineup;
 	private $teamlineup;
+	public $player_1;
+	public $player_2;
+	public $player_3;
+	public $player_4;
+	public $player_5;
 
 	public function ShowLineUpTeam1($matchid, $team){
 		$DB = new DB();
@@ -234,19 +239,22 @@ class AdminMatches extends DB{
 
 			while ($getLineup->fetch()) {
 
-				echo '
-				<input type="text" id="editinput" class="matchinfo" name="player1" value="'.$player1.'" />
-				<input type="text" id="editinput" class="matchinfo" name="player2" value="'.$player2.'" />
-				<input type="text" id="editinput" class="matchinfo" name="player3" value="'.$player3.'" />
-				<input type="text" id="editinput" class="matchinfo" name="player4" value="'.$player4.'" />
-				<input type="text" id="editinput" class="matchinfo" name="player5" value="'.$player5.'" />
-				';
+				$this->player_1 = $player1;
+				$this->player_2 = $player2;
+				$this->player_3 = $player3;
+				$this->player_4 = $player4;
+				$this->player_5 = $player5;
 
 			}
 
 		}
 	}
 
+	public $player_6;
+	public $player_7;
+	public $player_8;
+	public $player_9;
+	public $player_10;
 
 	public function ShowLineUpTeam2($matchid, $team){
 		$DB = new DB();
@@ -266,18 +274,50 @@ class AdminMatches extends DB{
 
 			while ($getLineup->fetch()) {
 
-				echo '
-				<input type="text" id="editinput" class="matchinfo" name="player6" value="'.$player1.'" />
-				<input type="text" id="editinput" class="matchinfo" name="player7" value="'.$player2.'" />
-				<input type="text" id="editinput" class="matchinfo" name="player8" value="'.$player3.'" />
-				<input type="text" id="editinput" class="matchinfo" name="player9" value="'.$player4.'" />
-				<input type="text" id="editinput" class="matchinfo" name="player10" value="'.$player5.'" />
-				';
+				$this->player_6 = $player1;
+				$this->player_7 = $player2;
+				$this->player_8 = $player3;
+				$this->player_9 = $player4;
+				$this->player_10 = $player5;
 
 			}
 
 		}
 	}
+	// Team1
+	public function player1(){
+		return $this->player_1;
+	}
+	public function player2(){
+		return $this->player_2;
+	}
+	public function player3(){
+		return $this->player_3;
+	}
+	public function player4(){
+		return $this->player_4;
+	}
+	public function player5(){
+		return $this->player_5;
+	}
+
+	//Team2
+	public function player6(){
+		return $this->player_6;
+	}
+	public function player7(){
+		return $this->player_7;
+	}
+	public function player8(){
+		return $this->player_8;
+	}
+	public function player9(){
+		return $this->player_9;
+	}
+	public function player10(){
+		return $this->player_10;
+	}
+
 
 	private $editid;
 	private $team1_edit;
@@ -315,6 +355,57 @@ class AdminMatches extends DB{
 			$editinfo = $DB->prepare("UPDATE matches SET team1 = ?, team2 = ?, match_status = ?, map = ?, starttime = ?, starttdate = ?, score = ?, mvp = ? WHERE matchid = ?");
 			$editinfo->bind_Param("sssssssss", $this->team1_edit, $this->team2_edit, $this->status_edit, $this->map_edit, $this->startime_edit, $this->startdate_edit, $this->score_edit, $this->mvp_edit, $this->editid);
 			if($editinfo->execute()){
+				echo "<font color='green'>Matchinformationen är nu uppdaterad!</font>";
+				echo ' <script>$(document).ready(function(){ $("#editinfo").load(location.href + " #editinfo");  }); </script>  ';
+			}
+
+
+		}
+	}
+
+	private $player1;
+	private $player2;
+	private $player3;
+	private $player4;
+	private $player5;
+	private $player6;
+	private $player7;
+	private $player8;
+	private $player9;
+	private $player10; 
+	private $mid;
+	private $team_1;
+	private $team_2;
+
+	public function saveLineUp($matchid,$team1,$player1,$player2,$player3,$player4,$player5,$team2,$player6,$player7,$player8,$player9,$player10){
+
+		$DB = new DB();
+		$DB->connect();
+
+		$this->mid = $DB->secret($matchid);
+		$this->player1 = $DB->secret($player1);
+		$this->player2 = $DB->secret($player2);
+		$this->player3 = $DB->secret($player3);
+		$this->player4 = $DB->secret($player4);
+		$this->player5 = $DB->secret($player5);
+		$this->player6 = $DB->secret($player6);
+		$this->player7 = $DB->secret($player7);
+		$this->player8 = $DB->secret($player8);
+		$this->player9 = $DB->secret($player9);
+		$this->player10 = $DB->secret($player10);
+		$this->team_1 = $DB->secret($team1);
+		$this->team_2 = $DB->secret($team2);
+
+		$saveinfo = $DB->prepare("SELECT * FROM matches WHERE matchid = ? ");
+		$saveinfo->bind_Param("s", $this->mid);
+		$saveinfo->execute();
+		$saveinfo->store_result();
+
+		if($saveinfo->num_rows == 1){
+
+			$team1 = $DB->prepare("");
+			$team1->bind_Param("sssssss", $this->mid, $this->team_1, $this->player);
+			if($team1->execute()){
 				echo "<font color='green'>Matchinformationen är nu uppdaterad!</font>";
 				echo ' <script>$(document).ready(function(){ $("#editinfo").load(location.href + " #editinfo");  }); </script>  ';
 			}
