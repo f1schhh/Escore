@@ -9,7 +9,7 @@ if($settings->checkMaintenanace() == 1){
 @$pageid = str_replace("results/", "", $page);
 if(isset($_GET['page'])){
 
-	@$page = $_GET['page'];
+	  @$page = $_GET['page'];
     @$pageid = str_replace("results/", "", $page);
 
 }else{

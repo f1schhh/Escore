@@ -19,7 +19,7 @@ class SiteSettings extends DB{
 
 		echo '
 
-		        <li><a href="index">Hem</a></li><br />
+		        <li><a href="index.php">Hem</a></li><br />
                 <li><a href="results/">Tidigare resultat</a></li><br />
                 <li><a href="stats/">Statistik</a></li><br />
 		';
@@ -29,7 +29,7 @@ class SiteSettings extends DB{
 
 		echo '
 
-		        <li><a href="../index">Hem</a></li><br />
+		        <li><a href="../index.php">Hem</a></li><br />
                 <li><a href="../results/">Tidigare resultat</a></li><br />
                 <li><a href="../stats/">Statistik</a></li><br />
 		';

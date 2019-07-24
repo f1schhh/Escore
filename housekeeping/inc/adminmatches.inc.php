@@ -395,6 +395,7 @@ class AdminMatches extends DB{
 		$this->player10 = $DB->secret($player10);
 		$this->team_1 = $DB->secret($team1);
 		$this->team_2 = $DB->secret($team2);
+		$id = null;
 
 		$saveinfo = $DB->prepare("SELECT * FROM matches WHERE matchid = ? ");
 		$saveinfo->bind_Param("s", $this->mid);
@@ -403,12 +404,49 @@ class AdminMatches extends DB{
 
 		if($saveinfo->num_rows == 1){
 
-			$team1 = $DB->prepare("");
-			$team1->bind_Param("sssssss", $this->mid, $this->team_1, $this->player);
-			if($team1->execute()){
-				echo "<font color='green'>Matchinformationen är nu uppdaterad!</font>";
-				echo ' <script>$(document).ready(function(){ $("#editinfo").load(location.href + " #editinfo");  }); </script>  ';
-			}
+			// Kolla om de redan är inlagda lag 1
+		    $checkline1 = $DB->prepare("SELECT * FROM match_lineup WHERE matchid = ? AND team = ?");
+		    $checkline1->bind_Param("ss", $this->mid, $this->team_1);
+		    $checkline1->execute();
+		    $checkline1->store_result();
+
+		    if($checkline1->num_rows == 1){
+		    	$team1 = $DB->prepare("UPDATE match_lineup SET player1 = ?, player2 = ?, player3 = ?, player4 = ?, player5 = ? WHERE matchid = ? AND team = ?");
+			    $team1->bind_Param("sssssss", $this->player1,$this->player2,$this->player3,$this->player4,$this->player5, $this->mid, $this->team_1);
+			    if($team1->execute()){
+				 
+			     }
+		    }else{
+		    	$addlineup1 = $DB->prepare("INSERT INTO match_lineup (id,matchid,team,player1,player2,player3,player4,player5) VALUES (?,?,?,?,?,?,?,?)");
+		    	$addlineup1->bind_Param("ssssssss", $id, $this->mid, $this->team_1, $this->player1, $this->player2, $this->player3, $this->player4, $this->player5);
+		    	if($addlineup1->execute()){
+		    		
+		    	}
+		    }
+
+		    // Kolla om de redan är inlagda lag 2
+		    $checkline2 = $DB->prepare("SELECT * FROM match_lineup WHERE matchid = ? AND team = ?");
+		    $checkline2->bind_Param("ss", $this->mid, $this->team_2);
+		    $checkline2->execute();
+		    $checkline2->store_result();
+
+		    if($checkline2->num_rows == 1){
+		    	$team2 = $DB->prepare("UPDATE match_lineup SET player1 = ?, player2 = ?, player3 = ?, player4 = ?, player5 = ? WHERE matchid = ? AND team = ?");
+			    $team2->bind_Param("sssssss", $this->player6,$this->player7,$this->player8,$this->player9,$this->player10, $this->mid, $this->team_2);
+			    if($team2->execute()){
+				echo "<font color='green'>Lineup är nu uppdaterad!</font>";
+				echo ' <script>$(document).ready(function(){ $("#editlineup").load(location.href + " #editlineup");  }); </script>  ';
+			    }
+		    }else{
+
+		    	$addlineup2 = $DB->prepare("INSERT INTO match_lineup (id,matchid,team,player1,player2,player3,player4,player5) VALUES (?,?,?,?,?,?,?,?)");
+		    	$addlineup2->bind_Param("ssssssss", $id, $this->mid, $this->team_2, $this->player6, $this->player7, $this->player8, $this->player9, $this->player10);
+		    	if($addlineup2->execute()){
+		    		echo "<font color='green'>Lineup är nu uppdaterad!</font>";
+				    echo ' <script>$(document).ready(function(){ $("#editlineup").load(location.href + " #editlineup");  }); </script>  ';
+		    	}
+
+		    }
 
 
 		}

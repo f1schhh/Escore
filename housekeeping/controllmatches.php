@@ -123,12 +123,32 @@ if(isset($_GET['page'])){
 
              <div class="line"></div>
              <h5>Lineup</h5>
+             <?php
+             @$sublineup = $_POST['sublineup'];
+             @$player1 = $_POST['player1'];
+             @$player2 = $_POST['player2'];
+             @$player3 = $_POST['player3'];
+             @$player4 = $_POST['player4'];
+             @$player5 = $_POST['player5'];
+             @$player6 = $_POST['player6'];
+             @$player7 = $_POST['player7'];
+             @$player8 = $_POST['player8'];
+             @$player9 = $_POST['player9'];
+             @$player10 = $_POST['player10'];
+
+             if(isset($sublineup)){
+              if($player1 && $player2 && $player3 && $player4 && $player5 && $player6 && $player7 && $player8 && $player9 && $player10){
+                $adminmatches->saveLineUp($matchid,$adminmatches->getTeamOne(),$player1,$player2,$player3,$player4,$player5,$adminmatches->getTeamTwo(),$player6,$player7,$player8,$player9,$player10);
+              }else{
+                echo "Alla fält är inte ifyllda...";
+              }
+             }
+             ?>
              <form method="POST" action="controllmatches.php?matchid=<?php echo $matchid; ?>" id="editlineup"> 
              <div class="teamlineup">
              <img src="<?php echo $teams->TeamLogo($adminmatches->getTeamOne()); ?>" class="statslogo" />
              <span class="team1Logo"><?php echo $adminmatches->getTeamOne(); ?></span> 
              </div>
-
              <?php 
              $adminmatches->ShowLineUpTeam1($matchid,$adminmatches->getTeamOne());
              ?>
@@ -157,7 +177,7 @@ if(isset($_GET['page'])){
             <?php
             }else{
               ?>
-        <div class="showAllMatches" style="<?php echo @$showm; ?>">
+        <div class="showAllMatches">
         <?php
         if(empty($page)){
               header("location: controllmatches.php?page=1");
