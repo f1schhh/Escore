@@ -72,22 +72,60 @@ $statsen = str_replace("stats/", "", $statsid);
       <h4 class="upcomingMatchesTitle">Statistik</h4>
       <div class="matchesFix">
         <div id="fullstats">
+          <?php 
 
-          <div class="bykd">
+          if($statsen == "kd"){
+            ?>
+            <div class="bykd" style="width: 100%">
             <br />
-            <span class="statsfix">Top 5 K/D Spelarna <a href="#" class="all" style="float: right; margin-right: 5px;">Visa alla</a>
+            <span class="statsfix">Alla spelares K/D Statistik
+            <div></div> 
+            </span>
+            <div class="line"></div>  
+            <?php $stats->getFullKd(); ?>
+            </div> 
+            <?php
+          }else{
+            if($statsen == "kr"){
+              ?>
+            <div class="bykd" style="width: 100%">
+            <br />
+            <span class="statsfix">Alla spelares K/R Statistik
+            <div></div> 
+            </span>
+            <div class="line"></div>  
+            <?php $stats->getFullKR(); ?>
+            </div>
+              <?php
+            }else{
+              if($statsen == "kills"){
+                ?>
+            <div class="bykd" style="width: 100%">
+            <br />
+            <span class="statsfix">Statistik över alla spelares kills
+            <div></div> 
+            </span>
+            <div class="line"></div>  
+            <?php $stats->getFullKills(); ?>
+            </div>
+                <?php
+              }else{
+                ?>
+                <!---- Kill / death ratio ----->
+            <div class="bykd">
+            <br />
+            <span class="statsfix">Top 5 K/D Spelarna <a href="kd" class="all" style="float: right; margin-right: 5px;">Visa alla</a>
               <div>
               </div>
             </span>
             <div class="line"></div>  
             <?php $stats->getStatsKD(); ?>
-                 </div>  
+            </div>  
 
-
-
-                    <div class="bykd">
+            <!--- Kills per round ----->
+            <div class="bykd">
             <br />
-            <span class="statsfix">Top 5 K/R Spelarna <a href="#" class="all" style="float: right; margin-right: 5px;">Visa alla</a>
+            <span class="statsfix">Top 5 K/R Spelarna <a href="kr" class="all" style="float: right; margin-right: 5px;">Visa alla</a>
               <div>
               </div>
             </span>
@@ -96,17 +134,22 @@ $statsen = str_replace("stats/", "", $statsid);
 
                  </div>  
 
-
-                <div class="bykd">
+                 <!--- Total kills---->
+            <div class="bykd">
             <br />
-            <span class="statsfix">Top 5 Mest kills <a href="#" class="all" style="float: right; margin-right: 5px;">Visa alla</a>
+            <span class="statsfix">Top 5 Mest kills <a href="total kills" class="all" style="float: right; margin-right: 5px;">Visa alla</a>
               <div>
               </div>
             </span>
             <div class="line"></div> 
             <?php $stats->getStatsKills(); ?>
 
-                 </div>  
+            </div> 
+                <?php
+              }
+            }
+          }
+          ?> 
 
             </div> 
           </div>

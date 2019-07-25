@@ -80,7 +80,7 @@ $teams->showTeamName($teamsearch);
 
         <div class="fullteambox">
           <div class="teamlogo">
-            <img src="<?php echo $teams->getTeamLogo(); ?>" style="max-width: 100%; max-height: 100%;" /> 
+            <center><img src="<?php echo $teams->getTeamLogo(); ?>" style="max-width: 100%; max-height: 100%;" /></center>
             <center class="teamname"><?php echo $teams->getFullTeamName(); ?></center>
           </div> 
         </div>
