@@ -43,7 +43,7 @@ if($settings->checkMaintenanace() == 1){
       <a href="#"><div id="logo"><?php echo $settings->getTitle(); ?></div></a>
 
                 <div class="fixmobilepos">
-                  test
+                  <?php $settings->getMeny(); ?>
               </div>
        
       <!--- Slut av mobilmeny--->

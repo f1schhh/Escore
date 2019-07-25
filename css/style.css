@@ -26,15 +26,15 @@ html,body{
 #menymobile a{
 	text-decoration: none;
 	font-weight: bold;
-	color: black;
+	color: white;
 	font-size: 16px;
 }
 #menymobile a:hover{
-	-moz-transition: color 500ms; /* Firefox */
-    -webkit-transition: color 500ms; /* Safari and Chrome */
-    -o-transition: color 500ms; /* Opera */
+	-moz-transition: color 500ms; 
+    -webkit-transition: color 500ms;
+    -o-transition: color 500ms; 
     transition: color 500ms;
-	color: #26a69a
+    color: #1087e8;
 }
 #leftmeny {
 	width: 20%;
@@ -82,9 +82,9 @@ img{
 	font-size: 16px;
 }
 #leftmeny a:hover{
-	-moz-transition: color 500ms; /* Firefox */
-    -webkit-transition: color 500ms; /* Safari and Chrome */
-    -o-transition: color 500ms; /* Opera */
+	-moz-transition: color 500ms; 
+    -webkit-transition: color 500ms; 
+    -o-transition: color 500ms; 
     transition: color 500ms;
     color: #1087e8;
 }
@@ -94,9 +94,6 @@ img{
 	padding-bottom: 100%;
     margin-bottom: -100%;
 	background-color: white;
-}
-#bodytitle{
-	padding: 25px;
 }
 .line{
 	border-bottom: 1px solid grey;
@@ -214,7 +211,7 @@ img{
 	border: 1px solid #ebccd1;
 	background-color: #f2dede;
 }
-@media screen and (max-width:800px){
+@media screen and (max-width:900px){
 
 #logo{
 	font-size: 25px;

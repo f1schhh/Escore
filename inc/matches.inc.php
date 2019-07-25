@@ -419,7 +419,7 @@ class Matches extends DB{
 				echo '
 				<div class="matchesFix">
 				<a href="../players/'.$this->getnick.'">'.$this->getname.' "<b>'.$this->getnick.'</b>" '.$this->getlast.'</a> 
-				<span class="statsline">'.$realkpr.' K/D</span>
+				<span class="statsline">'.$realkpr.' K/R</span>
                 <span class="statsline">'.$realkd.' K/D</span>   
                 <span class="statsline">'.$deaths.' Deaths</span> 
                 <span class="statsline">'.$kills.' Kills</span>  

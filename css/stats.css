@@ -41,8 +41,9 @@
 }
 @media screen and (max-width:1000px){
 	.bykd{
-		width: 45%;
+		width: 100%;
 		font-size: 2vw;
+        display: block;
 	}
 	.statsfix{
 		font-size: 2vw;

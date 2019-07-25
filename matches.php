@@ -157,7 +157,9 @@ $matches->getMatchInformation($matchid);
          </div>
       
          <div class="playersteam1">
+          <center>
           <?php $matches->getLineup($matches->getTeamOne(), $matchid); ?>
+        </center>
          </div>
 
     </div>
@@ -169,9 +171,9 @@ $matches->getMatchInformation($matchid);
          </div>
 
          <div class="playersteam1">
-
+          <center>
           <?php $matches->getLineup($matches->getTeamTwo(), $matchid); ?>
-
+        </center>
          </div>
 
     </div>
