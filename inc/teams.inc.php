@@ -67,6 +67,9 @@ class Teams extends DB{
 			$getPlayers->bind_result($nickname,$player_picture,$team,$standin);
 
 			while ($getPlayers->fetch()) {
+				if($player_picture == ""){
+                   $player_picture = "../img/avatars/noavatar.png";
+                }
 
 				echo '
 				 <a href="../players/'.$nickname.'">				

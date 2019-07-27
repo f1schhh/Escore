@@ -23,7 +23,23 @@ class Players extends DB{
 
 			while($playerinfo->fetch()){
 
-				$countkd = $total_kills / $total_deaths;
+				@$countkd = $total_kills / $total_deaths;
+
+        if($player_picture == ""){
+          $player_picture = "../img/avatars/noavatar.png";
+        }
+
+        if($age == ""){
+          $age1 = "-";
+        }else{
+        // Räknar ut åldern
+        $birth = "$age";
+        $birth = explode("/", $birth);
+
+        $age1 = (date("md", date("U", mktime(0, 0, 0, $birth[0], $birth[1], $birth[2]))) > date("md")
+         ? ((date("Y") - $birth[2]) - 1)
+         : (date("Y") - $birth[2]));
+        }
 
 			echo '
 
@@ -35,7 +51,7 @@ class Players extends DB{
               <span class="nickname"> '.$first_name.' "<b>'.$nickname.'</b>" '.$last_name.' </span><br />
            </div>
            <div class="userinfobox">
-              <span class="nickname"> Ålder: <b>'.$age.'</b></span><br />
+              <span class="nickname"> Ålder: <b>'.$age1.'</b></span><br />
            </div>
            <div class="userinfobox">
               <span class="nickname"> K/D Ratio: <b>'.round($countkd, 2).'</b> </span><br />

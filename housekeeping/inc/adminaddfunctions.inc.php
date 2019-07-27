@@ -41,5 +41,68 @@ class AdminAdd extends DB{
 
 	}
 
+	public $firstname;
+	public $lastname;
+	public $nickname;
+	public $born;
+	public $team;
+	public $playerpicture;
+	public $twitch;
+	public $twitter;
+	public $standin;
+
+	public function addUser($firstname,$lastname,$nickname,$born,$team,$playerpicture,$twitch,$twitter,$standin){
+
+		$DB = new DB();
+		$DB->connect();
+
+		$this->firstname = $DB->secret($firstname);
+		$this->lastname = $DB->secret($lastname);
+		$this->nickname = $DB->secret($nickname);
+		$this->born = $DB->secret($born);
+		$this->team = $DB->secret($team);
+		$this->playerpicture = $DB->secret($playerpicture);
+		$this->twitch = $DB->secret($twitch);
+		$this->twitter = $DB->secret($twitter);
+		$this->standin = $DB->secret($standin);
+		if($this->standin == "Ja"){
+			$standinid = 1;
+		}else if($this->standin == "Nej"){
+			$standinid = 0;
+		}
+		$id = null;
+		$steamid = "";
+		$totalkills = "";
+		$totaldeaths = "";
+		$kd = "";
+		$kr = "";
+		$played_matches = "";
+		$played_rounds = "";
+
+		$checkUser = $DB->prepare("SELECT * FROM players WHERE nickname = ?");
+		$checkUser->bind_param("s", $this->nickname);
+		$checkUser->execute();
+		$checkUser->store_result();
+
+		if($checkUser->num_rows == 1){
+			echo "Spelaren finns redan tillagd...";
+		}else{
+
+			$addUser = $DB->prepare("INSERT INTO players (id,steamid,first_name,nickname,last_name,age,player_picture,total_kills,total_deaths,kdratio,krratio,played_matches,played_rounds,team,standin,twitch_url,twitter_url) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		    $addUser->bind_param("sssssssssssssssss", $id,$steamid,$this->firstname,$this->nickname,$this->lastname,$this->born, $this->playerpicture,$totalkills,$totaldeaths,$kd,$kr,$played_matches,$played_rounds,$this->team,$standinid,$this->twitch,$this->twitter);
+		    if($addUser->execute()){
+
+			 echo "Spelaren är nu tillagd!";
+
+		    }else{
+			printf("Error: %s.\n", $addUser->error);
+		    }
+
+		}
+
+		
+
+	}
+
 }
 ?>

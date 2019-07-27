@@ -103,20 +103,21 @@ $admin->CheckIfUserIsInlogged($_SESSION['loginsession']);
     <div class='modal-content'>
       <h4>Lägg till en spelare</h4>
       <form method="POST" action="home.php" id="editinfo">
-            <input type="text" id="editinput" class="team1" required="" name="team1" placeholder="Förnamn..." />
-            <input type="text" id="editinput" class="team2" required="" name="team2" placeholder="Efternamn..." />
-            <input type="text" id="editinput" class="status" required="" name="status" placeholder="Nickname..." />
-            <input type="text" id="editinput" class="map" required="" name="map" title="Karta" placeholder="Född..." />
-            <input type="text" id="editinput" class="starttime" required="" name="starttime" placeholder="Lag..." />
-            <input type="text" id="editinput" class="startdate" required="" name="startdate" placeholder="Profil bild..." />
-            <input type="text" id="editinput" class="league" required="" name="league" placeholder="Twitter..." />
-            <input type="text" id="editinput" class="league" required="" name="league" placeholder="Twitch..." />
-            <select name="standin">
-              <option value="Ja">Ja</option>
-              <option value="Nej">Ja</option>
+            <input type="text" id="editinput" class="firstname" required="" name="firstname" placeholder="Förnamn..." />
+            <input type="text" id="editinput" class="lastname" required="" name="lastname" placeholder="Efternamn..." />
+            <input type="text" id="editinput" class="nickname" required="" name="nickname" placeholder="Nickname..." />
+            <input type="text" id="editinput" class="born" required="" name="born" placeholder="Född..." />
+            <input type="text" id="editinput" class="team" required="" name="team" placeholder="Lag..." />
+            <input type="text" id="editinput" class="playerpicture" name="playerpicture" placeholder="Profil bild..." />
+            <input type="text" id="editinput" class="twitter" required="" name="twitter" placeholder="Twitter..." />
+            <input type="text" id="editinput" class="twitch" required="" name="twitch" placeholder="Twitch..." />
+            <select name="standin" class="standin" required="">
+              <option selected="selected">Standin:</option>
+              <option value="Ja" name="yes">Ja</option>
+              <option value="Nej" name="no">Nej</option>
             </select>  
             <br />
-            <input type="submit" id="submatchinfo" name="submatchinfo" class="waves-effect waves-light btn" style="background-color: #1087e8; color: white;" value="Lägg till" />
+            <input type="submit" id="subuseradd" name="submatchinfo" class="waves-effect waves-light btn" style="background-color: #1087e8; color: white;" value="Lägg till" />
       </form> 
     </div>
     </div>

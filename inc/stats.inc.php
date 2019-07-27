@@ -24,6 +24,10 @@ class Stats extends DB{
 
 			while($getKD->fetch()){
 
+				if($player_picture == ""){
+                  $player_picture = "../img/avatars/noavatar.png";
+                }
+
 				if($played_matches<$this->played_matches){
 
 				}else{
@@ -63,6 +67,9 @@ class Stats extends DB{
 			$getKD->bind_result($nickname,$player_picture,$krratio,$played_matches);
 
 			while($getKD->fetch()){
+				if($player_picture == ""){
+                  $player_picture = "../img/avatars/noavatar.png";
+                }
 
 				if($played_matches<$this->played_matches){
 
@@ -104,6 +111,10 @@ class Stats extends DB{
 
 			while($getKD->fetch()){
 
+				if($player_picture == ""){
+                  $player_picture = "../img/avatars/noavatar.png";
+                }
+
 				if($played_matches<$this->played_matches){
 
 				}else{
@@ -141,6 +152,9 @@ class Stats extends DB{
 			$getKD->bind_result($nickname,$player_picture,$kdratio,$played_matches);
 
 			while($getKD->fetch()){
+				if($player_picture == ""){
+                  $player_picture = "../img/avatars/noavatar.png";
+                }
 
 				if($played_matches<$this->played_matches){
 
@@ -181,6 +195,10 @@ class Stats extends DB{
 
 			while($getKD->fetch()){
 
+				if($player_picture == ""){
+                  $player_picture = "../img/avatars/noavatar.png";
+                }
+
 				if($played_matches<$this->played_matches){
 
 				}else{
@@ -220,6 +238,10 @@ class Stats extends DB{
 			$getKD->bind_result($nickname,$player_picture,$total_kills,$played_matches);
 
 			while($getKD->fetch()){
+
+				if($player_picture == ""){
+                  $player_picture = "../img/avatars/noavatar.png";
+                }
 
 				if($played_matches<$this->played_matches){
 

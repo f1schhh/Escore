@@ -38,6 +38,10 @@ function getPlayer($player){
 
 		while ($getplayerinfo->fetch()) {
 
+		   if($player_picture == ""){
+             $player_picture = "../img/avatars/noavatar.png";
+           }
+
 			echo '
 			<a href="../players/'.$nickname.'">
 			 <div class="playerpicture"><img src="'.$player_picture.'" class="playerpos" />
@@ -523,6 +527,9 @@ class Matches extends DB{
 				          $this->getnick = $nickname;
 				          $this->getlast = $last_name;
 				          $this->playerp = $player_picture;
+				          if($this->playerp == ""){
+                          $this->playerp = "../img/avatars/noavatar.png";
+                          }
 				 
 			            }
 		                }else{
