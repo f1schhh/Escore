@@ -23,6 +23,7 @@ $admin->CheckIfUserIsInlogged($_SESSION['loginsession']);
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="../js/lightbox.js"></script>
     <script src="../js/mobile.js"></script>
+    <script src="js/add.js"></script>
     <script>
     $(document).ready(function(){
     $('.modal').modal();
@@ -76,28 +77,52 @@ $admin->CheckIfUserIsInlogged($_SESSION['loginsession']);
     <!----Slut utav menyn----->
     <!----Start utav mid content----->
 		<div id="midcontent">
-      <h4 class="upcomingMatchesTitle">Välkommen in <?php echo $_SESSION['loginsession']; ?></h4>
+      <h5 class="upcomingMatchesTitle">Välkommen in <?php echo $_SESSION['loginsession']; ?></h5>
       <div class="matchesFix">
 
         <!--- Add match modal ---->
-        <div id='add_post' class='modal'>
+        <div id='add_match' class='modal'>
     <div class='modal-content'>
       <h4>Lägg till en match</h4>
       <form method="POST" action="home.php" id="editinfo">
-            <input type="text" id="editinput" class="matchinfo" name="team1" placeholder="Lag 1..." />
-            <input type="text" id="editinput" class="matchinfo" name="team2" placeholder="Lag 2..." />
-            <input type="text" id="editinput" class="matchinfo" name="matchstatus" placeholder="Status..." />
-            <input type="text" id="editinput" class="matchinfo" name="map" title="Karta" placeholder="Karta..." />
-            <input type="text" id="editinput" class="matchinfo" name="starttime" placeholder="Starttid..." />
-            <input type="text" id="editinput" class="matchinfo" name="startdate" placeholder="Startdatum..." />
-            <input type="text" id="editinput" class="matchinfo" name="startdate" placeholder="Liga..." /><br />
+            <input type="text" id="editinput" class="team1" required="" name="team1" placeholder="Lag 1..." />
+            <input type="text" id="editinput" class="team2" required="" name="team2" placeholder="Lag 2..." />
+            <input type="text" id="editinput" class="status" required="" name="status" placeholder="Status..." />
+            <input type="text" id="editinput" class="map" required="" name="map" title="Karta" placeholder="Karta..." />
+            <input type="text" id="editinput" class="starttime" required="" name="starttime" placeholder="Starttid..." />
+            <input type="text" id="editinput" class="startdate" required="" name="startdate" placeholder="Startdatum..." />
+            <input type="text" id="editinput" class="league" required="" name="league" placeholder="Liga..." /><br />
             <input type="submit" id="submatchinfo" name="submatchinfo" class="waves-effect waves-light btn" style="background-color: #1087e8; color: white;" value="Lägg till" />
       </form> 
     </div>
     </div>
     <!---- End of match modal ----->
-        <a class="waves-effect waves-light btn modal-trigger" href="#add_post" style="background-color: #1087e8; color: white;">Lägg till match</a>
-         <a href="#" class="waves-effect waves-light btn" style="background-color: #1087e8; color: white;">Lägg till spelare</a>
+
+    <!--- Add player modal ---->
+        <div id='add_player' class='modal'>
+    <div class='modal-content'>
+      <h4>Lägg till en spelare</h4>
+      <form method="POST" action="home.php" id="editinfo">
+            <input type="text" id="editinput" class="team1" required="" name="team1" placeholder="Förnamn..." />
+            <input type="text" id="editinput" class="team2" required="" name="team2" placeholder="Efternamn..." />
+            <input type="text" id="editinput" class="status" required="" name="status" placeholder="Nickname..." />
+            <input type="text" id="editinput" class="map" required="" name="map" title="Karta" placeholder="Född..." />
+            <input type="text" id="editinput" class="starttime" required="" name="starttime" placeholder="Lag..." />
+            <input type="text" id="editinput" class="startdate" required="" name="startdate" placeholder="Profil bild..." />
+            <input type="text" id="editinput" class="league" required="" name="league" placeholder="Twitter..." />
+            <input type="text" id="editinput" class="league" required="" name="league" placeholder="Twitch..." />
+            <select name="standin">
+              <option value="Ja">Ja</option>
+              <option value="Nej">Ja</option>
+            </select>  
+            <br />
+            <input type="submit" id="submatchinfo" name="submatchinfo" class="waves-effect waves-light btn" style="background-color: #1087e8; color: white;" value="Lägg till" />
+      </form> 
+    </div>
+    </div>
+    <!---- End of player modal ----->
+        <a class="waves-effect waves-light btn modal-trigger" href="#add_match" style="background-color: #1087e8; color: white;">Lägg till match</a>
+         <a class="waves-effect waves-light btn modal-trigger" href="#add_player" style="background-color: #1087e8; color: white;">Lägg till spelare</a>
       </div>
 
     </div> 

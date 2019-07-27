@@ -112,7 +112,7 @@ class AdminMatches extends DB{
 			}
 
 			for($i=1; $i<=$total_pages; $i++){
-				echo "<a href='$i' class='pagebtn'";
+				echo "<a href='controllmatches.php?page=$i' class='pagebtn'";
 				if($i == $this->pagecheck1) echo " id='markedpage'";
 				echo ">$i </a>";
 			}
