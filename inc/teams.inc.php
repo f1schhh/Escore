@@ -52,7 +52,7 @@ class Teams extends DB{
 		$DB->connect();
 
 		$this->playerteam = $DB->secret($team);
-		$this->standinid = "0";
+		$this->standinid = 0;
 
 		$getPlayers = $DB->prepare("SELECT nickname,player_picture,team,standin FROM players WHERE team = ? AND standin = ?");
 		$getPlayers->bind_Param("ss", $this->playerteam, $this->standinid);
@@ -61,7 +61,7 @@ class Teams extends DB{
 
 		if($getPlayers->num_rows == 0){
 
-			echo "ERROR";
+			echo ''.$team.' lineup har vi ingen information om...';
 
 		}else{
 			$getPlayers->bind_result($nickname,$player_picture,$team,$standin);

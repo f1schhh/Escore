@@ -137,7 +137,7 @@ $statsen = str_replace("stats/", "", $statsid);
                  <!--- Total kills---->
             <div class="bykd">
             <br />
-            <span class="statsfix">Top 5 Mest kills <a href="total kills" class="all" style="float: right; margin-right: 5px;">Visa alla</a>
+            <span class="statsfix">Top 5 Mest kills <a href="kills" class="all" style="float: right; margin-right: 5px;">Visa alla</a>
               <div>
               </div>
             </span>
