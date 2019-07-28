@@ -100,6 +100,38 @@ input[type=submit]{
     border: 1px solid #e3e3e3;
     display: block; 
 }
+#allplayersshow{
+    width: 100%;
+}
+.allplayersid{
+    width: 45%;
+    height: 6.5%;
+    color: #4e4e4e;
+    min-height: 43px;
+    -moz-transition: box-shadow 600ms; 
+    -webkit-transition: box-shadow 600ms; 
+    -o-transition: box-shadow 600ms; 
+    background-color: whitesmoke;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #e3e3e3;
+    padding: 5px;
+    margin: 10px;
+    display: inline-block;
+}
+.allplayersid:hover{
+    -webkit-box-shadow: -1px 1px 11px -1px rgba(0,0,0,0.47);
+    -moz-box-shadow: -1px 1px 11px -1px rgba(0,0,0,0.47);
+    box-shadow: -1px 1px 11px -1px rgba(0,0,0,0.47);
+    cursor: pointer;
+}
+.allnickname{
+    font-weight: bold;
+    position: relative;
+    bottom: 7px;
+}
 @media screen and (max-width:900px){
     #editinput{
         width: 45%;
