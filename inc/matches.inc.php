@@ -15,6 +15,10 @@ function getTeamLogo($teamname){
 
 			while ($getTeamInfo->fetch()) {
 
+				if($teamlogo == ""){
+					$teamlogo = "http://localhost/svtv/img/teamicons/nologo.png";
+				}
+
 				return $teamlogo;
 
 			}

@@ -58,6 +58,22 @@ input[type=submit]{
 #editinput:focus{
     box-shadow: none;
 }
+#addteam{
+    width: 95%;
+    height: 30px;
+    color: #4e4e4e;
+    background-color: whitesmoke;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #e3e3e3;
+    padding: 10px;
+    display: block;
+}
+#addteam:focus{
+    box-shadow: none;
+}
 .lineupteam{
     width: 95%; 
     font-weight: bold; 
@@ -131,6 +147,11 @@ input[type=submit]{
     font-weight: bold;
     position: relative;
     bottom: 7px;
+}
+.standinfix{
+    position: relative;
+    left: 3px;
+    font-weight: bold;
 }
 @media screen and (max-width:900px){
     #editinput{

@@ -82,7 +82,7 @@ $admin->CheckIfUserIsInlogged($_SESSION['loginsession']);
 
         <!--- Add match modal ---->
         <div id='add_match' class='modal'>
-    <div class='modal-content'>
+    <div class='modal-content' id="matchmodal">
       <h4>Lägg till en match</h4>
       <form method="POST" action="home.php" id="editinfo">
             <input type="text" id="editinput" class="team1" required="" name="team1" placeholder="Lag 1..." />
@@ -100,7 +100,7 @@ $admin->CheckIfUserIsInlogged($_SESSION['loginsession']);
 
     <!--- Add player modal ---->
         <div id='add_player' class='modal'>
-    <div class='modal-content'>
+    <div class='modal-content' id="playermodal">
       <h4>Lägg till en spelare</h4>
       <form method="POST" action="home.php" id="editinfo">
             <input type="text" id="editinput" class="firstname" required="" name="firstname" placeholder="Förnamn..." />
@@ -111,8 +111,8 @@ $admin->CheckIfUserIsInlogged($_SESSION['loginsession']);
             <input type="text" id="editinput" class="playerpicture" name="playerpicture" placeholder="Profil bild..." />
             <input type="text" id="editinput" class="twitter" required="" name="twitter" placeholder="Twitter..." />
             <input type="text" id="editinput" class="twitch" required="" name="twitch" placeholder="Twitch..." />
+            <span class="standinfix">Standin:</span>
             <select name="standin" class="standin" required="">
-              <option selected="selected">Standin:</option>
               <option value="Ja" name="yes">Ja</option>
               <option value="Nej" name="no">Nej</option>
             </select>  
@@ -122,8 +122,22 @@ $admin->CheckIfUserIsInlogged($_SESSION['loginsession']);
     </div>
     </div>
     <!---- End of player modal ----->
+    <!--- Add team modal ---->
+    <div id='add_team' class='modal'>
+    <div class='modal-content' id="teammodal">
+      <h4>Lägg till ett lag</h4>
+      <form method="POST" action="home.php" id="editinfo">
+            <input type="text" id="addteam" class="teamname" required="" name="teamname" placeholder="Lagnamn..." />
+            <input type="text" id="addteam" class="fullteamname" required="" name="fullteamname" placeholder="Fullt lagnamn..." />
+            <input type="text" id="addteam" class="teamlogo" name="teamlogo" placeholder="Laglogo..." />
+            <input type="submit" id="subteamadd" name="submatchinfo" class="waves-effect waves-light btn" style="background-color: #1087e8; color: white;" value="Lägg till" />
+      </form> 
+    </div>
+    </div>
+    <!---- End of team modal ----->
         <a class="waves-effect waves-light btn modal-trigger" href="#add_match" style="background-color: #1087e8; color: white;">Lägg till match</a>
          <a class="waves-effect waves-light btn modal-trigger" href="#add_player" style="background-color: #1087e8; color: white;">Lägg till spelare</a>
+         <a class="waves-effect waves-light btn modal-trigger" href="#add_team" style="background-color: #1087e8; color: white;">Lägg till lag</a>
       </div>
 
     </div> 

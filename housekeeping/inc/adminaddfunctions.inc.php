@@ -103,6 +103,43 @@ class AdminAdd extends DB{
 		
 
 	}
+	public $teamname;
+	public $fullteamname;
+	public $teamlogo;
+	public function addTeam($teamname,$fullteamname,$teamlogo){
+
+		$DB = new DB();
+		$DB->connect();
+
+		$this->teamname = $DB->secret($teamname);
+		$this->fullteamname = $DB->secret($fullteamname);
+		$this->teamlogo = $DB->secret($teamlogo);
+		$nothing = "";
+		$id = null;
+
+		$checkteam = $DB->prepare("SELECT * FROM teams WHERE teamname = ?");
+		$checkteam->bind_param("s", $this->teamname);
+		$checkteam->execute();
+		$checkteam->store_result();
+
+		if($checkteam->num_rows == 1){
+			echo "Laget finns redan tillagt...";
+		}else{
+
+			$addTeam = $DB->prepare("INSERT INTO teams (id,teamname,teamlogo,fullteamname,played,wins,loses) VALUES (?,?,?,?,?,?,?)");
+		    $addTeam->bind_param("sssssss", $id, $this->teamname, $this->teamlogo, $this->fullteamname,$nothing,$nothing,$nothing);
+
+		if($addTeam->execute()){
+
+			echo "Laget är nu tillagt!";
+
+		}else{
+			printf("Error: %s.\n", $addTeam->error);
+		}
+
+		}
+
+	}
 
 }
 ?>

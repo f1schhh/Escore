@@ -106,6 +106,8 @@ class AdminPlayers extends DB{
     public $team;
     public $nickname;
     public $standin;
+    public $steamid;
+    public $idchange;
 
     public function getAllPlayerInfo($nickname){
 
@@ -134,16 +136,20 @@ class AdminPlayers extends DB{
 				$this->playerpicture = $player_picture;
 				$this->team = $team;
 				$this->standin = $standin;
-
+				$this->steamid = $steamid;
+				$this->idchange = $id;
 			}
 
 		}
 
     }
+    public function getId(){
+    	return $this->idchange;
+    }
     public function getFirstName(){
     	return $this->firstname;
     }
-    public function getLastname(){
+    public function getLastName(){
 		return $this->lastname;
 	}
 	public function getTwitter(){
@@ -167,7 +173,52 @@ class AdminPlayers extends DB{
 	public function getNickname(){
 		return $this->nickname;
 	}
+	public function getSteamid(){
+		return $this->steamid;
+	}
 
+	private $first;
+	private $nick;
+	private $last;
+	private $player_team;
+	private $player_born;
+	private $playerp;
+    private $player_twitch;
+    private $player_twitter;
+    private $player_steamid;
+    private $player_standin;
+    private $playerid;
+
+	public function savePlayerInfo($firstname,$nickname,$lastname,$team,$born,$playerpicture,$twitch,$twitter,$steamid,$standin){
+
+		$DB = new DB();
+		$DB->connect();
+
+		$this->first = $DB->secret($firstname);
+		$this->nick = $DB->secret($nickname);
+		$this->last = $DB->secret($lastname);
+		$this->player_born = $DB->secret($born);
+		$this->player_team = $DB->secret($team);
+		$this->playerp = $DB->secret($playerpicture);
+		$this->player_twitch = $DB->secret($twitch);
+		$this->player_twitter = $DB->secret($twitter);
+		$this->player_steamid = $DB->secret($steamid);
+		$this->player_standin = $DB->secret($standin);
+		$this->playerid = $this->getId();
+
+
+
+		$saveplayer = $DB->prepare("UPDATE players SET first_name = ?, nickname = ?, last_name = ?, team = ?, age = ?, player_picture = ?, twitch_url = ?, twitter_url = ?, steamid = ?, standin = ? WHERE id = ?");
+		$saveplayer->bind_param("sssssssssss", $this->first,$this->nick,$this->last,$this->player_team,$this->player_born,$this->player_p,$this->player_twitch,$this->player_twitter,$this->player_steamid,$this->player_standin,$this->playerid);
+
+		if($saveplayer->execute()){
+			echo "<font color='green'>Spelarens information är nu uppdaterad!</font>";
+			echo ' <script>$(document).ready(function(){ $("#editinfo").load(location.href + " #editinfo");  }); </script>  ';
+			
+		}
+
+
+	}
 
 }
 ?>

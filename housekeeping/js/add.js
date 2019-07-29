@@ -10,7 +10,7 @@ $(document).ready(function(){
             dataType: 'html'
         })
         .done(function(data){
-            $('.modal-content').fadeIn("slow").html(data);
+            $('#matchmodal').fadeIn("slow").html(data);
         })
         .fail(function(){
             alert("Det uppstod ett fel...");
@@ -30,7 +30,27 @@ $(document).ready(function(){
             dataType: 'html'
         })
         .done(function(data){
-            $('.modal-content').fadeIn("slow").html(data);
+            $('#playermodal').fadeIn("slow").html(data);
+        })
+        .fail(function(){
+            alert("Det uppstod ett fel...");
+        });
+    });
+});
+
+$(document).ready(function(){
+    $("#subteamadd").closest("form").submit(function(e) {
+
+        e.preventDefault();
+
+        $.ajax({
+            url: 'addteam.php',
+            type: 'POST',
+            data: {teamname: $(".teamname").serialize(),fullteamname: $(".fullteamname").serialize(),teamlogo: $(".teamlogo").serialize()},
+            dataType: 'html'
+        })
+        .done(function(data){
+            $('#teammodal').fadeIn("slow").html(data);
         })
         .fail(function(){
             alert("Det uppstod ett fel...");

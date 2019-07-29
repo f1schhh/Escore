@@ -23,6 +23,7 @@ if($settings->checkMaintenanace() == 1){
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="js/lightbox.js"></script>
     <script src="js/mobile.js"></script>
+    <script src="js/autoupdate.js"></script>
             
 </head>
 <body>
