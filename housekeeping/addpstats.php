@@ -4,6 +4,7 @@ include '../inc/admin.inc.php';
 $settings = new SiteSettings();
 $admin = new Admin();
 $adminsettings = new AdminSettings();
+$adminadd = new AdminAdd();
 $admin->CheckIfUserIsInlogged($_SESSION['loginsession']);
 ?>
 <html lang="sv">
@@ -119,8 +120,89 @@ $admin->CheckIfUserIsInlogged($_SESSION['loginsession']);
       	@$kills10 = $_POST['kills10'];
       	@$deaths10 = $_POST['deaths10'];
 
+      	@$team1 = $_POST['team1'];
+      	@$team2 = $_POST['team2'];
+
+      	@$matchid = $_POST['matchid'];
+
+      	if(isset($addstatsbtn)){
+      		if($nick1 && $kills1 && $deaths1 && $nick2 && $kills2 && $deaths2 && $nick3 && $kills3 && $deaths3 && $nick4 && $kills4 && $deaths4 && $nick5 && $kills5 && $deaths5 && $nick6 && $kills6 && $deaths6 && $nick7 && $kills7 && $deaths7 && $nick8 && $kills8 && $deaths8 && $nick9 && $kills9 && $deaths9 && $nick10 && $kills10 && $deaths10 && $team1 && $team2 && $matchid){
+
+      			$adminadd->CheckMatchId($matchid);
+      			/* Lag 1 */
+
+      			/* Spelare 1 */
+      			if($adminadd->getPlayerStats($nick1) == 1){
+      				$adminadd->addGamePlayerStats($matchid,$nick1,$kills1,$deaths1,$team1);
+      			}else{
+      				$adminadd->addGamePlayerStats($matchid,$nick1,$kills1,$deaths1,$team1);
+      			}
+      			/* Spelare 2 */
+      			if($adminadd->getPlayerStats($nick2) == 1){
+      				$adminadd->addGamePlayerStats($matchid,$nick2,$kills2,$deaths2,$team1);
+      			}else{
+      				$adminadd->addGamePlayerStats($matchid,$nick2,$kills2,$deaths2,$team1);
+      			}
+      			/* Spelare 3 */
+      			if($adminadd->getPlayerStats($nick3) == 1){
+      				$adminadd->addGamePlayerStats($matchid,$nick3,$kills3,$deaths3,$team1);
+      			}else{
+      				$adminadd->addGamePlayerStats($matchid,$nick3,$kills3,$deaths3,$team1);
+      			}
+      			/* Spelare 4 */
+      			if($adminadd->getPlayerStats($nick4) == 1){
+      				$adminadd->addGamePlayerStats($matchid,$nick4,$kills4,$deaths4,$team1);
+      			}else{
+      				$adminadd->addGamePlayerStats($matchid,$nick4,$kills4,$deaths4,$team1);
+      			}	
+      			
+      			/* Spelare 5 */
+      			if($adminadd->getPlayerStats($nick5) == 1){
+      				$adminadd->addGamePlayerStats($matchid,$nick5,$kills5,$deaths5,$team1);
+      			}else{
+      				$adminadd->addGamePlayerStats($matchid,$nick5,$kills5,$deaths5,$team1);
+      			}
+
+      			/* Lag 2 */
+      			/* Spelare 6 */
+      			if($adminadd->getPlayerStats($nick6) == 1){
+      				$adminadd->addGamePlayerStats($matchid,$nick6,$kills6,$deaths6,$team2);
+      			}else{
+      				$adminadd->addGamePlayerStats($matchid,$nick6,$kills6,$deaths6,$team2);
+      			}
+      			/* Spelare 7 */
+      			if($adminadd->getPlayerStats($nick7) == 7){
+      				$adminadd->addGamePlayerStats($matchid,$nick7,$kills7,$deaths7,$team2);
+      			}else{
+      				$adminadd->addGamePlayerStats($matchid,$nick7,$kills7,$deaths7,$team2);
+      			}
+      			/* Spelare 8 */
+      			if($adminadd->getPlayerStats($nick8) == 1){
+      				$adminadd->addGamePlayerStats($matchid,$nick8,$kills8,$deaths8,$team2);
+      			}else{
+      				$adminadd->addGamePlayerStats($matchid,$nick8,$kills8,$deaths8,$team2);
+      			}
+      			/* Spelare 9 */
+      			if($adminadd->getPlayerStats($nick9) == 9){
+      				$adminadd->addGamePlayerStats($matchid,$nick9,$kills9,$deaths9,$team2);
+      			}else{
+      				$adminadd->addGamePlayerStats($matchid,$nick9,$kills9,$deaths9,$team2);
+      			}
+      			/* Spelare 10 */
+      			if($adminadd->getPlayerStats($nick10) == 10){
+      				$adminadd->addGamePlayerStats($matchid,$nick10,$kills10,$deaths10,$team2);
+      			}else{
+      				$adminadd->addGamePlayerStats($matchid,$nick10,$kills10,$deaths10,$team2);
+      			}
+      			echo "<font color='green'>Statistiken är nu inlagt! </font>";
+      	    }else{
+      	    	echo "Du har inte fyllt i alla fält!";
+      	    }
+      	}
+      	
+
       	?>
-      	<form method="POST" action="home.php" id="editinfo">
+      	<form method="POST" action="addpstats.php" id="editinfo">
             <input type="text" id="addteam" class="matchid" required="" name="matchid" placeholder="Matchid..." /> 
             <input type="text" id="addteam" class="team1" required="" name="team1" placeholder="Lag 1..." />
             <span class="playerstatsfix">Spelare1:</span><br />

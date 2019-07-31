@@ -1,7 +1,7 @@
 <?php
 class Stats extends DB{
 
-	public $played_matches = "3";
+	public $played_matches = "2";
 	public $place = 1;	
 
 	public function getStatsKD(){
