@@ -138,6 +138,7 @@ $admin->CheckIfUserIsInlogged($_SESSION['loginsession']);
         <a class="waves-effect waves-light btn modal-trigger" href="#add_match" style="background-color: #1087e8; color: white;">Lägg till match</a>
          <a class="waves-effect waves-light btn modal-trigger" href="#add_player" style="background-color: #1087e8; color: white;">Lägg till spelare</a>
          <a class="waves-effect waves-light btn modal-trigger" href="#add_team" style="background-color: #1087e8; color: white;">Lägg till lag</a>
+         <a class="waves-effect waves-light btn modal-trigger" href="addpstats.php" style="background-color: #1087e8; color: white;">Lägg till match statistik</a>
       </div>
 
     </div> 

@@ -9,6 +9,7 @@ class AdminAdd extends DB{
 	public $startdate;
 	public $league;
 	public $year;
+	public $sharematchid;
 
 	public function addMatches($team1,$team2,$status,$map,$starttime,$startdate,$league){
 
@@ -34,13 +35,98 @@ class AdminAdd extends DB{
 		if($addMatch->execute()){
 
 			echo "Matchen är nu tillagd!";
+			$this->sharematchid = $matchid;
 
 		}else{
 			printf("Error: %s.\n", $addMatch->error);
 		}
 
 	}
+	public $standinnumber = 0;
+	public function addLineup_Team1(){
+		$DB = new DB();
+		$DB->connect();
 
+		$id = null;
+
+		$getmatch = $DB->prepare("SELECT * FROM matches WHERE matchid = ?");
+		$getmatch->bind_param("s", $this->sharematchid);
+		$getmatch->execute();
+		$getmatch->store_result();
+		if($getmatch->num_rows == 1){
+
+			$getlineup_team1 = $DB->prepare("SELECT nickname FROM players WHERE team = ? AND standin = ? LIMIT 5");
+		    $getlineup_team1->bind_param("ss", $this->team1, $this->standinnumber);
+		    $getlineup_team1->execute();
+		    $getlineup_team1->store_result();
+
+		    $players = array();
+
+		        if($getlineup_team1->num_rows == 0){
+
+		         }else{
+		         	$getlineup_team1->bind_result($nickname);
+
+		         	while ($getlineup_team1->fetch()) {
+		         		$players[] = $nickname;
+		         	}
+
+		         	$insertlineup = $DB->prepare("INSERT INTO match_lineup (id,matchid,team,player1,player2,player3,player4,player5) VALUES (?,?,?,?,?,?,?,?)");
+		         	$insertlineup->bind_param("ssssssss", $id,$this->sharematchid, $this->team1, $players[0],$players[1],$players[2],$players[3],$players[4]);
+		         	if($insertlineup->execute()){
+
+		         	}else{
+		         		
+		         	}
+
+		         	
+		         }
+
+		}
+		
+	}
+	public function addLineup_Team2(){
+		$DB = new DB();
+		$DB->connect();
+
+		$id = null;
+
+		$getmatch = $DB->prepare("SELECT * FROM matches WHERE matchid = ?");
+		$getmatch->bind_param("s", $this->sharematchid);
+		$getmatch->execute();
+		$getmatch->store_result();
+		if($getmatch->num_rows == 1){
+
+			$getlineup_team1 = $DB->prepare("SELECT nickname FROM players WHERE team = ? AND standin = ? LIMIT 5");
+		    $getlineup_team1->bind_param("ss", $this->team2, $this->standinnumber);
+		    $getlineup_team1->execute();
+		    $getlineup_team1->store_result();
+
+		    $players = array();
+
+		        if($getlineup_team1->num_rows == 0){
+
+		         }else{
+		         	$getlineup_team1->bind_result($nickname);
+
+		         	while ($getlineup_team1->fetch()) {
+		         		$players[] = $nickname;
+		         	}
+
+		         	$insertlineup = $DB->prepare("INSERT INTO match_lineup (id,matchid,team,player1,player2,player3,player4,player5) VALUES (?,?,?,?,?,?,?,?)");
+		         	$insertlineup->bind_param("ssssssss", $id,$this->sharematchid, $this->team2, $players[0],$players[1],$players[2],$players[3],$players[4]);
+		         	if($insertlineup->execute()){
+
+		         	}else{
+		         		
+		         	}
+
+		         	
+		         }
+
+		}
+		
+	}
 	public $firstname;
 	public $lastname;
 	public $nickname;
@@ -139,6 +225,42 @@ class AdminAdd extends DB{
 
 		}
 
+	}
+
+	public $matchidet;
+	public $rounds;
+	public function CheckMatchId($matchid){
+
+		$DB = new DB();
+		$DB->connect();
+
+		$this->matchidet = $DB->secret($matchid);
+		$matchstatus = "ended";
+
+
+		$checkid = $DB->prepare("SELECT score FROM matches WHERE matchid = ? AND match_status = ?");
+		$checkid->bind_param("ss", $this->matchidet, $matchstatus);
+		$checkid->execute();
+		$checkid->store_result();
+
+		if($checkid->num_rows == 1){
+
+			$checkid->bind_result($score);
+
+			while($checkid->fetch()){
+
+				$matches = array_map('intval', explode('-', $score));
+
+                if($score == "not started"){
+                	$matchscore = "";
+                }else{
+                	$this->rounds = $matches[0] + $matches[1];
+                }
+                return 1; 
+			}
+		}else{
+			return 0;
+		} 
 	}
 
 }

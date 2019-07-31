@@ -30,6 +30,7 @@ function getPlayer($player){
 	$DB->connect();
 
 	$playerid = $DB->secret($player);
+	$nopicture = "../img/avatars/noavatar.png";
 
 	$getplayerinfo = $DB->prepare("SELECT nickname,player_picture FROM players WHERE nickname = ?");
 	$getplayerinfo->bind_Param("s", $playerid);
@@ -58,7 +59,7 @@ function getPlayer($player){
 
 	}else{
 		echo '
-		 <div class="playerpicture"><img src="https://cdn2.iconfinder.com/data/icons/business-388/1010/avatar-512.png" class="playerpos" />
+		 <div class="playerpicture"><img src="'.$nopicture.'" class="playerpos" />
               <span class="playernickname"><center>'.$playerid.'</center></span>
              </div>
 		';

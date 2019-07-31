@@ -15,6 +15,7 @@ parse_str($decrypt, $addteam);
 if($teamname && $fullteamname){
 
 	$adminAdd->addTeam($addteam['teamname'],$addteam['fullteamname'],$addteam['teamlogo']);
+	
 
 
 }else{
