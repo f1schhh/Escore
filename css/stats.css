@@ -41,19 +41,29 @@
     font-size: 15px;
     padding: 10px;
 }
-.statsline{
-    border-left: 1px solid #e3e3e3;
-    float: right;
-    position: relative;
-    padding-left: 10px;
-    padding-top: 10px;
-    top: -15px;
-    padding-bottom: 35px;
-    text-align: center;
+.statstext{
+    padding: 15px;
 }
 .namefix{
 	position: relative;
 	top: -7px;
+}
+.statsinsidebox{
+    width:100%;
+    border-bottom: 1px solid #e3e3e3;
+}
+.insidename{
+    width: 80%;
+    padding: 10px;
+    font-weight: bolder;
+    font-size: 15px;
+    display: inline-block;
+    border-right: 1px solid #e3e3e3;
+}
+.rightext{
+    position: relative;
+    left: 5px;
+    bottom: 12.5px;
 }
 .line{
     border-bottom: 1px solid #e3e3e3;
@@ -62,13 +72,16 @@
 @media screen and (max-width:1500px){
 	.bykd{
 		width: 100%;
-		font-size: 2vw;
+		font-size: 1.5vw;
         display: block;
 	}
 	.statsfix{
-		font-size: 2vw;
+		font-size: 1.5vw;
 	}
 	.statsline{
 		padding-bottom: auto;
 	}
+    #leftmeny{
+        padding-bottom: 150%;
+    }
 }

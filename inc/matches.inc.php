@@ -11,7 +11,7 @@ function getTeamLogo($teamname){
 
 		if($getTeamInfo->num_rows == 1){
 
-			$getTeamInfo->bind_result($id,$teamname,$teamlogo,$fullteamname,$played,$wins,$loses);
+			$getTeamInfo->bind_result($id,$teamname,$teamlogo,$fullteamname,$played,$wins,$loses,$winrate);
 
 			while ($getTeamInfo->fetch()) {
 
@@ -588,7 +588,7 @@ class Matches extends DB{
 		$getmatches->store_result();
 
 		if($getmatches->num_rows == 0){
-			header("location: 1");
+			header("location: ../index.php");
 		}else{
 
 			$getmatches->bind_result($id,$matchid,$starttime,$starttdate,$startyear,$team1,$team2,$match_status,$map,$score,$league,$mvp);

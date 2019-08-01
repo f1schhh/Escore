@@ -9,14 +9,15 @@ class Stats extends DB{
 		$DB = new DB();
 		$DB->connect();
 
-		$getKD = $DB->prepare("SELECT nickname,player_picture,kdratio,played_matches FROM players ORDER BY kdratio DESC LIMIT 5");
+		$getKD = $DB->prepare("SELECT nickname,player_picture,kdratio,played_matches FROM players WHERE played_matches >= ? ORDER BY kdratio DESC LIMIT 5");
+		$getKD->bind_param("s", $this->played_matches);
 		$getKD->execute();
 		$getKD->store_result();
 
 
 		if($getKD->num_rows == 0){
 
-			echo "fel";
+			echo "Det har skett ett fel!";
 
 			}else{
 
@@ -33,12 +34,15 @@ class Stats extends DB{
 				}else{
 					echo '
 
-				 <div class="matchesFix">
-                    <img src="'.$player_picture.'" style="height: 30px;" />
-                    <a href="../players/'.$nickname.'" class="namefix">'.$nickname.'</a> 
-                    <span class="statsline">'.$kdratio.' K/D</span>
-                     </div>   
-                   <div class="line"></div>
+					<div class="statsinsidebox">
+					    <div class="insidename">
+					    <img src="'.$player_picture.'" style="height: 30px;" />
+					    <a href="../players/'.$nickname.'" class="namefix">'.$nickname.'</a>
+					    </div>
+					    <span class="rightext">
+					    '.$kdratio.' K/D
+					    </span>
+					</div>
 
 				';
 				}
@@ -53,14 +57,15 @@ class Stats extends DB{
 		$DB = new DB();
 		$DB->connect();
 
-		$getKD = $DB->prepare("SELECT nickname,player_picture,krratio,played_matches FROM players ORDER BY krratio DESC LIMIT 5");
+		$getKD = $DB->prepare("SELECT nickname,player_picture,krratio,played_matches FROM players WHERE played_matches >= ? ORDER BY krratio DESC LIMIT 5");
+		$getKD->bind_param("s", $this->played_matches);
 		$getKD->execute();
 		$getKD->store_result();
 
 
 		if($getKD->num_rows == 0){
 
-			echo "fel";
+			echo "Det har skett ett fel!";
 
 			}else{
 
@@ -75,14 +80,15 @@ class Stats extends DB{
 
 				}else{
 					echo '
-
-				 <div class="matchesFix">
-                    <img src="'.$player_picture.'" style="height: 30px;" />
-                    <a href="../players/'.$nickname.'" class="namefix">'.$nickname.'</a> 
-                    <span class="statsline">'.$krratio.' K/R</span>
-                     </div>   
-                   <div class="line"></div>
-
+					<div class="statsinsidebox">
+					    <div class="insidename">
+					    <img src="'.$player_picture.'" style="height: 30px;" />
+					    <a href="../players/'.$nickname.'" class="namefix">'.$nickname.'</a>
+					    </div>
+					    <span class="rightext">
+					    '.$krratio.' K/R
+					    </span>
+					</div>
 				';
 				}
 			}
@@ -96,14 +102,15 @@ class Stats extends DB{
 		$DB = new DB();
 		$DB->connect();
 
-		$getKD = $DB->prepare("SELECT nickname,player_picture,total_kills,played_matches FROM players ORDER BY total_kills DESC LIMIT 5");
+		$getKD = $DB->prepare("SELECT nickname,player_picture,total_kills,played_matches FROM players WHERE played_matches >= ? ORDER BY total_kills DESC LIMIT 5");
+		$getKD->bind_param("s", $this->played_matches);
 		$getKD->execute();
 		$getKD->store_result();
 
 
 		if($getKD->num_rows == 0){
 
-			echo "fel";
+			echo "Det har skett ett fel!";
 
 			}else{
 
@@ -119,13 +126,58 @@ class Stats extends DB{
 
 				}else{
 					echo '
+                    <div class="statsinsidebox">
+					    <div class="insidename">
+					    <img src="'.$player_picture.'" style="height: 30px;" />
+					    <a href="../players/'.$nickname.'" class="namefix">'.$nickname.'</a>
+					    </div>
+					    <span class="rightext">
+					    '.$total_kills.' Kills
+					    </span>
+					</div>
+				';
+				}
+			}
 
-				 <div class="matchesFix">
-                    <img src="'.$player_picture.'" style="height: 30px;" />
-                    <a href="../players/'.$nickname.'" class="namefix">'.$nickname.'</a> 
-                    <span class="statsline">'.$total_kills.' Kills</span>
-                     </div>   
-                   <div class="line"></div>
+		}
+	}
+	public function getTeamWinRate(){
+
+		$DB = new DB();
+		$DB->connect();
+
+		$getRate = $DB->prepare("SELECT teamname,teamlogo,played,wins,loses,winrate FROM teams ORDER BY winrate DESC LIMIT 5");
+		$getRate->execute();
+		$getRate->store_result();
+
+
+		if($getRate->num_rows == 0){
+
+			echo "Det har skett ett fel!";
+
+			}else{
+
+			$getRate->bind_result($teamname,$teamlogo,$played,$wins,$loses,$winrate);
+
+			while($getRate->fetch()){
+
+				if($teamlogo == ""){
+                  $teamlogo = "../img/teamicons/nologo.png";
+                }
+
+				if($played<$this->played_matches){
+
+				}else{
+					echo '
+					<div class="statsinsidebox">
+					    <div class="insidename">
+					    <img src="'.$teamlogo.'" style="height: 30px;" />
+					    <a href="../teams/'.$teamname.'" class="namefix">'.$teamname.'</a>
+					    </div>
+					    <span class="rightext">
+					    '.$winrate.'%
+					    </span>
+					</div>
 
 				';
 				}
@@ -145,7 +197,7 @@ class Stats extends DB{
 
 		if($getKD->num_rows == 0){
 
-			echo "fel";
+			echo "Det har skett ett fel!";
 
 			}else{
 
@@ -161,12 +213,16 @@ class Stats extends DB{
 				}else{
 					echo '
 
-				 <div class="matchesFix">
-                    <span class="place">'.$this->place++.'</span> <img src="'.$player_picture.'" style="height: 30px;" />
-                    <a href="../players/'.$nickname.'" class="namefix">'.$nickname.'</a> 
-                    <span class="statsline">'.$kdratio.' K/D</span>
-                 </div>   
-                 <div class="line"></div>
+				 <div class="statsinsidebox">
+					    <div class="insidename">
+					    <span class="place">'.$this->place++.'</span>
+					    <img src="'.$player_picture.'" style="height: 30px;" />
+					    <a href="../players/'.$nickname.'" class="namefix">'.$nickname.'</a>
+					    </div>
+					    <span class="rightext">
+					    '.$kdratio.' K/D
+					    </span>
+					</div>
 
 				';
 				}
@@ -187,7 +243,7 @@ class Stats extends DB{
 
 		if($getKD->num_rows == 0){
 
-			echo "fel";
+			echo "Det har skett ett fel!";
 
 			}else{
 
@@ -204,12 +260,16 @@ class Stats extends DB{
 				}else{
 					echo '
 
-				 <div class="matchesFix">
-                    <span class="place">'.$this->place++.'</span><img src="'.$player_picture.'" style="height: 30px;" />
-                    <a href="../players/'.$nickname.'" class="namefix">'.$nickname.'</a> 
-                    <span class="statsline">'.$krratio.' K/R</span>
-                     </div>   
-                   <div class="line"></div>
+				  <div class="statsinsidebox">
+					    <div class="insidename">
+					    <span class="place">'.$this->place++.'</span>
+					    <img src="'.$player_picture.'" style="height: 30px;" />
+					    <a href="../players/'.$nickname.'" class="namefix">'.$nickname.'</a>
+					    </div>
+					    <span class="rightext">
+					    '.$krratio.' K/R
+					    </span>
+					</div>
 
 				';
 				}
@@ -231,7 +291,7 @@ class Stats extends DB{
 
 		if($getKD->num_rows == 0){
 
-			echo "fel";
+			echo "Det har skett ett Det har skett ett fel!!";
 
 			}else{
 
@@ -248,12 +308,16 @@ class Stats extends DB{
 				}else{
 					echo '
 
-				 <div class="matchesFix">
-                    <span class="place">'.$this->place++.'</span><img src="'.$player_picture.'" style="height: 30px;" />
-                    <a href="../players/'.$nickname.'" class="namefix">'.$nickname.'</a> 
-                    <span class="statsline">'.$total_kills.' Kills</span>
-                     </div>   
-                   <div class="line"></div>
+					 <div class="statsinsidebox">
+					    <div class="insidename">
+					    <span class="place">'.$this->place++.'</span>
+					    <img src="'.$player_picture.'" style="height: 30px;" />
+					    <a href="../players/'.$nickname.'" class="namefix">'.$nickname.'</a>
+					    </div>
+					    <span class="rightext">
+					    '.$total_kills.' Kills
+					    </span>
+					</div>
 
 				';
 				}

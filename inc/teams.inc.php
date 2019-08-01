@@ -19,12 +19,17 @@ class Teams extends DB{
 
 		if($getTeamInfo->num_rows == 1){
 
-			$getTeamInfo->bind_result($id,$teamname,$teamlogo,$fullteamname,$played,$wins,$loses);
+			$getTeamInfo->bind_result($id,$teamname,$teamlogo,$fullteamname,$played,$wins,$loses,$winrate);
 
 			while ($getTeamInfo->fetch()) {
 
 				$this->teamname = $teamname;
 				$this->fullteamname = $fullteamname;
+
+				if($teamlogo == ""){
+					$teamlogo = "http://localhost/svtv/img/teamicons/nologo.png";
+				}
+				
 				$this->teamlogo = $teamlogo;
 
 			}
@@ -175,9 +180,13 @@ class Teams extends DB{
 
 		if($getTeamInfo->num_rows == 1){
 
-			$getTeamInfo->bind_result($id,$teamname,$teamlogo,$fullteamname,$played,$wins,$loses);
+			$getTeamInfo->bind_result($id,$teamname,$teamlogo,$fullteamname,$played,$wins,$loses,$winrate);
 
 			while ($getTeamInfo->fetch()) {
+
+				if($teamlogo == ""){
+					$teamlogo = "http://localhost/svtv/img/teamicons/nologo.png";
+				}
 
 				return $teamlogo;
 

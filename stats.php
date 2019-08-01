@@ -144,7 +144,19 @@ $statsen = str_replace("stats/", "", $statsid);
             <div class="line"></div> 
             <?php $stats->getStatsKills(); ?>
 
-            </div> 
+            </div>
+
+            <!--- Winrate ---->
+            <div class="bykd">
+            <br />
+            <span class="statsfix">Top 5 bäst winrate <a href="winrate" class="all" style="float: right; margin-right: 5px;">Visa alla</a>
+              <div>
+              </div>
+            </span>
+            <div class="line"></div> 
+            <?php $stats->getTeamWinRate(); ?>
+
+            </div>  
                 <?php
               }
             }

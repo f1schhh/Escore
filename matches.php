@@ -106,6 +106,7 @@ $matches->getMatchInformation($matchid);
               ?>
               
               <?php echo $matches->getMap(); ?><br />
+              <span class="league">
               <?php if($matches->getLeague() == "SECSGO S3"){
                $league = "Svenska Eliteserien Höstsäsongen 2019"; 
                echo $league;
@@ -113,6 +114,7 @@ $matches->getMatchInformation($matchid);
                 echo $matches->getleague();
               } 
               ?>
+            </span>
               <br />
               <span class="currentScore"><?php echo $matches->getScore(); ?> </span>
               <h5><?php echo @$live; ?></h5>
@@ -120,7 +122,7 @@ $matches->getMatchInformation($matchid);
           </div> 
           <a href="../teams/<?php echo $matches->getTeamTwo(); ?>">
           <div class="team2">
-            <img src="<?php echo $teams->TeamLogo($matches->getTeamTwo()); ?>" class="logosize" style="float: right;" /><br />
+            <img src="<?php echo $teams->TeamLogo($matches->getTeamTwo()); ?>" class="logosizeright" /><br />
             <span class="teamnameright"><?php echo $matches->getTeamTwo(); ?></span>
           </div> 
         </a>
