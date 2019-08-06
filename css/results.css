@@ -18,3 +18,12 @@
 .matchtitle{
 	width: 100%;
 }
+@media screen and (max-width:540px){
+    .startTime{
+        display: none;
+    }
+    .matchTitlefix{
+        word-spacing: 1px;
+    }
+
+}

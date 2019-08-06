@@ -143,7 +143,6 @@ input[type=submit]{
 }
 .allplayersid{
     width: 45%;
-    height: 6.5%;
     color: #4e4e4e;
     min-height: 43px;
     -moz-transition: box-shadow 600ms; 
@@ -177,6 +176,40 @@ input[type=submit]{
 }
 .modal{
    max-height: 100%; overflow: visible;
+}
+#longbox{
+    width: 100%;
+    margin-top: 10px;
+}
+.sitemsgbox{
+    width: 40%;
+}
+.statusmsg{
+    width: 15%;
+    height: 53px;
+    background-color: whitesmoke;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #e3e3e3;
+    display: inline;
+    
+}
+#statustext{
+    width: 70%;
+    height: 30px;
+    color: #4e4e4e;
+    background-color: whitesmoke;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #e3e3e3;
+    padding: 10px;
+}
+#statustext:focus{
+    box-shadow: none;
 }
 @media screen and (max-width:900px){
     #editinput{

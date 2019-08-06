@@ -11,8 +11,8 @@ $admin->CheckIfUserIsInlogged($_SESSION['loginsession']);
 	<title><?php echo $settings->getTitle(); ?> - Housekeeping</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <meta http-equiv="Content-Language" content="sv" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="../css/style.css" /> 
   <link rel="stylesheet" href="../css/admin.css" />
   <link rel="stylesheet" href="../css/home.css" />
@@ -135,10 +135,28 @@ $admin->CheckIfUserIsInlogged($_SESSION['loginsession']);
     </div>
     </div>
     <!---- End of team modal ----->
-        <a class="waves-effect waves-light btn modal-trigger" href="#add_match" style="background-color: #1087e8; color: white;">Lägg till match</a>
+
+         <a class="waves-effect waves-light btn modal-trigger" href="#add_match" style="background-color: #1087e8; color: white;">Lägg till match</a>
          <a class="waves-effect waves-light btn modal-trigger" href="#add_player" style="background-color: #1087e8; color: white;">Lägg till spelare</a>
          <a class="waves-effect waves-light btn modal-trigger" href="#add_team" style="background-color: #1087e8; color: white;">Lägg till lag</a>
          <a class="waves-effect waves-light btn modal-trigger" href="addpstats.php" style="background-color: #1087e8; color: white;">Lägg till match statistik</a>
+         <br />
+         <div id="longbox">
+          <div class="sitemsgbox">
+          <form method="POST" action="home.php">
+          <b>Meddelande på sidan:</b>
+          <br />
+            <input type="text" id="statustext" style="display: inline-block;" />
+            <select name="standin" class="statusmsg" required="">
+              <option value="Ja" name="yes">Ja</option>
+              <option value="Nej" name="no">Nej</option>
+            </select>  
+             <input type="submit" id="subteamadd" name="submatchinfo" class="waves-effect waves-light btn" style="background-color: #1087e8; color: white;" value="Lägg till" />
+          </form>
+          </div>
+        </div>
+
+         
       </div>
 
     </div> 

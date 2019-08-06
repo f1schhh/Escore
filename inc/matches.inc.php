@@ -106,7 +106,7 @@ class Matches extends DB{
 		$DB = new DB();
 		$DB->connect();
 
-		$matchesinfo = $DB->prepare("SELECT * FROM matches WHERE match_status = ? OR match_status = ? ORDER by starttdate asc, starttime asc LIMIT 8");
+		$matchesinfo = $DB->prepare("SELECT * FROM matches WHERE match_status = ? OR match_status = ? ORDER by starttdate asc, starttime asc LIMIT 10");
 		$matchesinfo->bind_Param("ss", $this->matchstatusen, $this->matchstatusen2);
 		$matchesinfo->execute();
 		$matchesinfo->store_result();

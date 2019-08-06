@@ -105,6 +105,12 @@
     .matchtitle{
         width: 100%;
     }
+    .startTime{
+        display: none;
+    }
+    .matchTitlefix{
+        word-spacing: 1px;
+    }
 
 }
 @media screen and (max-width:580px){

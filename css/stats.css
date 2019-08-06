@@ -85,3 +85,11 @@
         padding-bottom: 150%;
     }
 }
+@media screen and (max-width:900px){
+    .statsfix{
+        font-size: 3.5vw;
+    }
+    .bykd{
+        font-size: 2.5vw;
+    }
+}

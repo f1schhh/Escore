@@ -72,13 +72,16 @@ if($settings->checkMaintenanace() == 1){
 		<div id="midcontent">
       <?php $settings->getSiteMessage(); ?>
       <h4 class="upcomingMatchesTitle">Matcher</h4>
-      <div class="matchesFix">
+      <div class="matchesFix" id="contentfix">
 
         <div class="matchInfo">
         <?php
         $matches->ShowMatchesFront();
         ?>
-        <!---InTE LäNGRE nEr----->
+        </div>
+
+        <div class="twitter">
+          <a class="twitter-timeline" href="https://twitter.com/SECSGO?ref_src=twsrc%5Etfw" data-tweet-limit="3">Twitterflöde</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
 
       </div>

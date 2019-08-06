@@ -209,7 +209,7 @@ class AdminPlayers extends DB{
 
 
 		$saveplayer = $DB->prepare("UPDATE players SET first_name = ?, nickname = ?, last_name = ?, team = ?, age = ?, player_picture = ?, twitch_url = ?, twitter_url = ?, steamid = ?, standin = ? WHERE id = ?");
-		$saveplayer->bind_param("sssssssssss", $this->first,$this->nick,$this->last,$this->player_team,$this->player_born,$this->player_p,$this->player_twitch,$this->player_twitter,$this->player_steamid,$this->player_standin,$this->playerid);
+		$saveplayer->bind_param("sssssssssss", $this->first,$this->nick,$this->last,$this->player_team,$this->player_born,$this->playerp,$this->player_twitch,$this->player_twitter,$this->player_steamid,$this->player_standin,$this->playerid);
 
 		if($saveplayer->execute()){
 			echo "<font color='green'>Spelarens information är nu uppdaterad!</font>";
