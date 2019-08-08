@@ -18,6 +18,9 @@
 .matchtitle{
 	width: 100%;
 }
+#leftmeny{
+    padding-bottom: 100%;
+}
 @media screen and (max-width:540px){
     .startTime{
         display: none;

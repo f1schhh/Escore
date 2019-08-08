@@ -19,6 +19,9 @@ input[type=submit]{
     cursor: pointer;
     padding-top: 10px;
 }
+#leftmeny{
+    padding-bottom: 100%;
+}
 .pagebtn{
     width: auto;
     height: 30px;

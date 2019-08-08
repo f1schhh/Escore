@@ -71,7 +71,17 @@ if($settings->checkMaintenanace() == 1){
     <!----Start utav mid content----->
 		<div id="midcontent">
       <?php $settings->getSiteMessage(); ?>
+      <div class="topindex">
+      <div class="titlepos">
       <h4 class="upcomingMatchesTitle">Matcher</h4>
+    </div>
+
+      <div class="searchbar">
+        <form method="POST" action="#">
+          <input type="text" id="searchinput" placeholder="Sök efter en spelare..." />
+         </form> 
+      </div>
+      </div>
       <div class="matchesFix" id="contentfix">
 
         <div class="matchInfo">
