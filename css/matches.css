@@ -215,15 +215,75 @@
 .league{
     position: relative;
 }
+.statsinsidebox{
+    width:100%;
+    border-bottom: 1px solid #e3e3e3;
+}
+.insidename{
+    width: 50%;
+    padding: 10px;
+    font-size: 15px;
+    display: inline-block;
+    border-right: 1px solid #e3e3e3;
+}
+.allstats{
+    width: 11.5%;
+    display: inline-block;
+    padding: 10px;
+    border-right: 1px solid #e3e3e3;
+}
+.rightext{
+    position: relative;
+    left: 5px;
+    bottom: 0px;
+}
+.insidelogo{
+    width: 50%;
+    padding-bottom: 8px;
+    display: inline-block;
+    border-right: 1px solid #e3e3e3;
+}
+.overstats{
+    width: 11.5%;
+    padding-top: 14px;
+    padding-bottom: 10px;
+    display: inline-block;
+    border-right: 1px solid #e3e3e3;
+}
+.overtext{
+    position: relative;
+    left: 15px;
+    font-size: 17px;
+    font-weight: bold;
+    bottom: 5px;
+    
+}
+@media (max-width: 1660px){
+    .overtext{
+        font-size: 15px;
+    }
+}
+@media (max-width: 1475px){
+    .overtext{
+        font-size: 13px;
+    }
+}
+@media (max-width: 1325px){
+    #smh{
+        width: 95%;
+    }
+}
+@media (max-width: 1075px){
+    .allstats{
+        padding-right: 5px;
+    }
+    .overtext{
+        font-size: 12px;
+    }
+}
 @media (max-width: 500px){
     .statsbox{
         font-size: 1vw;
-    }
-    .statsline{
-        padding-left: 7px;
-        padding-top: 5px;
-        padding-right: 7px;
-        padding-bottom: 21px;
     }
     .teamname{
         font-size: 6vw;
@@ -258,10 +318,39 @@
     .currentscore{
         margin-top: 15px;
     }
+    .kdtext{
+        visibility: hidden;
+    }
+    .kdtext:after{
+        content:'K/D';
+        text-align: center;
+        visibility: visible;
+        position: relative;
+        right: 25px;
+
+    }
+    .kprtext{
+        visibility: hidden;
+    }
+    .kprtext:after{
+        content:'KPR';
+        text-align: center;
+        visibility: visible;
+        position: relative;
+        right: 35px; 
+    }
+    .overstats{
+        padding-top: 0px;
+    }
+    .overtext{
+        font-size: 11px;
+    }
 }
 
 @media screen and (max-width:900px){
-
+    #smh{
+        width: 100%;
+    }
     
     .statsbox{
         width: 100%;
@@ -297,7 +386,29 @@
     .teamnameright{
         font-size: 16px;
     }
-    
+    .allstats{
+        padding: 5px;
+    }
+    .insidename{
+        font-size: 13px;
+    }
+    .rightext{
+        left: 0px;
+    }
+    .overtext{
+        left: 5px;
+        padding-top: 10px;
+    }
+    .kprtext{
+        visibility: hidden;
+    }
+    .kprtext:after{
+        content:'KPR';
+        text-align: center;
+        visibility: visible;
+        position: relative;
+        right: 25px; 
+    }
 } 
 @media screen and(max-width: 1180px){
     .playerpicture{

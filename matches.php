@@ -133,9 +133,28 @@ $matches->getMatchInformation($matchid);
         <!----- Stats med mera ----->
 
         <div class="statsBox" style="<?php echo @$show; ?>">
+           <div class="statsinsidebox">
+            <div class="insidelogo">
            <img src="<?php echo $teams->TeamLogo($matches->getTeamOne()); ?>" class="statslogo" />
             <span class="team1Logo"><?php echo $matches->getTeamOne(); ?></span> 
-            <div class="line"></div>
+            </div>
+            <div class="overstats">
+              <span class="overtext">Kills</span>
+            </div>
+            <div class="overstats">
+              <span class="overtext">Deaths</span>
+            </div>
+            <div class="overstats">
+              <span class="overtext">
+              <span class="kdtext">K/D Ratio</span>
+            </span>
+            </div>
+            <div class="overstats" style="border-right: none;">
+              <span class="overtext">
+              <span class="kprtext">Kills per round</span>
+            </span>
+            </div>
+          </div>
             <?php $matches->getMatchStatsTeamOne($matchid,$matches->getTeamOne(),$matches->getScoreForKR()); 
             ?> 
         </div>
@@ -143,10 +162,30 @@ $matches->getMatchInformation($matchid);
         <!---- Team 2 ----->
 
          <div class="statsBox" style="<?php echo @$show; ?>">
+           <div class="statsinsidebox">
+            <div class="insidelogo">
            <img src="<?php echo $teams->TeamLogo($matches->getTeamTwo()); ?>" class="statslogo" />
             <span class="team1Logo"><?php echo $matches->getTeamTwo(); ?></span> 
-            <div class="line"></div>
-            <?php $matches->getMatchStatsTeamTwo($matchid,$matches->getTeamTwo(),$matches->getScoreForKR()); ?> 
+            </div>
+            <div class="overstats">
+              <span class="overtext">Kills</span>
+            </div>
+            <div class="overstats">
+              <span class="overtext">Deaths</span>
+            </div>
+            <div class="overstats">
+              <span class="overtext">
+              <span class="kdtext">K/D Ratio</span>
+            </span>
+            </div>
+            <div class="overstats" style="border-right: none;">
+              <span class="overtext">
+              <span class="kprtext">Kills per round</span>
+            </span>
+            </div>
+          </div>
+            <?php $matches->getMatchStatsTeamTwo($matchid,$matches->getTeamOne(),$matches->getScoreForKR()); 
+            ?> 
         </div>
       </div>
       <!--- Slutet på stats efter gamet ---->

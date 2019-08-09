@@ -41,9 +41,8 @@ html,body{
 	float: left;
 	color: white;
 	background: #303030;
-	padding-bottom: 150%;
+	padding-bottom: 100%;
     margin-bottom: -100%;
-
 }
 #logo{
 	font-size: 35px;

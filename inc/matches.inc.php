@@ -350,14 +350,33 @@ class Matches extends DB{
 
 				echo '
 
-				<div class="matchesFix">
-                <a href="../players/'.$this->getnick.'">'.$this->getname.' "<b>'.$this->getnick.'</b>" '.$this->getlast.'</a>
-                <span class="statsline">'.$realkpr.' K/R</span>  
-                <span class="statsline">'.$realkd.' K/D</span>   
-                <span class="statsline">'.$deaths.' Deaths</span> 
-                <span class="statsline">'.$kills.' Kills</span> 
-                </div>  
-                <div class="line"></div>
+				<div class="statsinsidebox">
+					<div class="insidename">
+					    <a href="../players/'.$this->getnick.'" class="namefix">'.$this->getname.' "<b>'.$this->getnick.'</b>" '.$this->getlast.'</a>
+					    </div>
+					    <div class="allstats">
+					    <span class="rightext">
+					    '.$kills.' Kills
+					    </span>
+					    </div>
+					    <div class="allstats">
+					    <span class="rightext">
+					    '.$deaths.' Deaths
+					    </span>
+					    </div>
+					    <div class="allstats">
+					    <span class="rightext">
+					    '.$realkd.' K/D
+					    </span>
+					    </div>
+					    <div class="allstats" style="border-right: none;">
+					    <span class="rightext">
+					    '.$realkpr.' K/R
+					    </span>
+					    </div>
+				</div>
+
+				
 				';
 
 
@@ -426,14 +445,31 @@ class Matches extends DB{
 
 
 				echo '
-				<div class="matchesFix">
-				<a href="../players/'.$this->getnick.'">'.$this->getname.' "<b>'.$this->getnick.'</b>" '.$this->getlast.'</a> 
-				<span class="statsline">'.$realkpr.' K/R</span>
-                <span class="statsline">'.$realkd.' K/D</span>   
-                <span class="statsline">'.$deaths.' Deaths</span> 
-                <span class="statsline">'.$kills.' Kills</span>  
-                </div>  
-                <div class="line"></div>
+				<div class="statsinsidebox">
+					<div class="insidename">
+					    <a href="../players/'.$this->getnick.'" class="namefix">'.$this->getname.' "<b>'.$this->getnick.'</b>" '.$this->getlast.'</a>
+					    </div>
+					    <div class="allstats">
+					    <span class="rightext">
+					    '.$kills.' Kills
+					    </span>
+					    </div>
+					    <div class="allstats">
+					    <span class="rightext">
+					    '.$deaths.' Deaths
+					    </span>
+					    </div>
+					    <div class="allstats">
+					    <span class="rightext">
+					    '.$realkd.' K/D
+					    </span>
+					    </div>
+					    <div class="allstats" style="border-right: none;">
+					    <span class="rightext">
+					    '.$realkpr.' K/R
+					    </span>
+					    </div>
+				</div>
 				';
 
 

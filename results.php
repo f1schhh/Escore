@@ -86,6 +86,7 @@ if(isset($_GET['page'])){
         </div>
 
         </div> 
+        
 
     <!--- Slut utav mid content----> 
 

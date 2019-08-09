@@ -24,6 +24,11 @@ if($settings->checkMaintenanace() == 1){
     <script src="js/lightbox.js"></script>
     <script src="js/mobile.js"></script>
     <script src="js/autoupdate.js"></script>
+    <style type="text/css">
+      #leftmeny{
+        padding-bottom: 150%;
+      }
+    </style>
             
 </head>
 <body>

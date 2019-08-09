@@ -21,6 +21,12 @@
 #leftmeny{
     padding-bottom: 100%;
 }
+@media screen and (max-width:900px){
+    .matchesfix{
+        margin-bottom: 10px;
+    }
+
+}
 @media screen and (max-width:540px){
     .startTime{
         display: none;
