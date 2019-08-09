@@ -185,7 +185,7 @@ input[type=submit]{
     margin-top: 10px;
 }
 .sitemsgbox{
-    width: 40%;
+    width: 50%;
 }
 .statusmsg{
     width: 15%;
@@ -210,6 +210,7 @@ input[type=submit]{
     border-bottom-left-radius: 5px;
     border: 1px solid #e3e3e3;
     padding: 10px;
+    font-size: 13px;
 }
 #statustext:focus{
     box-shadow: none;

@@ -5,6 +5,7 @@ $settings = new SiteSettings();
 $admin = new Admin();
 $adminsettings = new AdminSettings();
 $admin->CheckIfUserIsInlogged($_SESSION['loginsession']);
+$admin->CheckSiteMsg();
 ?>
 <html lang="sv">
 <head>
@@ -143,15 +144,57 @@ $admin->CheckIfUserIsInlogged($_SESSION['loginsession']);
          <br />
          <div id="longbox">
           <div class="sitemsgbox">
+          <?php
+          @$msgbtn = $_POST['savemsg'];
+          @$msg  = $_POST['sitemsg'];
+          @$site_status = $_POST['sitestatus'];
+
+          if(isset($msgbtn)){
+
+            if($msg && $site_status){
+
+              if($site_status == "Ja"){
+                $site_status = 1;
+                $admin->UpdateSiteMsg($msg,$site_status);
+              }
+              if($site_status == "Nej"){
+                $site_status = 0;
+                $admin->UpdateSiteMsg($msg,$site_status);
+              }
+            }
+
+          }
+          ?>  
           <form method="POST" action="home.php">
           <b>Meddelande på sidan:</b>
           <br />
-            <input type="text" id="statustext" style="display: inline-block;" />
-            <select name="standin" class="statusmsg" required="">
-              <option value="Ja" name="yes">Ja</option>
-              <option value="Nej" name="no">Nej</option>
+            <input type="text" id="statustext" name="sitemsg" value="<?php echo $admin->getSiteMsg(); ?>" style="display: inline-block;" />
+            <select name="sitestatus" class="statusmsg" required="">
+              <?php
+              if($admin->getSiteStatus() == 1){
+                ?>
+                <option value="Ja" name="yes" selected="">Ja</option>
+              <?php
+              }else{
+                ?>
+                <option value="Ja" name="yes">Ja</option>
+              <?php
+              }
+              ?>
+
+               <?php
+              if($admin->getSiteStatus() == 0){
+                ?>
+                <option value="Nej" name="no" selected="">Nej</option>
+              <?php
+              }else{
+                ?>
+                <option value="Nej" name="no">Nej</option>
+              <?php
+              }
+              ?>
             </select>  
-             <input type="submit" id="subteamadd" name="submatchinfo" class="waves-effect waves-light btn" style="background-color: #1087e8; color: white;" value="Lägg till" />
+             <input type="submit" id="subteamadd" name="savemsg" class="waves-effect waves-light btn" style="background-color: #1087e8; color: white;" value="Spara" />
           </form>
           </div>
         </div>

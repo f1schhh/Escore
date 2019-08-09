@@ -249,6 +249,7 @@ img{
 	color: red;
 	font-weight: bold;
 	padding: 15px;
+	border-bottom: 1px solid #e3e3e3;
 }
 .matchscore{
 	width: 70%;

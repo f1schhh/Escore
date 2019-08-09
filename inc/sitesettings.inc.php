@@ -7,7 +7,7 @@ class SiteSettings extends DB{
 	}
 
 	public function getTitle(){
-		return "EScore.se";
+		return "EScore.nu";
 	}
 
 
