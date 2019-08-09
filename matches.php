@@ -184,7 +184,7 @@ $matches->getMatchInformation($matchid);
             </span>
             </div>
           </div>
-            <?php $matches->getMatchStatsTeamTwo($matchid,$matches->getTeamOne(),$matches->getScoreForKR()); 
+            <?php $matches->getMatchStatsTeamTwo($matchid,$matches->getTeamTwo(),$matches->getScoreForKR()); 
             ?> 
         </div>
       </div>

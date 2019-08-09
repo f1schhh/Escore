@@ -91,6 +91,50 @@ class Players extends DB{
 
 	}
 
+  public $searchtxt;
+
+  public function SearchForPlayer($txt){
+    $DB = new DB();
+    $DB->connect();
+
+    $this->searchtxt = $DB->secret($txt);
+
+    $str = "%".$this->searchtxt."%";
+
+    $search = $DB->prepare("SELECT first_name,nickname,last_name,player_picture FROM players WHERE nickname LIKE ? OR first_name LIKE ? OR last_name LIKE ?");
+    $search->bind_param("sss", $str,$str,$str);
+    $search->execute();
+    $search->store_result();
+
+    if($search->num_rows > 0){
+
+      $search->bind_Result($first_name,$nickname,$last_name,$player_picture);
+
+      while ($search->fetch()) {
+        if($player_picture == ""){
+          $player_picture = "img/avatars/noavatar.png";
+        }
+        echo '
+        <div class="insidesearch">
+            <div class="searchposfix">
+            <img src="'.$player_picture.'" style="height: 30px;" />
+            <a href="players/'.$nickname.'" class="namefix">'.$first_name.' <b>"'.$nickname.'"</b> '.$last_name.'</a>
+            </div>              
+        </div>
+        ';
+
+      }
+
+    }else{
+      echo '
+      <div class="nomatches">
+      Inga träffar...
+      </div>
+      ';
+    }
+
+  }
+
 
 }
 ?>

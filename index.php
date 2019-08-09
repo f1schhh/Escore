@@ -24,6 +24,7 @@ if($settings->checkMaintenanace() == 1){
     <script src="js/lightbox.js"></script>
     <script src="js/mobile.js"></script>
     <script src="js/autoupdate.js"></script>
+    <script src="js/usersearch.js"></script>
     <style type="text/css">
       #leftmeny{
         padding-bottom: 150%;
@@ -83,8 +84,12 @@ if($settings->checkMaintenanace() == 1){
 
       <div class="searchbar">
         <form method="POST" action="#">
-          <input type="text" id="searchinput" placeholder="Sök efter en spelare..." />
-         </form> 
+          <input type="text" id="searchinput" name="searchtxt" placeholder="Sök efter en spelare..." />
+          <div class="searchdown">
+          <div class="search-content">
+          </div>
+        </div>
+         </form>
       </div>
       </div>
       <div class="matchesFix" id="contentfix">

@@ -30,3 +30,5 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ maintenance.php [L]
 
+ErrorDocument 404 /404.php
+

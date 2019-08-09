@@ -201,6 +201,8 @@ img{
 .searchbar{
 	width: 45%;
 	display: inline-block;
+	position: relative;
+	top: 10px;
 }
 #searchinput{
 	width: 100%;
@@ -216,6 +218,37 @@ img{
 }
 #searchinput:focus{
     box-shadow: none;
+}
+.searchdown {
+  width: 200%;
+  position: relative;
+  display: inline-block;
+  margin-top: -10px;
+}
+.search-content {
+  height: auto;	
+  display: none;
+  position: absolute;
+  background-color: whitesmoke;
+  overflow: auto;
+  border: 1px solid #e3e3e3;
+  border-bottom: none;
+  z-index: 1;
+}
+.insidesearch{
+	width:100%;
+    border-bottom: 1px solid #e3e3e3;
+}
+.namefix{
+	position: relative;
+}
+.searchposfix{
+	padding: 20px;
+}
+.nomatches{
+	color: red;
+	font-weight: bold;
+	padding: 15px;
 }
 .matchscore{
 	width: 70%;
