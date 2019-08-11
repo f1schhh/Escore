@@ -286,6 +286,9 @@ img{
 	#smh{
 		width: 90%;
 	}
+	#footer{
+		width: 90%;
+	}
 }
 
 @media screen and (max-width:920px){
@@ -344,6 +347,9 @@ img{
 }
 .searchbar{
 	display: none;
+}
+#footer{
+	width: 100%;
 }
 }
 

@@ -272,6 +272,9 @@
     #smh{
         width: 95%;
     }
+    #footer{
+        width: 95%;
+    }
 }
 @media (max-width: 1075px){
     .allstats{
@@ -409,6 +412,9 @@
         position: relative;
         right: 25px; 
     }
+    #footer{
+    width: 100%;
+}
 } 
 @media screen and(max-width: 1180px){
     .playerpicture{

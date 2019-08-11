@@ -69,6 +69,12 @@
     border-bottom: 1px solid #e3e3e3;
     display: block;
 }
+@media screen and (max-width:1740px){
+    .bykd{
+        width: 49%;
+        display: inline-block;
+    }
+}
 @media screen and (max-width:1500px){
 	.bykd{
 		width: 100%;

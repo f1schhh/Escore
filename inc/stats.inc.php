@@ -141,6 +141,89 @@ class Stats extends DB{
 
 		}
 	}
+
+	public function getStatsDeaths(){
+
+		$DB = new DB();
+		$DB->connect();
+
+		$getKD = $DB->prepare("SELECT nickname,player_picture,total_deaths,played_matches FROM players WHERE played_matches >= ? ORDER BY total_deaths DESC LIMIT 5");
+		$getKD->bind_param("s", $this->played_matches);
+		$getKD->execute();
+		$getKD->store_result();
+
+
+		if($getKD->num_rows == 0){
+
+			echo "Det har skett ett fel!";
+
+			}else{
+
+			$getKD->bind_result($nickname,$player_picture,$total_deaths,$played_matches);
+
+			while($getKD->fetch()){
+
+				if($player_picture == ""){
+                  $player_picture = "../img/avatars/noavatar.png";
+                }
+
+				if($played_matches<$this->played_matches){
+
+				}else{
+					echo '
+                    <div class="statsinsidebox">
+					    <div class="insidename">
+					    <img src="'.$player_picture.'" style="height: 30px;" />
+					    <a href="../players/'.$nickname.'" class="namefix">'.$nickname.'</a>
+					    </div>
+					    <span class="rightext" style="right: 4px;">
+					    '.$total_deaths.' deaths
+					    </span>
+					</div>
+				';
+				}
+			}
+
+		}
+	}
+	public function getStatsMatches(){
+
+		$DB = new DB();
+		$DB->connect();
+
+		$getKD = $DB->prepare("SELECT nickname,player_picture,total_deaths,played_matches FROM players ORDER BY played_matches DESC LIMIT 5");
+		$getKD->execute();
+		$getKD->store_result();
+
+
+		if($getKD->num_rows == 0){
+
+			echo "Det har skett ett fel!";
+
+			}else{
+
+			$getKD->bind_result($nickname,$player_picture,$total_deaths,$played_matches);
+
+			while($getKD->fetch()){
+
+				if($player_picture == ""){
+                  $player_picture = "../img/avatars/noavatar.png";
+                }
+					echo '
+                    <div class="statsinsidebox">
+					    <div class="insidename">
+					    <img src="'.$player_picture.'" style="height: 30px;" />
+					    <a href="../players/'.$nickname.'" class="namefix">'.$nickname.'</a>
+					    </div>
+					    <span class="rightext" style="right: 4px;">
+					    '.$played_matches.' Matcher
+					    </span>
+					</div>
+				';
+				}
+			}
+
+		}
 	public function getTeamWinRate(){
 
 		$DB = new DB();
@@ -325,6 +408,95 @@ class Stats extends DB{
 
 		}
 	}
+	public function getFullDeaths(){
+
+		$DB = new DB();
+		$DB->connect();
+
+		$getKD = $DB->prepare("SELECT nickname,player_picture,total_deaths,played_matches FROM players ORDER BY total_deaths DESC");
+		$getKD->execute();
+		$getKD->store_result();
+
+
+		if($getKD->num_rows == 0){
+
+			echo "Det har skett ett fel!!";
+
+			}else{
+
+			$getKD->bind_result($nickname,$player_picture,$total_deaths,$played_matches);
+
+			while($getKD->fetch()){
+
+				if($player_picture == ""){
+                  $player_picture = "../img/avatars/noavatar.png";
+                }
+
+				if($played_matches<$this->played_matches){
+
+				}else{
+					echo '
+
+					 <div class="statsinsidebox">
+					    <div class="insidename">
+					    <span class="place">'.$this->place++.'</span>
+					    <img src="'.$player_picture.'" style="height: 30px;" />
+					    <a href="../players/'.$nickname.'" class="namefix">'.$nickname.'</a>
+					    </div>
+					    <span class="rightext">
+					    '.$total_deaths.' Deaths
+					    </span>
+					</div>
+
+				';
+				}
+			}
+
+		}
+	}
+	public function getFullMatches(){
+
+		$DB = new DB();
+		$DB->connect();
+
+		$getKD = $DB->prepare("SELECT nickname,player_picture,played_matches FROM players ORDER BY played_matches DESC");
+		$getKD->execute();
+		$getKD->store_result();
+
+
+		if($getKD->num_rows == 0){
+
+			echo "Det har skett ett fel!!";
+
+			}else{
+
+			$getKD->bind_result($nickname,$player_picture,$played_matches);
+
+			while($getKD->fetch()){
+
+				if($player_picture == ""){
+                  $player_picture = "../img/avatars/noavatar.png";
+                }
+
+					echo '
+
+					 <div class="statsinsidebox">
+					    <div class="insidename">
+					    <span class="place">'.$this->place++.'</span>
+					    <img src="'.$player_picture.'" style="height: 30px;" />
+					    <a href="../players/'.$nickname.'" class="namefix">'.$nickname.'</a>
+					    </div>
+					    <span class="rightext">
+					    '.$played_matches.' Matcher
+					    </span>
+					</div>
+
+				';
+				}
+			}
+
+		}
+
 
 
 }

@@ -110,8 +110,32 @@ $statsen = str_replace("stats/", "", $statsid);
             </div>
                 <?php
               }else{
+                if($statsen == "deaths"){
                 ?>
-                <!---- Kill / death ratio ----->
+            <div class="bykd" style="width: 100%">
+            <br />
+            <span class="statsfix">Statistik över alla spelares deaths
+            <div></div> 
+            </span>
+            <div class="line"></div>  
+            <?php $stats->getFullDeaths(); ?>
+            </div>
+            <?php
+            }else{
+              if($statsen == "matches"){
+            ?>
+            <div class="bykd" style="width: 100%">
+            <br />
+            <span class="statsfix">Statistik över alla spelares deaths
+            <div></div> 
+            </span>
+            <div class="line"></div>  
+            <?php $stats->getFullMatches(); ?>
+            </div>
+            <?php
+            }else{
+            ?> 
+            <!---- Kill / death ratio ----->
             <div class="bykd">
             <br />
             <span class="statsfix">Top 5 K/D Spelarna <a href="kd" class="all" style="float: right; margin-right: 5px;">Visa alla</a>
@@ -120,8 +144,7 @@ $statsen = str_replace("stats/", "", $statsid);
             </span>
             <div class="line"></div>  
             <?php $stats->getStatsKD(); ?>
-            </div>  
-
+            </div> 
             <!--- Kills per round ----->
             <div class="bykd">
             <br />
@@ -146,21 +169,35 @@ $statsen = str_replace("stats/", "", $statsid);
 
             </div>
 
-            <!--- Winrate ---->
+
+            <!--- Deaths ---->
             <div class="bykd">
             <br />
-            <span class="statsfix">Top 5 bäst winrate <a href="winrate" class="all" style="float: right; margin-right: 5px;">Visa alla</a>
+            <span class="statsfix">Top 5 mest antal deaths <a href="deaths" class="all" style="float: right; margin-right: 5px;">Visa alla</a>
               <div>
               </div>
             </span>
             <div class="line"></div> 
-            <?php $stats->getTeamWinRate(); ?>
+            <?php $stats->getStatsDeaths(); ?>
 
-            </div>  
+            </div>
+            <!--- Matcher ---->
+            <div class="bykd">
+            <br />
+            <span class="statsfix">Top 5 mest spelade matcher <a href="matches" class="all" style="float: right; margin-right: 5px;">Visa alla</a>
+              <div>
+              </div>
+            </span>
+            <div class="line"></div> 
+            <?php $stats->getStatsMatches(); ?>
+
+            </div>      
                 <?php
               }
             }
           }
+        }
+      }
           ?> 
 
             </div> 
