@@ -106,7 +106,7 @@ class Matches extends DB{
 		$DB = new DB();
 		$DB->connect();
 
-		$matchesinfo = $DB->prepare("SELECT * FROM matches WHERE match_status = ? OR match_status = ? ORDER by starttdate asc, starttime asc LIMIT 10");
+		$matchesinfo = $DB->prepare("SELECT matchid,starttime,starttdate,startyear,team1,team2,match_status,score FROM matches WHERE match_status = ? OR match_status = ? ORDER by starttdate, starttime DESC LIMIT 10");
 		$matchesinfo->bind_Param("ss", $this->matchstatusen, $this->matchstatusen2);
 		$matchesinfo->execute();
 		$matchesinfo->store_result();
@@ -121,14 +121,19 @@ class Matches extends DB{
 		}else{
 
 
-			$matchesinfo->bind_Result($id,$matchid,$starttime,$starttdate,$startyear,$team1,$team2,$match_status,$map,$score,$league,$mvp);
+			$matchesinfo->bind_Result($matchid,$starttime,$starttdate,$startyear,$team1,$team2,$match_status,$score);
 
 			while($matchesinfo->fetch()){
 
 				if($match_status == "live"){
 					$status = "<font color='green'>LIVE</font>";
 				}else{
-					$status = "$starttdate $starttime";
+					$realdate = strtotime($starttdate);
+                    $fixdate = date("jS F", $realdate);
+
+                    $realtime = strtotime($starttime);
+                    $fixtime = date("H:i", $realtime);
+					$status = "$fixdate $fixtime";
 				}
 
                 $matches = array_map('intval', explode('-', $score));
@@ -154,6 +159,8 @@ class Matches extends DB{
                 $matchscore = "$matches[0] - $matches[1]";
 
                 }
+
+
 
 
 				echo '

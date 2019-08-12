@@ -87,19 +87,26 @@ $matches->getMatchInformation($matchid);
             <center>
               
               <?php
+                    $realdate = strtotime($matches->getStartDate());
+                    $fixdate = date("jS F", $realdate);
+
+                    $realtime = strtotime($matches->getStartTime());
+                    $fixtime = date("H:i", $realtime);
+
+                   $status = "$fixdate $fixtime";
               if($matches->getMatchStatus() == "live"){
-                echo '<h4>'.$matches->getStartTime().'</h4>';  
-                echo '<span class="startdate"> '.$matches->getStartDate().' '.$matches->getStartYear().'</span><br />';
+                echo '<h4>'.$fixtime.'</h4>';  
+                echo '<span class="startdate"> '.$fixdate.' '.$matches->getStartYear().'</span><br />';
                 $live = '<font color="green">LIVE</font>';
                 $show = "display: none";
               }else if($matches->getMatchStatus() == "upcoming"){
-                echo '<h4>'.$matches->getStartTime().'</h4>';  
-                echo '<span class="startdate"> '.$matches->getStartDate().' '.$matches->getStartYear().'</span><br />';
+                echo '<h4>'.$fixtime.'</h4>';  
+                echo '<span class="startdate"> '.$fixdate.' '.$matches->getStartYear().'</span><br />';
                 
                 $show = "display:none";
               }else if($matches->getMatchStatus() == "ended"){
-                echo '<h4>'.$matches->getStartTime().'</h4>';  
-                echo '<span class="startdate"> '.$matches->getStartDate().' '.$matches->getStartYear().'</span><br />';
+                echo '<h4>'.$fixtime.'</h4>';  
+                echo '<span class="startdate"> '.$fixdate.' '.$matches->getStartYear().'</span><br />';
                 $show = "";
                 $showpre = "display:none";
               }
