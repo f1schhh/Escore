@@ -31,7 +31,12 @@ class AdminMatches extends DB{
 				if($match_status == "live"){
 					$status = "<font color='green'>LIVE</font>";
 				}else{
-					$status = "$starttdate $starttime";
+					$fixdate = strftime("%e %B", strtotime($starttdate));
+
+                    $realtime = strtotime($starttime);
+                    $fixtime = date("H:i", $realtime);
+
+                    $status = "$fixdate $fixtime";
 				}
 
                 $matches = array_map('intval', explode('-', $score));

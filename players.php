@@ -96,7 +96,5 @@ $nickname = str_replace("players/", "", $nicknameid);
     ?>
   </span>
   </div>
-
-  <script src="js/jquery.timeago.js"></script>
 </body>
 </html>

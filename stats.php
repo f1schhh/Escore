@@ -4,7 +4,7 @@ $settings = new SiteSettings();
 $players = new Players();
 $stats = new Stats();
 if($settings->checkMaintenanace() == 1){
-  header("location: maintenance/");
+  header("location: ../maintenance/");
 }
 $statsid = $_GET['statsid'];
 $statsen = str_replace("stats/", "", $statsid);
@@ -126,7 +126,7 @@ $statsen = str_replace("stats/", "", $statsid);
             ?>
             <div class="bykd" style="width: 100%">
             <br />
-            <span class="statsfix">Statistik över alla spelares deaths
+            <span class="statsfix">Statistik över alla spelares matcher
             <div></div> 
             </span>
             <div class="line"></div>  

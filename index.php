@@ -101,7 +101,7 @@ if($settings->checkMaintenanace() == 1){
         </div>
 
         <div class="twitter">
-          <a class="twitter-timeline" href="https://twitter.com/SECSGO?ref_src=twsrc%5Etfw" data-tweet-limit="3">Twitterflöde</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <a class="twitter-timeline" href="https://twitter.com/SECSGO?ref_src=twsrc%5Etfw" data-tweet-limit="2">Twitterflöde</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
 
       </div>

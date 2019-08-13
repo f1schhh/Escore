@@ -146,9 +146,14 @@ class Teams extends DB{
                 $matchscore = "$matches[0] - $matches[1]";
 
                 }
+                    
+                    $fixdate = strftime("%e %B", strtotime($starttdate));
 
+                    $realtime = strtotime($starttime);
+                    $fixtime = date("H:i", $realtime);
 
-					$status = "$starttdate - $starttime";
+                    $status = "$fixdate $fixtime";
+				
 
 				echo '
 				<a href="../matches/'.$matchid.'">

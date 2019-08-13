@@ -128,12 +128,13 @@ class Matches extends DB{
 				if($match_status == "live"){
 					$status = "<font color='green'>LIVE</font>";
 				}else{
-					$realdate = strtotime($starttdate);
-                    $fixdate = date("jS F", $realdate);
+					
+                    $fixdate = strftime("%e %B", strtotime($starttdate));
 
                     $realtime = strtotime($starttime);
                     $fixtime = date("H:i", $realtime);
-					$status = "$fixdate $fixtime";
+
+                    $status = "$fixdate $fixtime";
 				}
 
                 $matches = array_map('intval', explode('-', $score));
@@ -641,7 +642,13 @@ class Matches extends DB{
 				if($match_status == "live"){
 					$status = "<font color='green'>LIVE</font>";
 				}else{
-					$status = "$starttdate $starttime";
+					
+                    $fixdate = strftime("%e %B", strtotime($starttdate));
+
+                    $realtime = strtotime($starttime);
+                    $fixtime = date("H:i", $realtime);
+
+                    $status = "$fixdate $fixtime";
 				}
 
                 $matches = array_map('intval', explode('-', $score));
@@ -673,7 +680,7 @@ class Matches extends DB{
 				<div class="matchtitle">
                 <span class="matchTitlefix">
  
-                <span class="startTime">'.$starttdate.' '.$starttime.' </span> 
+                <span class="startTime">'.$status.' </span> 
 
 
                 <img src="'.getTeamLogo($team1).'" class="leftteamicon"  />

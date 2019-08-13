@@ -186,6 +186,10 @@ input[type=submit]{
 }
 .sitemsgbox{
     width: 50%;
+    display: inline-block;
+}
+.updatematchscore{
+    width: 50%;
 }
 .statusmsg{
     width: 15%;
@@ -196,7 +200,7 @@ input[type=submit]{
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     border: 1px solid #e3e3e3;
-    display: inline;
+    display: inline-block;
     
 }
 #statustext{
@@ -211,8 +215,25 @@ input[type=submit]{
     border: 1px solid #e3e3e3;
     padding: 10px;
     font-size: 13px;
+    display: inline-block;
 }
 #statustext:focus{
+    box-shadow: none;
+}
+#scoreupdate{
+    width: 50%;
+    height: 30px;
+    color: #4e4e4e;
+    background-color: whitesmoke;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #e3e3e3;
+    padding: 10px;
+    font-size: 13px;
+}
+#scoreupdate:focus{
     box-shadow: none;
 }
 @media screen and (max-width:900px){

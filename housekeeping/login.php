@@ -86,8 +86,8 @@ $admin = new Admin();
 
         <form method="POST" action="login.php">
 
-          <input type="text" id="login" required="" name="username" placeholder="Användarnamn..." />
-          <input type="password" id="login" required="" name="password" placeholder="Lösenord..." />
+          <input type="text" class="username" id="login" required="" name="username" placeholder="Användarnamn..." />
+          <input type="password" class="password" id="login" required="" name="password" placeholder="Lösenord..." />
           <input type="submit" name="subbtn" class="waves-effect waves-light btn" style="background-color: #1087e8; color: white;" value="Logga in" />
 
         </form>  

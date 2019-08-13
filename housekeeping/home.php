@@ -197,6 +197,15 @@ $admin->CheckSiteMsg();
              <input type="submit" id="subteamadd" name="savemsg" class="waves-effect waves-light btn" style="background-color: #1087e8; color: white;" value="Spara" />
           </form>
           </div>
+          <div class="updatematchscore">
+            <b>Uppdatera aktivt matchscore</b>
+            <form method="POST" action="home.php">
+              <input type="text" class="updateMatchid" id="scoreupdate" name="sitemsg" placeholder="Matchid"  />
+              <input type="text" class="updateScore" id="scoreupdate" name="sitemsg" placeholder="Score"  /><br />
+               <input type="submit" id="savescore" name="savemsg" class="waves-effect waves-light btn" style="background-color: #1087e8; color: white;" value="Spara" />
+            </form> 
+          </div> 
+
         </div>
 
          
