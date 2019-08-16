@@ -97,6 +97,31 @@ class Admin extends DB{
 		}
 
 	}
+	private $updatematchid;
+	private $updatescore;
+
+	public function UpdateMatchScore($matchid,$score){
+		$DB = new DB();
+		$DB->connect();
+
+		$this->updatematchid = $DB->secret($matchid);
+		$this->updatescore = $DB->secret($score);
+		$matchstatus = "live";
+
+		$checkmatchid = $DB->prepare("SELECT * FROM matches WHERE matchid = ?");
+		$checkmatchid->bind_Param("s", $this->updatematchid);
+		$checkmatchid->execute();
+		$checkmatchid->store_result();
+
+		if($checkmatchid->num_rows == 1){
+			$updatescorefunc = $DB->prepare("UPDATE matches SET score = ?, match_status = ? WHERE matchid = ? ");
+			$updatescorefunc->bind_Param("sss", $this->updatescore, $matchstatus, $this->updatematchid);
+			if ($updatescorefunc->execute()) {
+				echo '<br /><font color="green">Score är nu uppdaterat!</font>';
+			}
+
+		}
+	}
 
 }
 ?>

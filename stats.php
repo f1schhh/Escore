@@ -14,8 +14,9 @@ $statsen = str_replace("stats/", "", $statsid);
 	<title><?php echo $settings->getTitle(); ?></title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <meta http-equiv="Content-Language" content="sv" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico" />
 	<link rel="stylesheet" href="../css/style.css" /> 
 	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,600,700" rel="stylesheet">
   <link href="../css/lightbox.css" rel="stylesheet" />
@@ -134,7 +135,31 @@ $statsen = str_replace("stats/", "", $statsid);
             </div>
             <?php
             }else{
-            ?> 
+            if($statsen == "averagekills"){
+            ?>
+            <div class="bykd" style="width: 100%">
+            <br />
+            <span class="statsfix">Statistik över alla spelares genomsnitt kills per match
+            <div></div> 
+            </span>
+            <div class="line"></div>  
+            <?php $stats->getFullAverageKills(); ?>
+            </div>
+            <?php
+            }else{
+            if($statsen == "averagedeaths"){
+            ?>
+            <div class="bykd" style="width: 100%">
+            <br />
+            <span class="statsfix">Statistik över alla spelares genomsnitt deaths per match
+            <div></div> 
+            </span>
+            <div class="line"></div>  
+            <?php $stats->getFullAverageDeaths(); ?>
+            </div>
+            <?php
+            }else{
+            ?>    
             <!---- Kill / death ratio ----->
             <div class="bykd">
             <br />
@@ -156,6 +181,29 @@ $statsen = str_replace("stats/", "", $statsid);
             <?php $stats->getStatsKR(); ?>
 
                  </div>  
+                  <!--- Average kills---->
+            <div class="bykd">
+            <br />
+            <span class="statsfix">Top 5 bäst genomsnitt kills per match <a href="averagekills" class="all" style="float: right; margin-right: 5px;">Visa alla</a>
+              <div>
+              </div>
+            </span>
+            <div class="line"></div> 
+            <?php $stats->getStatsAverageKills(); ?>
+
+            </div>
+
+            <!--- Average deaths---->
+            <div class="bykd">
+            <br />
+            <span class="statsfix">Top 5 bäst genomsnitt deaths per match <a href="averagedeaths" class="all" style="float: right; margin-right: 5px;">Visa alla</a>
+              <div>
+              </div>
+            </span>
+            <div class="line"></div> 
+            <?php $stats->getStatsAverageDeaths(); ?>
+
+            </div>
 
                  <!--- Total kills---->
             <div class="bykd">
@@ -198,6 +246,8 @@ $statsen = str_replace("stats/", "", $statsid);
           }
         }
       }
+    }
+  }
           ?> 
 
             </div> 

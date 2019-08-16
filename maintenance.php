@@ -14,6 +14,7 @@ $settings->checkMaintenanace();
   <meta http-equiv="Content-Language" content="sv" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico" />
 	<link rel="stylesheet" href="../css/style.css" /> 
 	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,600,700" rel="stylesheet">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">

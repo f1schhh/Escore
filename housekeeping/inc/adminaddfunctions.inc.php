@@ -342,10 +342,12 @@ class AdminAdd extends DB{
 				$newkr = $newkills / $newplayedrounds;
 				$newrealkr = round($newkr, 2);
 				$newplayedmatches = $this->played_m + 1;
+				$newaveragekills = round($newkills / $newplayedmatches);
+				$newaveragedeaths = round($newdeaths / $newplayedmatches);
 
 
-				$addStatsPlayer = $DB->prepare("UPDATE players SET total_kills = ?, total_deaths = ?, kdratio = ?, krratio = ?, played_matches = ?, played_rounds = ? WHERE nickname = ?");
-				$addStatsPlayer->bind_param("sssssss", $newkills,$newdeaths,$newrealkd,$newrealkr,$newplayedmatches,$newplayedrounds,$this->nickname_stats);
+				$addStatsPlayer = $DB->prepare("UPDATE players SET total_kills = ?, total_deaths = ?, kdratio = ?, krratio = ?, average_kills = ?, average_deaths = ?, played_matches = ?, played_rounds = ? WHERE nickname = ?");
+				$addStatsPlayer->bind_param("sssssssss", $newkills,$newdeaths,$newrealkd,$newrealkr,$newaveragekills, $newaveragedeaths,$newplayedmatches,$newplayedrounds,$this->nickname_stats);
 
 				if($addStatsPlayer->execute()){
 					$addStatsMatch = $DB->prepare("INSERT INTO match_stats (id,matchid,playername,kills,deaths,teamname) VALUES (?,?,?,?,?,?)");
@@ -371,8 +373,8 @@ class AdminAdd extends DB{
 		    $twitch = "";
 		    $twitter = "";
 
-			$addplayer = $DB->prepare("INSERT INTO players (id,steamid,first_name,nickname,last_name,age,player_picture,total_kills,total_deaths,kdratio,krratio,played_matches,played_rounds,team,standin,twitch_url,twitter_url) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-			$addplayer->bind_param("sssssssssssssssss", $id, $steamid, $first, $this->nickname_stats, $last, $age, $playerp, $this->kills, $this->deaths, $realkd, $realkr, $playedm, $this->rounds, $this->team_stats, $stand, $twitch, $twitter);
+			$addplayer = $DB->prepare("INSERT INTO players (id,steamid,first_name,nickname,last_name,age,player_picture,total_kills,total_deaths,kdratio,krratio,average_kills,average_deaths,played_matches,played_rounds,team,standin,twitch_url,twitter_url) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			$addplayer->bind_param("sssssssssssssssssss", $id, $steamid, $first, $this->nickname_stats, $last, $age, $playerp, $this->kills, $this->deaths, $realkd, $realkr, $this->kills, $this->deaths, $playedm, $this->rounds, $this->team_stats, $stand, $twitch, $twitter);
 
 			if($addplayer->execute()){
 

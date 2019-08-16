@@ -14,6 +14,7 @@ $admin->CheckSiteMsg();
   <meta http-equiv="Content-Language" content="sv" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico" />
 	<link rel="stylesheet" href="../css/style.css" /> 
   <link rel="stylesheet" href="../css/admin.css" />
   <link rel="stylesheet" href="../css/home.css" />
@@ -199,10 +200,27 @@ $admin->CheckSiteMsg();
           </div>
           <div class="updatematchscore">
             <b>Uppdatera aktivt matchscore</b>
+            <?php
+            @$savescorebtn = $_POST['savescore'];
+            if(isset($savescorebtn)){
+
+              $Updatematchid = $_POST['Updatematchid'];
+              $scorematch = $_POST['scorematch'];
+
+              if($Updatematchid && $scorematch){
+
+                $admin->UpdateMatchScore($Updatematchid,$scorematch);
+
+              }else{
+                echo "Fel....";
+              }
+
+            }
+            ?>
             <form method="POST" action="home.php">
-              <input type="text" class="updateMatchid" id="scoreupdate" name="sitemsg" placeholder="Matchid"  />
-              <input type="text" class="updateScore" id="scoreupdate" name="sitemsg" placeholder="Score"  /><br />
-               <input type="submit" id="savescore" name="savemsg" class="waves-effect waves-light btn" style="background-color: #1087e8; color: white;" value="Spara" />
+              <input type="text" class="updateMatchid" id="scoreupdate" required="" name="Updatematchid" placeholder="Matchid"  />
+              <input type="text" class="updateScore" id="scoreupdate" required="" name="scorematch" placeholder="Score"  /><br />
+               <input type="submit" id="savescore" name="savescore" class="waves-effect waves-light btn" style="background-color: #1087e8; color: white;" value="Spara" />
             </form> 
           </div> 
 
