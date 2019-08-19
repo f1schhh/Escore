@@ -123,7 +123,7 @@ class AdminPlayers extends DB{
 
 		if($getall->num_rows == 1){
 
-			$getall->bind_Result($id,$steamid,$first_name,$nickname,$last_name,$age,$player_picture,$total_kills,$total_deaths,$kdratio,$krratio,$played_matches,$played_rounds,$team,$standin,$twitch_url,$twitter_url);
+			$getall->bind_Result($id,$steamid,$first_name,$nickname,$last_name,$age,$player_picture,$total_kills,$total_deaths,$kdratio,$krratio,$average_kills,$average_deaths,$played_matches,$played_rounds,$team,$standin,$twitch_url,$twitter_url);
 
 			while ($getall->fetch()) {
 

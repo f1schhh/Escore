@@ -8,29 +8,36 @@ if($settings->checkMaintenanace() == 1){
   header("location: maintenance/");
 }
 ?>
+<!DOCTYPE html>
 <html lang="sv">
 <head>
-	<title><?php echo $settings->getTitle(); ?></title>
+	<title><?php echo $settings->getTitle(); ?> - BETA</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <meta http-equiv="Content-Language" content="sv" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Escore är en svensk e-sport plattform som rapporterar resultat och statistik där du få reda på resultat,statistik,information om spelare med mera!">
+  <meta property="og:title" content="Escore.nu - är en svensk e-sport plattform som rapporterar resultat och statistik">
+  <meta property="og:image" content="none">
+  <meta property="og:site_name" content="Escore.nu">
   <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/logo-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/logo-16x16.png" />
 	<link rel="stylesheet" href="css/style.css" /> 
 	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,600,700" rel="stylesheet">
   <link href="css/lightbox.css" rel="stylesheet" />
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="js/lightbox.js"></script>
-    <script src="js/mobile.js"></script>
-    <script src="js/autoupdate.js"></script>
-    <script src="js/usersearch.js"></script>
-    <style type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="js/lightbox.js"></script>
+  <script src="js/mobile.js"></script>
+  <script src="js/autoupdate.js"></script>
+  <script src="js/usersearch.js"></script>
+  <style type="text/css">
       #leftmeny{
         padding-bottom: 150%;
       }
-    </style>
+  </style>
             
 </head>
 <body>
@@ -93,7 +100,7 @@ if($settings->checkMaintenanace() == 1){
          </form>
       </div>
       </div>
-      <div class="matchesFix" id="contentfix">
+      <div class="matchesfix" id="contentfix">
 
         <div class="matchInfo">
         <?php
