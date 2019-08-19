@@ -8,7 +8,6 @@ if($settings->checkMaintenanace() == 1){
   header("location: maintenance/");
 }
 ?>
-<!DOCTYPE html>
 <html lang="sv">
 <head>
 	<title><?php echo $settings->getTitle(); ?> - BETA</title>

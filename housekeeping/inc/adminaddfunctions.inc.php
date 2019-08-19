@@ -373,7 +373,7 @@ class AdminAdd extends DB{
 		    $twitch = "";
 		    $twitter = "";
 
-			$addplayer = $DB->prepare("INSERT INTO players (id,steamid,first_name,nickname,last_name,age,player_picture,total_kills,total_deaths,kdratio,krratio,average_kills,average_deaths,played_matches,played_rounds,team,standin,twitch_url,twitter_url) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			$addplayer = $DB->prepare("INSERT INTO players (id,steamid,first_name,nickname,last_name,age,player_picture,total_kills,total_deaths,kdratio,krratio,average_kills,average_deaths,played_matches,played_rounds,team,standin,twitch_url,twitter_url) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			$addplayer->bind_param("sssssssssssssssssss", $id, $steamid, $first, $this->nickname_stats, $last, $age, $playerp, $this->kills, $this->deaths, $realkd, $realkr, $this->kills, $this->deaths, $playedm, $this->rounds, $this->team_stats, $stand, $twitch, $twitter);
 
 			if($addplayer->execute()){
