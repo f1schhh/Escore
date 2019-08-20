@@ -25,6 +25,7 @@ $nickname = str_replace("players/", "", $nicknameid);
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../js/lightbox.js"></script>
     <script src="../js/mobile.js"></script>
+    <script src="../js/players.js"></script>
             
 </head>
 <body>
@@ -78,6 +79,13 @@ $nickname = str_replace("players/", "", $nicknameid);
           $players->getPlayerInformation($nickname);
         }
         ?>
+        
+        <div class="showPlayersMatches">
+          <?php 
+          $players->getPlayersMatches($nickname);
+          $players->getAllMatches(); 
+          ?>
+        </div>  
     </div>
 
 

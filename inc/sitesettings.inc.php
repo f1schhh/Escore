@@ -12,7 +12,11 @@ class SiteSettings extends DB{
 
 
 	public function getFooter(){
-		return "<i>&copy; Copyright Escore.se - 2019</i>";
+		return '
+		<a href="#" class="footerbtns">Terms</a>
+        <a href="#" class="footerbtns">Kontakta</a>  
+        <a href="#" class="footerbtns">Donera</a> 
+		<i>&copy; Copyright Escore.nu - 2019</i>';
 	}
 
 	public function getMeny(){

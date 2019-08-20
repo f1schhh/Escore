@@ -54,16 +54,13 @@ class Players extends DB{
               <span class="nickname"> Ålder: <b>'.$age1.'</b></span><br />
            </div>
            <div class="userinfobox">
-              <span class="nickname"> K/D Ratio: <b>'.round($countkd, 2).'</b> </span><br />
-           </div>
-           <div class="userinfobox">
               <span class="nickname"> Lag: <b>'.$team.'</b> </span><br />
            </div>
         </div> 
         <div class="playerMeny">
           <div class="playerMenyFix">
-          <a href="" class="waves-effect waves-light btn buttoncolor" style="display: inline-block; background-color: #1087e8;"> Matcher</a>
-          <a href="" class="waves-effect waves-light btn buttoncolor" style="display: inline-block; background-color: #1087e8;">  Statistik</a>
+          <a href="#" id="showmatches" class="waves-effect waves-light btn buttoncolor" style="display: inline-block; background-color: #1087e8;"> Matcher</a>
+          <a href="#" class="waves-effect waves-light btn buttoncolor" style="display: inline-block; background-color: #1087e8;">  Statistik</a>
 
           ';
           if($twitter_url == ""){
@@ -90,6 +87,115 @@ class Players extends DB{
 
 
 	}
+
+  public $player;
+  public $publicmatchid;
+  public $testrng;
+
+  public function getPlayersMatches($playername){
+
+    $DB = new DB();
+    $DB->connect();
+
+    $this->player = $DB->secret($playername);
+
+    $getmatches = $DB->prepare("SELECT matchid FROM match_stats WHERE playername = ?");
+    $getmatches->bind_param("s", $this->player);
+    $getmatches->execute();
+    $getmatches->store_result();
+
+    if($getmatches->num_rows == 0){
+      echo "Spelaren har inga tidigare matcher spelade...";
+    }else{
+      $getmatches->bind_Result($matchid);
+
+      while ($getmatches->fetch()) {
+
+        $this->publicmatchid[] = $matchid;
+
+      }
+    }
+  }
+
+  public function getAllMatches(){
+    $DB = new DB();
+    $DB->connect();
+
+    $rightarray = implode(",",array_map('intval', $this->publicmatchid));
+    $types = str_repeat('i', count($this->publicmatchid));    
+
+    $matchesOfPlayer = $DB->prepare("SELECT matchid,starttime,starttdate,startyear,team1,team2,match_status,score FROM matches WHERE matchid IN ($rightarray) ORDER by id DESC LIMIT 6");
+    @$matchesOfPlayer->bind_param($types, ...$this->publicmatchid);
+    $matchesOfPlayer->execute();
+    $matchesOfPlayer->store_result();
+
+    if($matchesOfPlayer->num_rows == 0){
+      echo "error ";
+      echo $rightarray;
+    }else{
+      $matchesOfPlayer->bind_Result($matchid,$starttime,$starttdate,$startyear,$team1,$team2,$match_status,$score);
+      while ($matchesOfPlayer->fetch()) {
+
+                    $fixdate = strftime("%e %B", strtotime($starttdate));
+
+                    $realtime = strtotime($starttime);
+                    $fixtime = date("H:i", $realtime);
+
+                    $status = "$fixdate $fixtime";
+
+                $matches = array_map('intval', explode('-', $score));
+
+                if($score == "not started"){
+                  $matchscore = "";
+                }else{
+
+                if($matches[0] == $matches[1]){
+
+                }else{
+
+                if($matches[0]>$matches[1]){
+                  $matches[0] = '<font color="green">'.$matches[0].' </font>';
+                  $matches[1] = '<font color="red">'.$matches[1].' </font>';
+                }else{
+
+                  $matches[1] = '<font color="green">'.$matches[1].' </font>';
+                  $matches[0] = '<font color="red">'.$matches[0].' </font>';
+                }
+                }
+
+                $matchscore = "$matches[0] - $matches[1]";
+
+                }
+
+
+        echo '
+        <a href="../matches/'.$matchid.'">
+        <div class="matchtitle">
+                <span class="matchTitlefix">
+ 
+                <span class="startTime">'.$status.' </span> 
+
+
+                <img src="'.getTeamLogo($team1).'" class="leftteamicon"  />
+                    '.$team1.' VS  '.$team2.' 
+                <img src="'.getTeamLogo($team2).'" class="rightteamicon"  />
+
+             <span class="activeScore">'.$matchscore.'</span>
+           </span>
+
+         </div>
+         </a>
+         <br />
+
+        ';
+        
+
+
+      }
+    }
+
+
+  }
 
   public $searchtxt;
 

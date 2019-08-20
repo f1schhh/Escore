@@ -20,8 +20,8 @@ if($settings->checkMaintenanace() == 1){
   <meta property="og:image" content="none">
   <meta property="og:site_name" content="Escore.nu">
   <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/img/logo-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/img/logo-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="img/logo-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="img/logo-16x16.png" />
 	<link rel="stylesheet" href="css/style.css" /> 
 	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,600,700" rel="stylesheet">
   <link href="css/lightbox.css" rel="stylesheet" />
@@ -32,11 +32,6 @@ if($settings->checkMaintenanace() == 1){
   <script src="js/mobile.js"></script>
   <script src="js/autoupdate.js"></script>
   <script src="js/usersearch.js"></script>
-  <style type="text/css">
-      #leftmeny{
-        padding-bottom: 150%;
-      }
-  </style>
             
 </head>
 <body>
@@ -116,7 +111,7 @@ if($settings->checkMaintenanace() == 1){
     </div> 
   </div>
 
-  <div id="footer">
+  <div id="footer"> 
     <span class="insidefooter">
     <?php
     echo $settings->getFooter();

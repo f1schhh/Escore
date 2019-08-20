@@ -1,3 +1,4 @@
+
 #login{
     width: 40%;
     height: 30px;
@@ -18,9 +19,6 @@ input[type=submit]{
     color: white;
     cursor: pointer;
     padding-top: 10px;
-}
-#leftmeny{
-    padding-bottom: 100%;
 }
 .pagebtn{
     width: auto;

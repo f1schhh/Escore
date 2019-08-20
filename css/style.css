@@ -1,6 +1,7 @@
 html,body{
 	background-color: #e1e6ed;
 	font-family: 'Nunito Sans', sans-serif;
+	min-width: 350px;
 }
 @font-face{
 	font-family: pacfic;
@@ -279,6 +280,17 @@ img{
 	border: 1px solid #ebccd1;
 	background-color: #f2dede;
 }
+.footerbtns{
+	margin: auto;
+	color: white;
+	padding: 15px;
+    padding-top: 13px;
+	margin-right: 10px;
+	width: 20%;
+}
+.footerbtns:hover{
+	background-color: #0e0e0e;
+}
 @media screen and (max-width:1100px){
 	#smh{
 		width: 90%;
@@ -286,6 +298,11 @@ img{
 	#footer{
 		width: 90%;
 	}
+	.footerbtns{
+	padding: 15px;
+    padding-bottom: 18px;
+    padding-top: 12px;
+   }
 }
 
 @media screen and (max-width:920px){
@@ -347,6 +364,11 @@ img{
 }
 #footer{
 	width: 100%;
+}
+.footerbtns{
+	padding: 15px;
+    padding-bottom: 18px;
+    padding-top: 12px;
 }
 }
 
