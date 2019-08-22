@@ -8,10 +8,29 @@ if($settings->checkMaintenanace() == 1){
 }
 $statsid = $_GET['statsid'];
 $statsen = str_replace("stats/", "", $statsid);
+
+$currentlink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+$badlink = $_SERVER['REQUEST_URI'];
+
+  if($statsen == "kills" || $statsen == "deaths" || $statsen == "kr" || $statsen == "kd" || $statsen == "matches" || $statsen == "averagekills" || $statsen == "averagedeaths"){
+
+
+    }else{
+      if($statsen == "kills/" || $statsen == "deaths/" || $statsen == "kr/" || $statsen == "kd/" || $statsen == "matches/" || $statsen == "averagekills/" || $statsen == "averagedeaths/"){
+        header("location: ../index.php");
+      }else{
+      if($statsid == "stats/"){
+
+      }else{
+     header("location: ../index.php");
+     }
+   }
+ }
+
 ?>
 <html lang="sv">
 <head>
-	<title><?php echo $settings->getTitle(); ?></title>
+	<title><?php echo $settings->getTitle(); ?> </title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <meta http-equiv="Content-Language" content="sv" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">

@@ -14,9 +14,32 @@ class SiteSettings extends DB{
 	public function getFooter(){
 		return '
 		<a href="#" class="footerbtns">Terms</a>
-        <a href="#" class="footerbtns">Kontakta</a>  
-        <a href="#" class="footerbtns">Donera</a> 
-		<i>&copy; Copyright Escore.nu - 2019</i>';
+        <a class="footerbtns modal-trigger" href="#contactmodal">Kontakta</a>  
+        <a class="footerbtns modal-trigger" href="#donatemodal">Donera</a> 
+		<i>&copy; Copyright Escore.nu - 2019</i>
+
+		  <!-- Kontakt modal -->
+         <div id="contactmodal" class="modal modal-fixed-footer" style="height: 50%;">
+         <div class="modal-content" style="color: #4e4e4e;">
+         <h4>Kontakta oss</h4>
+         <p class="insidemodal">Är det något du undrar över? Tveka inte att skicka iväg ett mail till <b>info@escore.nu</b>. Du kan även nå oss på twitter <a href="https://twitter.com/escorenu" target="_blank">@escorenu</a></p>
+        </div>
+        <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-red btn-flat">Stäng</a>
+        </div>
+        </div>
+
+        <!-- Donera modal -->
+         <div id="donatemodal" class="modal modal-fixed-footer" style="height: 50%;">
+         <div class="modal-content" style="color: #4e4e4e;">
+         <h4>Donera till oss</h4>
+         <p class="insidemodal">Känner du att du vill stödja oss? Då kan du donera till oss för att stödja oss att utveckla <b>Escore</b> till något ännu bättre och större. Donationer är frivilliga och du ska inte känna dig tvingad till och donera. Just nu har vi endast paypal som donationsalternativ men vi jobbar på att utveckla så man kan donera via swish. Klicka <a href="#" target="_blank">här</a> för att donera</p>
+        </div>
+        <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-red btn-flat">Stäng</a>
+        </div>
+        </div>
+		';
 	}
 
 	public function getMeny(){

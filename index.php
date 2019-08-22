@@ -25,13 +25,18 @@ if($settings->checkMaintenanace() == 1){
 	<link rel="stylesheet" href="css/style.css" /> 
 	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,600,700" rel="stylesheet">
   <link href="css/lightbox.css" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="js/lightbox.js"></script>
   <script src="js/mobile.js"></script>
   <script src="js/autoupdate.js"></script>
   <script src="js/usersearch.js"></script>
+  <script>
+    $(document).ready(function(){
+    $('.modal').modal();
+     });
+    </script>
             
 </head>
 <body>
