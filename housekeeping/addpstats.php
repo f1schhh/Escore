@@ -228,7 +228,7 @@ $admin->CheckIfUserIsInlogged($_SESSION['loginsession']);
             <span class="playerstatsfix">Spelare2:</span><br />
             <input type="text" id="addpstats" class="nick7" required="" name="nick7" placeholder="Nick..." />
             <input type="text" id="addpstats" class="kills7" required="" name="kills7" placeholder="Kills..." />
-            <input type="text" id="addpstats" class="deahts7" required="" name="deaths7" placeholder="Deaths..." />
+            <input type="text" id="addpstats" class="deaths7" required="" name="deaths7" placeholder="Deaths..." />
             <span class="playerstatsfix">Spelare3:</span><br />
             <input type="text" id="addpstats" class="nick8" required="" name="nick8" placeholder="Nick..." />
             <input type="text" id="addpstats" class="kills8" required="" name="kills8" placeholder="Kills..." />
@@ -236,7 +236,7 @@ $admin->CheckIfUserIsInlogged($_SESSION['loginsession']);
             <span class="playerstatsfix">Spelare4:</span><br />
             <input type="text" id="addpstats" class="nick9" required="" name="nick9" placeholder="Nick..." />
             <input type="text" id="addpstats" class="kills9" required="" name="kills9" placeholder="Kills..." />
-            <input type="text" id="addpstats" class="deahts9" required="" name="deaths9" placeholder="Deaths..." />
+            <input type="text" id="addpstats" class="deaths9" required="" name="deaths9" placeholder="Deaths..." />
             <span class="playerstatsfix">Spelare5:</span><br />
             <input type="text" id="addpstats" class="nick10" required="" name="nick10" placeholder="Nick..." />
             <input type="text" id="addpstats" class="kills10" required="" name="kills10" placeholder="Kills..." />
