@@ -74,9 +74,6 @@
         width: 49%;
         display: inline-block;
     }
-    #leftmeny{
-        padding-bottom: 200%;
-    }
 }
 @media screen and (max-width:1500px){
 	.bykd{
@@ -90,9 +87,6 @@
 	.statsline{
 		padding-bottom: auto;
 	}
-    #leftmeny{
-        padding-bottom: 300%;
-    }
 }
 @media screen and (max-width:900px){
     .statsfix{

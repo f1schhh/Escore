@@ -202,6 +202,7 @@ class Matches extends DB{
 	public $start_date;
 	public $start_year;
 	public $league;
+	public $stream;
 
 
 	public function getMatchInformation($matchid){
@@ -220,7 +221,7 @@ class Matches extends DB{
 		if($showmatchinfo->num_rows == 1){
 
 
-			$showmatchinfo->bind_result($id,$matchid,$starttime,$starttdate,$startyear,$team1,$team2,$match_status,$map,$score,$league,$mvp);
+			$showmatchinfo->bind_result($id,$matchid,$starttime,$starttdate,$startyear,$team1,$team2,$match_status,$map,$score,$league,$stream,$mvp);
 
 			while($showmatchinfo->fetch()){
 
@@ -233,6 +234,7 @@ class Matches extends DB{
 				$this->upmap = $map;
 				$this->start_date = $starttdate;
 				$this->league = $league;
+				$this->stream = $stream;
 			}
 		}else{
 			header("location: ../index.php");
@@ -262,6 +264,9 @@ class Matches extends DB{
 	}
 	public function getLeague(){
 		return $this->league;
+	}
+	public function getStream(){
+		return $this->stream;
 	}
 	public function getScore(){
 		        
@@ -635,7 +640,7 @@ class Matches extends DB{
 			header("location: ../index.php");
 		}else{
 
-			$getmatches->bind_result($id,$matchid,$starttime,$starttdate,$startyear,$team1,$team2,$match_status,$map,$score,$league,$mvp);
+			$getmatches->bind_result($id,$matchid,$starttime,$starttdate,$startyear,$team1,$team2,$match_status,$map,$score,$league,$stream,$mvp);
 
 			while ($getmatches->fetch()) {
 

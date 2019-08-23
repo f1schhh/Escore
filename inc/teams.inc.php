@@ -118,7 +118,7 @@ class Teams extends DB{
         </div>  
 			';
 		}else{
-			$getmatches->bind_result($id,$matchid,$starttime,$starttdate,$startyear,$team1,$team2,$match_status,$map,$score,$league,$mvp);
+			$getmatches->bind_result($id,$matchid,$starttime,$starttdate,$startyear,$team1,$team2,$match_status,$map,$score,$league,$stream,$mvp);
 
 			while($getmatches->fetch()){
 

@@ -24,7 +24,7 @@ class AdminMatches extends DB{
 			header("location: controllmatches.php?page=1");
 		}else{
 
-			$getmatches->bind_result($id,$matchid,$starttime,$starttdate,$startyear,$team1,$team2,$match_status,$map,$score,$league,$mvp);
+			$getmatches->bind_result($id,$matchid,$starttime,$starttdate,$startyear,$team1,$team2,$match_status,$map,$score,$league,$stream,$mvp);
 
 			while ($getmatches->fetch()) {
 
@@ -155,6 +155,7 @@ class AdminMatches extends DB{
     public $upmap;
     public $sc0re;
     public $mvp1;
+    public $stream1;
 
 
     public function getAllMatchInfo($matchid){
@@ -171,7 +172,7 @@ class AdminMatches extends DB{
 
 		if($getall->num_rows == 1){
 
-			$getall->bind_Result($id,$matchid,$starttime,$starttdate,$startyear,$team1,$team2,$match_status,$map,$score,$league,$mvp);
+			$getall->bind_Result($id,$matchid,$starttime,$starttdate,$startyear,$team1,$team2,$match_status,$map,$score,$league,$stream,$mvp);
 
 			while ($getall->fetch()) {
 
@@ -184,6 +185,7 @@ class AdminMatches extends DB{
 				$this->start_date = $starttdate;
 				$this->upmap = $map;
 				$this->mvp1 = $mvp;
+				$this->stream1 = $stream;
 
 			}
 
@@ -216,6 +218,9 @@ class AdminMatches extends DB{
 	}
 	public function getScore(){
 		return $this->sc0re;
+	}
+	public function getStream(){
+		return $this->stream1;
 	}
 
 	private $matchlineup;
@@ -335,7 +340,7 @@ class AdminMatches extends DB{
 	private $mvp_edit;
 
 
-	public function saveMatchInfo($matchid, $team1, $team2, $matchstatus, $map, $score, $startime, $startdate, $mvp){
+	public function saveMatchInfo($matchid, $team1, $team2, $matchstatus, $map, $score, $startime, $startdate, $stream, $mvp){
 
 		$DB = new DB();
 		$DB->connect();
@@ -348,6 +353,7 @@ class AdminMatches extends DB{
 		$this->startime_edit = $DB->secret($startime);
 		$this->startdate_edit = $DB->secret($startdate);
 		$this->mvp_edit = $DB->secret($mvp);
+		$this->stream_edit = $DB->secret($stream);
 		$this->score_edit = $DB->secret($score);
 
 		$saveinfo = $DB->prepare("SELECT * FROM matches WHERE matchid = ? ");
@@ -357,8 +363,8 @@ class AdminMatches extends DB{
 
 		if($saveinfo->num_rows == 1){
 
-			$editinfo = $DB->prepare("UPDATE matches SET team1 = ?, team2 = ?, match_status = ?, map = ?, starttime = ?, starttdate = ?, score = ?, mvp = ? WHERE matchid = ?");
-			$editinfo->bind_Param("sssssssss", $this->team1_edit, $this->team2_edit, $this->status_edit, $this->map_edit, $this->startime_edit, $this->startdate_edit, $this->score_edit, $this->mvp_edit, $this->editid);
+			$editinfo = $DB->prepare("UPDATE matches SET team1 = ?, team2 = ?, match_status = ?, map = ?, starttime = ?, starttdate = ?, score = ?, stream = ?, mvp = ? WHERE matchid = ?");
+			$editinfo->bind_Param("ssssssssss", $this->team1_edit, $this->team2_edit, $this->status_edit, $this->map_edit, $this->startime_edit, $this->startdate_edit, $this->score_edit,$this->stream_edit, $this->mvp_edit,  $this->editid);
 			if($editinfo->execute()){
 				echo "<font color='green'>Matchinformationen är nu uppdaterad!</font>";
 				echo ' <script>$(document).ready(function(){ $("#editinfo").load(location.href + " #editinfo");  }); </script>  ';

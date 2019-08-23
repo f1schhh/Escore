@@ -65,6 +65,8 @@
 .team1Logo{
     font-weight: bolder;
     font-size: 20px;
+    position: relative;
+    left: 3px;
 }
 .line{
     border-bottom: 1px solid #e3e3e3;
@@ -76,6 +78,18 @@
     position: relative; 
     top: 5px; 
     left: 4px
+}
+.vodbox{
+    width: 100%;
+    height: auto;
+    color: #4e4e4e;
+    margin-top: 10px; 
+    background-color: whitesmoke;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #e3e3e3;
 }
 .statsline{
     border-left: 1px solid #e3e3e3;
@@ -232,6 +246,16 @@
     padding: 10px;
     border-right: 1px solid #e3e3e3;
 }
+.vodfix{
+    width: 50%;
+    display: inline-block;
+    padding: 10px;
+}
+.streamlink{
+    position: relative;
+    bottom: 5px;
+    left: 5px;
+}
 .rightext{
     position: relative;
     left: 5px;
@@ -242,6 +266,10 @@
     padding-bottom: 8px;
     display: inline-block;
     border-right: 1px solid #e3e3e3;
+}
+.insidevod{
+    padding-bottom: 8px;
+    display: inline-block;
 }
 .overstats{
     width: 11.5%;

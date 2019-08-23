@@ -24,13 +24,6 @@ $admin->CheckIfUserIsInlogged($_SESSION['loginsession']);
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="../js/lightbox.js"></script>
     <script src="../js/mobile.js"></script>
-    <style type="text/css">
-    #midcontent{
-    	padding-bottom: 0;
-    	margin-bottom: 0;
-
-    }
-    </style>
    
 </head>
 <body>
@@ -206,52 +199,53 @@ $admin->CheckIfUserIsInlogged($_SESSION['loginsession']);
             <input type="text" id="addteam" class="matchid" required="" name="matchid" placeholder="Matchid..." /> 
             <input type="text" id="addteam" class="team1" required="" name="team1" placeholder="Lag 1..." />
             <span class="playerstatsfix">Spelare1:</span><br />
-            <input type="text" id="addpstats" required="" name="nick1" placeholder="Nick..." />
-            <input type="text" id="addpstats" required="" name="kills1" placeholder="Kills..." />
-            <input type="text" id="addpstats" required="" name="deaths1" placeholder="Deaths..." />
+            <input type="text" id="addpstats" class="nick1" required="" name="nick1" placeholder="Nick..." />
+            <input type="text" id="addpstats" class="kills1" required="" name="kills1" placeholder="Kills..." />
+            <input type="text" id="addpstats" class="deaths1" required="" name="deaths1" placeholder="Deaths..." />
             <span class="playerstatsfix">Spelare2:</span><br />
-            <input type="text" id="addpstats" required="" name="nick2" placeholder="Nick..." />
-            <input type="text" id="addpstats" required="" name="kills2" placeholder="Kills..." />
-            <input type="text" id="addpstats" required="" name="deaths2" placeholder="Deaths..." />
+            <input type="text" id="addpstats" class="nick2" required="" name="nick2" placeholder="Nick..." />
+            <input type="text" id="addpstats" class="kills2" required="" name="kills2" placeholder="Kills..." />
+            <input type="text" id="addpstats" class="deaths2" required="" name="deaths2" placeholder="Deaths..." />
             <span class="playerstatsfix">Spelare3:</span><br />
-            <input type="text" id="addpstats" required="" name="nick3" placeholder="Nick..." />
-            <input type="text" id="addpstats" required="" name="kills3" placeholder="Kills..." />
-            <input type="text" id="addpstats" required="" name="deaths3" placeholder="Deaths..." />
+            <input type="text" id="addpstats" class="nick3" required="" name="nick3" placeholder="Nick..." />
+            <input type="text" id="addpstats" class="kills3" required="" name="kills3" placeholder="Kills..." />
+            <input type="text" id="addpstats" class="deaths3" required="" name="deaths3" placeholder="Deaths..." />
             <span class="playerstatsfix">Spelare4:</span><br />
-            <input type="text" id="addpstats" required="" name="nick4" placeholder="Nick..." />
-            <input type="text" id="addpstats" required="" name="kills4" placeholder="Kills..." />
-            <input type="text" id="addpstats" required="" name="deaths4" placeholder="Deaths..." />
+            <input type="text" id="addpstats" class="nick4" required="" name="nick4" placeholder="Nick..." />
+            <input type="text" id="addpstats" class="kills4" required="" name="kills4" placeholder="Kills..." />
+            <input type="text" id="addpstats" class="deaths4" required="" name="deaths4" placeholder="Deaths..." />
             <span class="playerstatsfix">Spelare5:</span><br />
-            <input type="text" id="addpstats" required="" name="nick5" placeholder="Nick..." />
-            <input type="text" id="addpstats" required="" name="kills5" placeholder="Kills..." />
-            <input type="text" id="addpstats" required="" name="deaths5" placeholder="Deaths..." />
+            <input type="text" id="addpstats" class="nick5" required="" name="nick5" placeholder="Nick..." />
+            <input type="text" id="addpstats" class="kills5" required="" name="kills5" placeholder="Kills..." />
+            <input type="text" id="addpstats" class="deaths5" required="" name="deaths5" placeholder="Deaths..." />
             <div class="line"></div><br />
 
-           <input type="text" id="addteam" class="team1" required="" name="team2" placeholder="Lag 2..." />
+           <input type="text" id="addteam" class="team2" required="" name="team2" placeholder="Lag 2..." />
             <span class="playerstatsfix">Spelare1:</span><br />
-            <input type="text" id="addpstats" required="" name="nick6" placeholder="Nick..." />
-            <input type="text" id="addpstats" required="" name="kills6" placeholder="Kills..." />
-            <input type="text" id="addpstats" required="" name="deaths6" placeholder="Deaths..." />
+            <input type="text" id="addpstats" class="nick6" required="" name="nick6" placeholder="Nick..." />
+            <input type="text" id="addpstats" class="kills6" required="" name="kills6" placeholder="Kills..." />
+            <input type="text" id="addpstats" class="deaths6" required="" name="deaths6" placeholder="Deaths..." />
             <span class="playerstatsfix">Spelare2:</span><br />
-            <input type="text" id="addpstats" required="" name="nick7" placeholder="Nick..." />
-            <input type="text" id="addpstats" required="" name="kills7" placeholder="Kills..." />
-            <input type="text" id="addpstats" required="" name="deaths7" placeholder="Deaths..." />
+            <input type="text" id="addpstats" class="nick7" required="" name="nick7" placeholder="Nick..." />
+            <input type="text" id="addpstats" class="kills7" required="" name="kills7" placeholder="Kills..." />
+            <input type="text" id="addpstats" class="deahts7" required="" name="deaths7" placeholder="Deaths..." />
             <span class="playerstatsfix">Spelare3:</span><br />
-            <input type="text" id="addpstats" required="" name="nick8" placeholder="Nick..." />
-            <input type="text" id="addpstats" required="" name="kills8" placeholder="Kills..." />
-            <input type="text" id="addpstats" required="" name="deaths8" placeholder="Deaths..." />
+            <input type="text" id="addpstats" class="nick8" required="" name="nick8" placeholder="Nick..." />
+            <input type="text" id="addpstats" class="kills8" required="" name="kills8" placeholder="Kills..." />
+            <input type="text" id="addpstats" class="deaths8" required="" name="deaths8" placeholder="Deaths..." />
             <span class="playerstatsfix">Spelare4:</span><br />
-            <input type="text" id="addpstats" required="" name="nick9" placeholder="Nick..." />
-            <input type="text" id="addpstats" required="" name="kills9" placeholder="Kills..." />
-            <input type="text" id="addpstats" required="" name="deaths9" placeholder="Deaths..." />
+            <input type="text" id="addpstats" class="nick9" required="" name="nick9" placeholder="Nick..." />
+            <input type="text" id="addpstats" class="kills9" required="" name="kills9" placeholder="Kills..." />
+            <input type="text" id="addpstats" class="deahts9" required="" name="deaths9" placeholder="Deaths..." />
             <span class="playerstatsfix">Spelare5:</span><br />
-            <input type="text" id="addpstats" required="" name="nick10" placeholder="Nick..." />
-            <input type="text" id="addpstats" required="" name="kills10" placeholder="Kills..." />
-            <input type="text" id="addpstats" required="" name="deaths10" placeholder="Deaths..." />
+            <input type="text" id="addpstats" class="nick10" required="" name="nick10" placeholder="Nick..." />
+            <input type="text" id="addpstats" class="kills10" required="" name="kills10" placeholder="Kills..." />
+            <input type="text" id="addpstats" class="deaths10" required="" name="deaths10" placeholder="Deaths..." />
             <input type="submit" id="subteamadd" name="addstatsbtn" class="waves-effect waves-light btn" style="background-color: #1087e8; color: white;" value="Lägg till" />
       </form> 
     </div> 
   </div>
+</div>
 
   <div id="footer">
     <span class="insidefooter">

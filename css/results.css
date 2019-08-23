@@ -18,9 +18,6 @@
 .matchtitle{
 	width: 100%;
 }
-#leftmeny{
-    padding-bottom: 100%;
-}
 @media screen and (max-width:900px){
     .matchesfix{
         margin-bottom: 10px;

@@ -40,12 +40,16 @@ $badlink = $_SERVER['REQUEST_URI'];
 	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,600,700" rel="stylesheet">
   <link href="../css/lightbox.css" rel="stylesheet" />
   <link href="../css/stats.css" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../js/lightbox.js"></script>
     <script src="../js/mobile.js"></script>
-            
+    <script>
+    $(document).ready(function(){
+    $('.modal').modal();
+     });
+    </script>        
 </head>
 <body>
 
@@ -56,13 +60,13 @@ $badlink = $_SERVER['REQUEST_URI'];
 
       <div class="openmeny">
 
-        <a href="#" class="mobilebtn">
+        <a href="../img/icons/mobilebtn.png" class="mobilebtn">
             <img src="https://cdn3.iconfinder.com/data/icons/mini-icon-set-general-office/91/General_-_Office_30-512.png"
         style="width: 56px; height: 56px;">
       </a>
 
       </div>
-      <a href="#"><div id="logo"><?php echo $settings->getTitle(); ?></div></a>
+      <a href="../index.php"><div id="logo"><?php echo $settings->getTitle(); ?></div></a>
 
                 <div class="fixmobilepos">
                   <?php $settings->getMenyOutside(); ?>
@@ -77,7 +81,7 @@ $badlink = $_SERVER['REQUEST_URI'];
     <!----- Start utav menyn ------->
 
 		<div id="leftmeny">
-			<a href="#"><div id="logo"><?php echo $settings->getTitle(); ?></div></a>
+			<a href="../index.php"><div id="logo"><?php echo $settings->getTitle(); ?></div></a>
 			<div class="info-text"> 
 				        
             </div>
@@ -146,7 +150,7 @@ $badlink = $_SERVER['REQUEST_URI'];
             ?>
             <div class="bykd" style="width: 100%">
             <br />
-            <span class="statsfix">Statistik över alla spelares matcher
+            <span class="statsfix">Statistik över flest spelade matcher
             <div></div> 
             </span>
             <div class="line"></div>  

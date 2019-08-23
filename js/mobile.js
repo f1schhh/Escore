@@ -12,7 +12,7 @@ $(document).ready(function(){
 			$(".fixmobilepos").slideUp("slow");
 		}
 
-		
+	
 
 	});
 

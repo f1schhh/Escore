@@ -100,11 +100,12 @@ if(isset($_GET['page'])){
               @$startdate = $_POST['startdate'];
               @$matchscore = $_POST['matchscore'];
               @$mvp = $_POST['mvp'];
+              @$stream = $_POST['stream'];
 
 
               if(isset($submatchinfo)){
                 if($team1 && $team2 && $matchstatus && $starttime && $startdate && $matchscore){
-                  $adminmatches->saveMatchInfo($matchid, $team1, $team2, $matchstatus, $map, $matchscore, $starttime, $startdate, $mvp);
+                  $adminmatches->saveMatchInfo($matchid, $team1, $team2, $matchstatus, $map, $matchscore, $starttime, $startdate, $stream, $mvp);
                 }
               }
               ?>
@@ -118,7 +119,8 @@ if(isset($_GET['page'])){
               <input type="text" id="editinput" class="matchinfo" name="startdate" placeholder="Startdatum..." value="<?php echo $adminmatches->getStartDate(); ?>" />
               <input type="text" id="editinput"  name="matchscore" placeholder="Score..." value="<?php echo $adminmatches->getScore(); ?>" />
               <input type="text" id="editinput" class="matchinfo" name="mvp" placeholder="MVP..." value="<?php echo $adminmatches->getMVP(); ?>" />
-              <input type="text" id="editinput" class="matchinfo" placeholder="Matchid..." value="<?php echo $adminmatches->getMatchId(); ?>" readonly/>
+              <input type="text" id="editinput" class="matchinfo" name="stream" placeholder="Stream..." value="<?php echo $adminmatches->getStream(); ?>" />
+              <input type="text" id="editinput" class="matchinfo" placeholder="Matchid..." value="<?php echo $adminmatches->getMatchId(); ?>" readonly/><br />
               <input type="submit" id="submatchinfo" name="submatchinfo" class="waves-effect waves-light btn" style="background-color: #1087e8; color: white;" value="Spara" />
              </form> 
 
