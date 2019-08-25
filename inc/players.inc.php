@@ -54,13 +54,13 @@ class Players extends DB{
               <span class="nickname"> Ålder: <b>'.$age1.'</b></span><br />
            </div>
            <div class="userinfobox">
-              <span class="nickname"> Lag: <b>'.$team.'</b> </span><br />
+              <span class="nickname"> Lag: <b><a href="../teams/'.$team.'" style="color: #4e4e4e;">'.$team.'</b> </a></span><br />
            </div>
         </div> 
         <div class="playerMeny">
           <div class="playerMenyFix">
           <a href="#" id="showmatches" class="waves-effect waves-light btn buttoncolor" style="display: inline-block; background-color: #1087e8;"> Matcher</a>
-          <a href="#" class="waves-effect waves-light btn buttoncolor" style="display: inline-block; background-color: #1087e8;">  Statistik</a>
+          <a href="#" id="showstats" class="waves-effect waves-light btn buttoncolor" style="display: inline-block; background-color: #1087e8;">  Statistik</a>
 
           ';
           if($twitter_url == ""){
@@ -105,7 +105,7 @@ class Players extends DB{
     $getmatches->store_result();
 
     if($getmatches->num_rows == 0){
-      echo "Spelaren har inga tidigare matcher spelade...";
+      return 0;
     }else{
       $getmatches->bind_Result($matchid);
 
@@ -121,8 +121,8 @@ class Players extends DB{
     $DB = new DB();
     $DB->connect();
 
-    $rightarray = implode(",",array_map('intval', $this->publicmatchid));
-    $types = str_repeat('i', count($this->publicmatchid));    
+    @$rightarray = implode(",",array_map('intval', $this->publicmatchid));
+    @$types = str_repeat('i', count($this->publicmatchid));    
 
     $matchesOfPlayer = $DB->prepare("SELECT matchid,starttime,starttdate,startyear,team1,team2,match_status,score FROM matches WHERE matchid IN ($rightarray) ORDER by id DESC LIMIT 6");
     @$matchesOfPlayer->bind_param($types, ...$this->publicmatchid);
@@ -131,7 +131,7 @@ class Players extends DB{
 
     if($matchesOfPlayer->num_rows == 0){
       echo "error ";
-      echo $rightarray;
+      
     }else{
       $matchesOfPlayer->bind_Result($matchid,$starttime,$starttdate,$startyear,$team1,$team2,$match_status,$score);
       while ($matchesOfPlayer->fetch()) {
@@ -192,6 +192,66 @@ class Players extends DB{
 
 
       }
+    }
+  }
+
+  private $nicksave;
+
+  public function getPlayersStats($nick){  
+    $DB = new DB();
+    $DB->connect();
+
+    $this->nicksave = $DB->secret($nick);
+
+    $stats = $DB->prepare("SELECT total_kills,total_deaths,kdratio,krratio,average_kills,average_deaths,played_matches,played_rounds FROM players WHERE nickname = ?");
+    $stats->bind_param("s", $this->nicksave);
+    $stats->execute();
+    $stats->store_result();
+
+    if($stats->num_rows == 1){
+
+      $stats->bind_result($total_kills,$total_deaths,$kdratio,$krratio,$average_kills,$average_deaths,$played_matches,$played_rounds);
+
+      while ($stats->fetch()) {
+
+        if($total_kills == ""){
+          echo "$this->nicksave har inga matcher spelade...";
+        }else{
+
+          echo '
+           <div class="statsinfobox">
+              <span class="nickname"> Antal spelade matcher: <b>'.$played_matches.'</b> </span><br />
+           </div>
+           <div class="statsinfobox">
+              <span class="nickname"> Antal spelade rundor: <b>'.$played_rounds.'</b> </span><br />
+           </div>
+          <div class="statsinfobox">
+              <span class="nickname"> Antal kills: <b>'.$total_kills.'</b> </span><br />
+           </div>
+           <div class="statsinfobox">
+              <span class="nickname"> Antal deaths: <b>'.$total_deaths.'</b> </span><br />
+           </div>
+           <div class="statsinfobox">
+              <span class="nickname"> KD-Ratio: <b>'.$kdratio.'</b> </span><br />
+           </div>
+           <div class="statsinfobox">
+              <span class="nickname"> KR-Ratio: <b>'.$krratio.'</b> </span><br />
+           </div>
+           <div class="statsinfobox">
+              <span class="nickname"> Genomsnitt kills per match: <b>'.$average_kills.'</b> </span><br />
+           </div>
+           <div class="statsinfobox">
+              <span class="nickname"> Genomsnitt deaths per match: <b>'.$average_deaths.'</b> </span><br />
+           </div>
+          ';
+
+
+        }
+
+      }
+
+    }else{
+      echo "Error";
     }
 
 

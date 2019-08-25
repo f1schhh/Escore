@@ -108,11 +108,11 @@ $admin->CheckSiteMsg();
             <input type="text" id="editinput" class="firstname" required="" name="firstname" placeholder="Förnamn..." />
             <input type="text" id="editinput" class="lastname" required="" name="lastname" placeholder="Efternamn..." />
             <input type="text" id="editinput" class="nickname" required="" name="nickname" placeholder="Nickname..." />
-            <input type="text" id="editinput" class="born" required="" name="born" placeholder="Född..." />
+            <input type="text" id="editinput" class="born"  name="born" placeholder="Född..." />
             <input type="text" id="editinput" class="team" required="" name="team" placeholder="Lag..." />
             <input type="text" id="editinput" class="playerpicture" name="playerpicture" placeholder="Profil bild..." />
-            <input type="text" id="editinput" class="twitter" required="" name="twitter" placeholder="Twitter..." />
-            <input type="text" id="editinput" class="twitch" required="" name="twitch" placeholder="Twitch..." />
+            <input type="text" id="editinput" class="twitch" name="twitch" placeholder="Twitch..." />
+            <input type="text" id="editinput" class="twitter" name="twitter" placeholder="Twitter..." />
             <span class="standinfix">Standin:</span>
             <select name="standin" class="standin" required="">
               <option value="Ja" name="yes">Ja</option>

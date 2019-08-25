@@ -18,7 +18,7 @@ $decrypt = "$firstname&$lastname&$nickname&$born&$team&$playerpicture&$twitch&$t
 
 parse_str($decrypt, $adduser);
 
-if($firstname && $lastname && $nickname && $born && $team){
+if($firstname && $lastname && $nickname && $team){
 
 	$adminAdd->addUser($adduser['firstname'],$adduser['lastname'],$adduser['nickname'],$adduser['born'],$adduser['team'],$adduser['playerpicture'],$adduser['twitch'],$adduser['twitter'],$adduser['standin']);
 

@@ -61,6 +61,21 @@
     text-align: left;
     border: 1px solid #e3e3e3;
 }
+.statsinfobox{
+    width: 100%;
+    color: #4e4e4e;
+    background-color: whitesmoke;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    display: block;
+    float: left;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #e3e3e3;
+}
 .nickname{
     padding: 5px;
 }
@@ -68,6 +83,9 @@
     color: white;
 }
 .showPlayersMatches{
+    display: none;
+}
+.showPlayersStats{
     display: none;
 }
 @media screen and (max-width:800px){

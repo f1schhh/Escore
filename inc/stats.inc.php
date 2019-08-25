@@ -17,7 +17,7 @@ class Stats extends DB{
 
 		if($getKD->num_rows == 0){
 
-			echo "Det har skett ett fel!";
+			echo "<div style='padding: 15px;'>Statistik kommer inom kort</div>";
 
 			}else{
 
@@ -65,7 +65,7 @@ class Stats extends DB{
 
 		if($getKD->num_rows == 0){
 
-			echo "Det har skett ett fel!";
+			echo "<div style='padding: 15px;'>Statistik kommer inom kort</div>";
 
 			}else{
 
@@ -110,7 +110,7 @@ class Stats extends DB{
 
 		if($getKD->num_rows == 0){
 
-			echo "Det har skett ett fel!";
+			echo "<div style='padding: 15px;'>Statistik kommer inom kort</div>";
 
 			}else{
 
@@ -155,7 +155,7 @@ class Stats extends DB{
 
 		if($getKD->num_rows == 0){
 
-			echo "Det har skett ett fel!";
+			echo "<div style='padding: 15px;'>Statistik kommer inom kort</div>";
 
 			}else{
 
@@ -198,7 +198,7 @@ class Stats extends DB{
 
 		if($getKD->num_rows == 0){
 
-			echo "Det har skett ett fel!";
+			echo "<div style='padding: 15px;'>Statistik kommer inom kort</div>";
 
 			}else{
 
@@ -237,7 +237,7 @@ class Stats extends DB{
 
 		if($getKD->num_rows == 0){
 
-			echo "Det har skett ett fel!";
+			echo "<div style='padding: 15px;'>Statistik kommer inom kort</div>";
 
 			}else{
 
@@ -281,7 +281,7 @@ class Stats extends DB{
 
 		if($getKD->num_rows == 0){
 
-			echo "Det har skett ett fel!";
+			echo "<div style='padding: 15px;'>Statistik kommer inom kort</div>";
 
 			}else{
 
@@ -325,7 +325,7 @@ class Stats extends DB{
 
 		if($getKD->num_rows == 0){
 
-			echo "Det har skett ett fel!";
+			echo "<div style='padding: 15px;'>Statistik kommer inom kort</div>";
 
 			}else{
 
@@ -371,7 +371,7 @@ class Stats extends DB{
 
 		if($getKD->num_rows == 0){
 
-			echo "Det har skett ett fel!";
+			echo "<div style='padding: 15px;'>Statistik kommer inom kort</div>";
 
 			}else{
 
@@ -419,7 +419,7 @@ class Stats extends DB{
 
 		if($getKD->num_rows == 0){
 
-			echo "Det har skett ett Det har skett ett fel!!";
+			echo "<div style='padding: 15px;'>Statistik kommer inom kort</div>";
 
 			}else{
 
@@ -465,7 +465,7 @@ class Stats extends DB{
 
 		if($getKD->num_rows == 0){
 
-			echo "Det har skett ett fel!!";
+			echo "<div style='padding: 15px;'>Statistik kommer inom kort</div>";
 
 			}else{
 
@@ -511,7 +511,7 @@ class Stats extends DB{
 
 		if($getKD->num_rows == 0){
 
-			echo "Det har skett ett fel!!";
+			echo "<div style='padding: 15px;'>Statistik kommer inom kort</div>";
 
 			}else{
 
@@ -553,7 +553,7 @@ class Stats extends DB{
 
 		if($getKD->num_rows == 0){
 
-			echo "Det har skett ett fel!";
+			echo "<div style='padding: 15px;'>Statistik kommer inom kort</div>";
 
 			}else{
 
@@ -598,7 +598,7 @@ class Stats extends DB{
 
 		if($getKD->num_rows == 0){
 
-			echo "Det har skett ett fel!";
+			echo "<div style='padding: 15px;'>Statistik kommer inom kort</div>";
 
 			}else{
 
