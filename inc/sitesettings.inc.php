@@ -7,13 +7,13 @@ class SiteSettings extends DB{
 	}
 
 	public function getTitle(){
-		return "EScore";
+		return 'Escore.nu - BETA';
 	}
 
 
 	public function getFooter(){
 		return '
-		<a href="#" class="footerbtns">Terms</a>
+		
         <a class="footerbtns modal-trigger" href="#contactmodal">Kontakta</a>  
         <a class="footerbtns modal-trigger" href="#donatemodal">Donera</a> 
 		<i>&copy; Copyright Escore.nu - 2019</i>
@@ -33,7 +33,7 @@ class SiteSettings extends DB{
          <div id="donatemodal" class="modal modal-fixed-footer" style="height: 50%;">
          <div class="modal-content" style="color: #4e4e4e;">
          <h4>Donera till oss</h4>
-         <p class="insidemodal">Känner du att du vill stödja oss? Då kan du donera till oss för att stödja oss att utveckla <b>Escore</b> till något ännu bättre och större. Donationer är frivilliga och du ska inte känna dig tvingad till och donera. Just nu har vi endast paypal som donationsalternativ men vi jobbar på att utveckla så man kan donera via swish. Klicka <a href="#" target="_blank">här</a> för att donera</p>
+         <p class="insidemodal">Känner du att du vill stödja oss? Då kan du donera till oss för att stödja oss att utveckla <b>Escore</b> till något ännu bättre och större. Donationer är frivilliga och du ska inte känna dig tvingad till och donera. Just nu har vi endast paypal som donationsalternativ men vi jobbar på att utveckla så man kan donera via swish. Klicka <a href="https://paypal.me/escorenu1" target="_blank">här</a> för att donera</p>
         </div>
         <div class="modal-footer">
         <a href="#!" class="modal-close waves-effect waves-red btn-flat">Stäng</a>

@@ -50,6 +50,22 @@ class Admin extends DB{
 		}
 
 	}
+	private $loginif;
+	public function IfalreadyInlogged($sessionid){
+		$DB = new DB();
+		$DB->connect();
+
+		$this->loginif = $DB->secret($sessionid);
+
+		$check = $DB->prepare("SELECT * FROM users WHERE username = ?");
+		$check->bind_Param("s", $this->loginif);
+		$check->execute();
+		$check->store_result();
+
+		if($check->num_rows == 1){
+			header("location: home.php");
+		}
+	}
 	public $site_msg;
 	public $msg_status;
 

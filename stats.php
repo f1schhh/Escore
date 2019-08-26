@@ -35,7 +35,13 @@ $badlink = $_SERVER['REQUEST_URI'];
   <meta http-equiv="Content-Language" content="sv" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Escore är en svensk e-sport plattform som rapporterar resultat och statistik där du få reda på resultat,statistik,information om spelare med mera!">
+  <meta property="og:title" content="Escore.nu - är en svensk e-sport plattform som rapporterar resultat och statistik">
+  <meta property="og:image" content="../img/mainlogo.png">
+  <meta property="og:site_name" content="Escore.nu">
   <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/logo-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/logo-16x16.png" />
 	<link rel="stylesheet" href="../css/style.css" /> 
 	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,600,700" rel="stylesheet">
   <link href="../css/lightbox.css" rel="stylesheet" />
@@ -66,7 +72,7 @@ $badlink = $_SERVER['REQUEST_URI'];
       </a>
 
       </div>
-      <a href="../index.php"><div id="logo"><?php echo $settings->getTitle(); ?></div></a>
+      <a href="../index.php"><div id="logo"><div class="mainlogo"></div></div></a>
 
                 <div class="fixmobilepos">
                   <?php $settings->getMenyOutside(); ?>
@@ -81,7 +87,7 @@ $badlink = $_SERVER['REQUEST_URI'];
     <!----- Start utav menyn ------->
 
 		<div id="leftmeny">
-			<a href="../index.php"><div id="logo"><?php echo $settings->getTitle(); ?></div></a>
+			<a href="../index.php"><div id="logo"><div class="mainlogo"></div></div></a>
 			<div class="info-text"> 
 				        
             </div>

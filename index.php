@@ -10,14 +10,14 @@ if($settings->checkMaintenanace() == 1){
 ?>
 <html lang="sv">
 <head>
-	<title><?php echo $settings->getTitle(); ?> - BETA</title>
+	<title><?php echo $settings->getTitle(); ?>  </title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <meta http-equiv="Content-Language" content="sv" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="description" content="Escore är en svensk e-sport plattform som rapporterar resultat och statistik där du få reda på resultat,statistik,information om spelare med mera!">
   <meta property="og:title" content="Escore.nu - är en svensk e-sport plattform som rapporterar resultat och statistik">
-  <meta property="og:image" content="none">
+  <meta property="og:image" content="img/mainlogo.png">
   <meta property="og:site_name" content="Escore.nu">
   <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="img/logo-32x32.png" />
@@ -54,7 +54,7 @@ if($settings->checkMaintenanace() == 1){
       </a>
 
       </div>
-      <a href="index.php"><div id="logo"><?php echo $settings->getTitle(); ?></div></a>
+      <a href="index.php"><div id="logo"><div class="mainlogo"></div></div></a>
 
                 <div class="fixmobilepos">
                   <?php $settings->getMeny(); ?>
@@ -69,7 +69,7 @@ if($settings->checkMaintenanace() == 1){
     <!----- Start utav menyn ------->
 
 		<div id="leftmeny">
-			<a href="../index.php"><div id="logo"><?php echo $settings->getTitle(); ?></div></a>
+			<a href="../index.php"><div id="logo"><div class="mainlogo"></div></div></a>
 			<div class="info-text"> 
 				        
             </div>

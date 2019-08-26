@@ -42,12 +42,12 @@ $admin->CheckSiteMsg();
       <div class="openmeny">
 
         <a href="#" class="mobilebtn">
-            <img src="https://cdn3.iconfinder.com/data/icons/mini-icon-set-general-office/91/General_-_Office_30-512.png"
+            <img src="../img/icons/mobilebtn.png"
         style="width: 56px; height: 56px;">
       </a>
 
       </div>
-      <a href="login.php"><div id="logo"><?php echo $settings->getTitle(); ?></div></a>
+      <a href="login.php"><div id="logo"><div class="mainlogo"></div></div></a>
 
                 <div class="fixmobilepos">
               <?php
@@ -64,7 +64,7 @@ $admin->CheckSiteMsg();
     <!----- Start utav menyn ------->
 
 		<div id="leftmeny">
-			<a href="#"><div id="logo"><?php echo $settings->getTitle(); ?></div></a>
+			<a href="#"><div id="logo"><div class="mainlogo"></div></div></a>
 			<div class="info-text"> 
 				        
             </div>

@@ -66,6 +66,13 @@ function getPlayer($player){
 	}
 
 }
+function getTBA(){
+	echo '<a href="#">
+			 <div class="playerpicture"><img src="../img/avatars/noavatar.png" class="playerpos" />
+              <span class="playernickname"><center>TBA</center></span>
+             </div>
+             </a>';
+}
 
 function getFullTeamName($team){
 
@@ -521,6 +528,12 @@ class Matches extends DB{
 				getPlayer($player5);
 			}
 
+		}else{
+			getTBA();
+			getTBA();
+			getTBA();
+			getTBA();
+			getTBA();
 		}
 
     }

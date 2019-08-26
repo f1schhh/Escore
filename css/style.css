@@ -108,6 +108,13 @@ img{
 	padding: 15px;
 	color: white;
 }
+.mainlogo{
+	width: 200px;
+	height: 100px; 
+	background-image: url('https://escore.nu/img/mainlogo.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+}
 #footer{
 	width: 80%;
 	height: 50px;
@@ -294,7 +301,7 @@ img{
 .insidemodal{
 	font-weight: 400;
 }
-@media screen and (max-width:1100px){
+@media screen and (max-width:1380px){
 	#smh{
 		width: 90%;
 	}
@@ -307,7 +314,15 @@ img{
     padding-top: 12px;
    }
 }
-
+@media screen and (max-width:1210px){
+	.mainlogo{
+		width: 125px;
+		height: 125px;
+		background-image: url('https://escore.nu/img/onlylogo.png');
+	    background-size: cover;
+	    background-repeat: no-repeat;
+	}
+}
 @media screen and (max-width:920px){
 
 #logo{
@@ -315,6 +330,10 @@ img{
 	font-family: pacfic;
 	padding: 10px;
 	display: block;
+}
+.mainlogo{
+	width: 50px;
+	height: 50px;
 }
 #meny-content{
 	padding: 10px;

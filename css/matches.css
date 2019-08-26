@@ -24,7 +24,8 @@
     position: relative;
     top: 10px;
     display: inline-block;
-    width: 10%;
+    max-width: 15%;
+    width: auto;
 }
 .teamname{
     font-weight: bold;
@@ -43,7 +44,6 @@
     width: 60%;
     height: 200px;
     display: inline-block;
-    vertical-align: middle;
 }
 .currentScore{
     font-size: 28px;
