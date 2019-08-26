@@ -191,7 +191,7 @@ class Stats extends DB{
 		$DB = new DB();
 		$DB->connect();
 
-		$getKD = $DB->prepare("SELECT nickname,player_picture,total_deaths,played_matches FROM players ORDER BY played_matches DESC LIMIT 5");
+		$getKD = $DB->prepare("SELECT nickname,player_picture,total_deaths,played_matches FROM players WHERE played_matches >= ? ORDER BY played_matches DESC LIMIT 5");
 		$getKD->execute();
 		$getKD->store_result();
 
@@ -204,11 +204,20 @@ class Stats extends DB{
 
 			$getKD->bind_result($nickname,$player_picture,$total_deaths,$played_matches);
 
+
 			while($getKD->fetch()){
 
 				if($player_picture == ""){
                   $player_picture = "../img/avatars/noavatar.png";
                 }
+                if($played_matches == 1){
+                	$textfix = "match";
+                }else{
+                	$textfix = "matcher";
+                }
+                if($played_matches<$this->played_matches){
+
+                }else{
 					echo '
                     <div class="statsinsidebox">
 					    <div class="insidename">
@@ -216,11 +225,12 @@ class Stats extends DB{
 					    <a href="../players/'.$nickname.'" class="namefix">'.$nickname.'</a>
 					    </div>
 					    <span class="rightext" style="right: 4px;">
-					    '.$played_matches.' Matcher
+					    '.$played_matches.' '.$textfix.'
 					    </span>
 					</div>
 				';
 				}
+			}
 			}
 
 		}
