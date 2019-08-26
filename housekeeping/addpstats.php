@@ -117,77 +117,81 @@ $admin->CheckIfUserIsInlogged($_SESSION['loginsession']);
       	@$team2 = $_POST['team2'];
 
       	@$matchid = $_POST['matchid'];
+        @$mvp = $_POST['mvp'];
+        @$score = $_POST['score'];
 
       	if(isset($addstatsbtn)){
-      		if($nick1 && $kills1 && $deaths1 && $nick2 && $kills2 && $deaths2 && $nick3 && $kills3 && $deaths3 && $nick4 && $kills4 && $deaths4 && $nick5 && $kills5 && $deaths5 && $nick6 && $kills6 && $deaths6 && $nick7 && $kills7 && $deaths7 && $nick8 && $kills8 && $deaths8 && $nick9 && $kills9 && $deaths9 && $nick10 && $kills10 && $deaths10 && $team1 && $team2 && $matchid){
+      		if($nick1 && $kills1 && $deaths1 && $nick2 && $kills2 && $deaths2 && $nick3 && $kills3 && $deaths3 && $nick4 && $kills4 && $deaths4 && $nick5 && $kills5 && $deaths5 && $nick6 && $kills6 && $deaths6 && $nick7 && $kills7 && $deaths7 && $nick8 && $kills8 && $deaths8 && $nick9 && $kills9 && $deaths9 && $nick10 && $kills10 && $deaths10 && $team1 && $team2 && $matchid && $mvp && $score){
 
       			$adminadd->CheckMatchId($matchid);
       			/* Lag 1 */
 
       			/* Spelare 1 */
       			if($adminadd->getPlayerStats($nick1) == 1){
-      				$adminadd->addGamePlayerStats($matchid,$nick1,$kills1,$deaths1,$team1);
+      				$adminadd->addGamePlayerStats($matchid,$nick1,$kills1,$deaths1,$team1,$score);
       			}else{
-      				$adminadd->addGamePlayerStats($matchid,$nick1,$kills1,$deaths1,$team1);
+      				$adminadd->addGamePlayerStats($matchid,$nick1,$kills1,$deaths1,$team1,$score);
       			}
       			/* Spelare 2 */
       			if($adminadd->getPlayerStats($nick2) == 1){
-      				$adminadd->addGamePlayerStats($matchid,$nick2,$kills2,$deaths2,$team1);
+      				$adminadd->addGamePlayerStats($matchid,$nick2,$kills2,$deaths2,$team1,$score);
       			}else{
-      				$adminadd->addGamePlayerStats($matchid,$nick2,$kills2,$deaths2,$team1);
+      				$adminadd->addGamePlayerStats($matchid,$nick2,$kills2,$deaths2,$team1,$score);
       			}
       			/* Spelare 3 */
       			if($adminadd->getPlayerStats($nick3) == 1){
-      				$adminadd->addGamePlayerStats($matchid,$nick3,$kills3,$deaths3,$team1);
+      				$adminadd->addGamePlayerStats($matchid,$nick3,$kills3,$deaths3,$team1,$score);
       			}else{
-      				$adminadd->addGamePlayerStats($matchid,$nick3,$kills3,$deaths3,$team1);
+      				$adminadd->addGamePlayerStats($matchid,$nick3,$kills3,$deaths3,$team1,$score);
       			}
       			/* Spelare 4 */
       			if($adminadd->getPlayerStats($nick4) == 1){
-      				$adminadd->addGamePlayerStats($matchid,$nick4,$kills4,$deaths4,$team1);
+      				$adminadd->addGamePlayerStats($matchid,$nick4,$kills4,$deaths4,$team1,$score);
       			}else{
-      				$adminadd->addGamePlayerStats($matchid,$nick4,$kills4,$deaths4,$team1);
+      				$adminadd->addGamePlayerStats($matchid,$nick4,$kills4,$deaths4,$team1,$score);
       			}	
       			
       			/* Spelare 5 */
       			if($adminadd->getPlayerStats($nick5) == 1){
-      				$adminadd->addGamePlayerStats($matchid,$nick5,$kills5,$deaths5,$team1);
+      				$adminadd->addGamePlayerStats($matchid,$nick5,$kills5,$deaths5,$team1,$score);
       			}else{
-      				$adminadd->addGamePlayerStats($matchid,$nick5,$kills5,$deaths5,$team1);
+      				$adminadd->addGamePlayerStats($matchid,$nick5,$kills5,$deaths5,$team1,$score);
       			}
 
       			/* Lag 2 */
       			/* Spelare 6 */
       			if($adminadd->getPlayerStats($nick6) == 1){
-      				$adminadd->addGamePlayerStats($matchid,$nick6,$kills6,$deaths6,$team2);
+      				$adminadd->addGamePlayerStats($matchid,$nick6,$kills6,$deaths6,$team2,$score);
       			}else{
-      				$adminadd->addGamePlayerStats($matchid,$nick6,$kills6,$deaths6,$team2);
+      				$adminadd->addGamePlayerStats($matchid,$nick6,$kills6,$deaths6,$team2,$score);
       			}
       			/* Spelare 7 */
-      			if($adminadd->getPlayerStats($nick7) == 7){
-      				$adminadd->addGamePlayerStats($matchid,$nick7,$kills7,$deaths7,$team2);
+      			if($adminadd->getPlayerStats($nick7) == 1){
+      				$adminadd->addGamePlayerStats($matchid,$nick7,$kills7,$deaths7,$team2,$score);
       			}else{
-      				$adminadd->addGamePlayerStats($matchid,$nick7,$kills7,$deaths7,$team2);
+      				$adminadd->addGamePlayerStats($matchid,$nick7,$kills7,$deaths7,$team2,$score);
       			}
       			/* Spelare 8 */
       			if($adminadd->getPlayerStats($nick8) == 1){
-      				$adminadd->addGamePlayerStats($matchid,$nick8,$kills8,$deaths8,$team2);
+      				$adminadd->addGamePlayerStats($matchid,$nick8,$kills8,$deaths8,$team2,$score);
       			}else{
-      				$adminadd->addGamePlayerStats($matchid,$nick8,$kills8,$deaths8,$team2);
+      				$adminadd->addGamePlayerStats($matchid,$nick8,$kills8,$deaths8,$team2,$score);
       			}
       			/* Spelare 9 */
-      			if($adminadd->getPlayerStats($nick9) == 9){
-      				$adminadd->addGamePlayerStats($matchid,$nick9,$kills9,$deaths9,$team2);
+      			if($adminadd->getPlayerStats($nick9) == 1){
+      				$adminadd->addGamePlayerStats($matchid,$nick9,$kills9,$deaths9,$team2,$score);
       			}else{
-      				$adminadd->addGamePlayerStats($matchid,$nick9,$kills9,$deaths9,$team2);
+      				$adminadd->addGamePlayerStats($matchid,$nick9,$kills9,$deaths9,$team2,$score);
       			}
       			/* Spelare 10 */
-      			if($adminadd->getPlayerStats($nick10) == 10){
-      				$adminadd->addGamePlayerStats($matchid,$nick10,$kills10,$deaths10,$team2);
+      			if($adminadd->getPlayerStats($nick10) == 1){
+      				$adminadd->addGamePlayerStats($matchid,$nick10,$kills10,$deaths10,$team2,$score);
       			}else{
-      				$adminadd->addGamePlayerStats($matchid,$nick10,$kills10,$deaths10,$team2);
+      				$adminadd->addGamePlayerStats($matchid,$nick10,$kills10,$deaths10,$team2,$score);
       			}
+            $adminadd->updateMatchStatus($score,$mvp,$matchid);
       			echo "<font color='green'>Statistiken är nu inlagt! </font>";
+
       	    }else{
       	    	echo "Du har inte fyllt i alla fält!";
       	    }
@@ -196,7 +200,9 @@ $admin->CheckIfUserIsInlogged($_SESSION['loginsession']);
 
       	?>
       	<form method="POST" action="addpstats.php" id="editinfo">
-            <input type="text" id="addteam" class="matchid" required="" name="matchid" placeholder="Matchid..." /> 
+            <input type="text" id="addteam" class="matchid" required="" name="matchid" placeholder="Matchid..." />
+            <input type="text" id="addteam" class="score" required="" name="score" placeholder="Score..." />
+            <input type="text" id="addteam" class="mvp" required="" name="mvp" placeholder="MVP..." /> 
             <input type="text" id="addteam" class="team1" required="" name="team1" placeholder="Lag 1..." />
             <span class="playerstatsfix">Spelare1:</span><br />
             <input type="text" id="addpstats" class="nick1" required="" name="nick1" placeholder="Nick..." />

@@ -88,7 +88,7 @@ class Players extends DB{
 
 	}
 
-  public $player;
+  public $playermatch;
   public $publicmatchid;
   public $testrng;
 
@@ -97,16 +97,17 @@ class Players extends DB{
     $DB = new DB();
     $DB->connect();
 
-    $this->player = $DB->secret($playername);
+    $this->playermatch = $DB->secret($playername);
 
     $getmatches = $DB->prepare("SELECT matchid FROM match_stats WHERE playername = ?");
-    $getmatches->bind_param("s", $this->player);
+    $getmatches->bind_param("s", $this->playermatch);
     $getmatches->execute();
     $getmatches->store_result();
 
     if($getmatches->num_rows == 0){
-      return 0;
+      $this->testrng = 0;
     }else{
+      $this->testrng = 1;
       $getmatches->bind_Result($matchid);
 
       while ($getmatches->fetch()) {
@@ -115,11 +116,17 @@ class Players extends DB{
 
       }
     }
+
+  }
+
+  public function getNR(){
+    return $this->testrng;
   }
 
   public function getAllMatches(){
     $DB = new DB();
     $DB->connect();
+    if($this->testrng == 1){
 
     @$rightarray = implode(",",array_map('intval', $this->publicmatchid));
     @$types = str_repeat('i', count($this->publicmatchid));    
@@ -194,6 +201,7 @@ class Players extends DB{
       }
     }
   }
+  }
 
   private $nicksave;
 
@@ -214,7 +222,7 @@ class Players extends DB{
 
       while ($stats->fetch()) {
 
-        if($total_kills == ""){
+        if($played_matches == 0){
           echo "$this->nicksave har inga matcher spelade...";
         }else{
 

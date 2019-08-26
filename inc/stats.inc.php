@@ -1,7 +1,7 @@
 <?php
 class Stats extends DB{
 
-	public $played_matches = "2";
+	public $played_matches = "1";
 	public $place = 1;	
 
 	public function getStatsKD(){
@@ -504,7 +504,8 @@ class Stats extends DB{
 		$DB = new DB();
 		$DB->connect();
 
-		$getKD = $DB->prepare("SELECT nickname,player_picture,played_matches FROM players ORDER BY played_matches DESC");
+		$getKD = $DB->prepare("SELECT nickname,player_picture,played_matches FROM players WHERE played_matches >= ? ORDER BY played_matches DESC");
+		$getKD->bind_param("s", $this->played_matches);
 		$getKD->execute();
 		$getKD->store_result();
 
@@ -522,6 +523,11 @@ class Stats extends DB{
 				if($player_picture == ""){
                   $player_picture = "../img/avatars/noavatar.png";
                 }
+                if($played_matches == 1){
+                	$textfix = "match";
+                }else{
+                	$textfix = "matcher";
+                }
 
 					echo '
 
@@ -532,7 +538,7 @@ class Stats extends DB{
 					    <a href="../players/'.$nickname.'" class="namefix">'.$nickname.'</a>
 					    </div>
 					    <span class="rightext">
-					    '.$played_matches.' Matcher
+					    '.$played_matches.' '.$textfix.'
 					    </span>
 					</div>
 

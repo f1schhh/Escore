@@ -308,7 +308,8 @@ class AdminAdd extends DB{
 	public $kills;
 	public $deaths;
 	public $team_stats;
-	public function addGamePlayerStats($matchid,$nickname,$kills,$deaths,$team){
+	public $scorestats;
+	public function addGamePlayerStats($matchid,$nickname,$kills,$deaths,$team,$score){
 		$DB = new DB();
 		$DB->connect();
 		$this->matchid = $DB->secret($matchid);
@@ -316,7 +317,15 @@ class AdminAdd extends DB{
 		$this->kills = $DB->secret($kills);
 		$this->deaths = $DB->secret($deaths);
 		$this->team_stats = $DB->secret($team);
+		$this->scorestats = $DB->secret($score);
 		$id = null;
+		$matches = array_map('intval', explode('-', $this->scorestats));
+
+           if($score == "not started"){
+                	$matchscore = "";
+           }else{
+                	$roundsfix = $matches[0] + $matches[1];
+           }
 
 		$checkstats = $DB->prepare("SELECT * FROM match_stats WHERE matchid = ? AND playername = ?");
 		$checkstats->bind_param("ss", $this->matchid, $this->nickname_stats);
@@ -338,7 +347,7 @@ class AdminAdd extends DB{
 				$newdeaths = $this->total_deaths + $this->deaths;
 				$newkd = $newkills / $newdeaths;
 				$newrealkd = round($newkd, 2);
-				$newplayedrounds = $this->played_r + $this->rounds;
+				$newplayedrounds = $this->played_r + $roundsfix;
 				$newkr = $newkills / $newplayedrounds;
 				$newrealkr = round($newkr, 2);
 				$newplayedmatches = $this->played_m + 1;
@@ -366,7 +375,7 @@ class AdminAdd extends DB{
 		    $playerp = "";
 		    $getkd = $this->kills / $this->deaths;
 		    $realkd = round($getkd, 2);
-		    $getkr = $this->kills / $this->rounds;
+		    $getkr = $this->kills / $roundsfix;
 		    $realkr = round($getkr, 2);
 		    $playedm = 1;
 		    $stand = 1;
@@ -389,6 +398,41 @@ class AdminAdd extends DB{
 	}
 }
 }
+    public $scorefix;
+    public $mvpfix;
+    public $matchidfix;
+
+    public function updateMatchStatus($score,$mvp,$matchid){
+
+    	$DB = new DB();
+		$DB->connect();
+
+		$this->scorefix = $DB->secret($score);
+		$this->mvpfix = $DB->secret($mvp);
+		$this->matchidfix  = $DB->secret($matchid);
+		$mstatus = "ended";
+
+		$updatestmt = $DB->prepare("SELECT * FROM matches WHERE matchid = ?");
+		$updatestmt->bind_param("s", $this->matchidfix);
+		$updatestmt->execute();
+		$updatestmt->store_result();
+
+		if($updatestmt->num_rows == 1){
+
+			$updatenow = $DB->prepare("UPDATE matches SET match_status = ?, score = ?, mvp = ? WHERE matchid = ?");
+			$updatenow->bind_param("ssss", $mstatus,$this->scorefix,$this->mvpfix,$this->matchidfix);
+
+			if($updatenow->execute()){
+
+			}else{
+				echo "Fel!!!";
+			}
+
+		}else{
+			echo "Fel..";
+		}
+
+    }
 
 }
 ?>

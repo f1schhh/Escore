@@ -86,12 +86,18 @@ $nickname = str_replace("players/", "", $nicknameid);
         ?>
         
         <div class="showPlayersMatches">
-          <?php
-          if($players->getPlayersMatches($nickname) == 0){
-            echo "$nickname har inga tidigare matcher spelade...";
-          }else{
+           <?php
+           $players->getPlayersMatches($nickname);
+
+           if($players->getNR() == 1){
             $players->getAllMatches(); 
-          } 
+           }else{
+            echo "$nickname har inga spelade matcher....";
+           }
+            
+          
+            
+          
           ?>
         </div>
         <div class="showPlayersStats" style="margin-bottom: 10px;">
