@@ -19,7 +19,7 @@ parse_str($decrypt, $addmatch);
 
 if($team1 && $team2 && $status && $map && $starttime && $startdate && $league){
 
-	$adminAdd->addMatches($addmatch['team1'],$addmatch['team2'],$addmatch['status'],$addmatch['map'],$addmatch['starttime'],$addmatch['startdate'],$addmatch['league'],);
+	$adminAdd->addMatches($addmatch['team1'],$addmatch['team2'],$addmatch['status'],$addmatch['map'],$addmatch['starttime'],$addmatch['startdate'],$addmatch['league']);
 	$adminAdd->addLineup_Team1();
 	$adminAdd->addLineup_Team2();
 
