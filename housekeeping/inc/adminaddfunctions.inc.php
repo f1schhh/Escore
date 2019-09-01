@@ -432,7 +432,161 @@ class AdminAdd extends DB{
 			echo "Fel..";
 		}
 
-    }
+	}
+	
+	private $pointteam1;
+	private $pointscore;
+
+	public function updateTeamsPoints1($score,$team1){
+
+		$DB = new DB();
+		$DB->connect();
+
+		$this->pointteam1 = $DB->secret($team1);
+		$this->pointscore = $DB->secret($score);
+		
+
+		$getteam = $DB->prepare("SELECT played,wins,loses,won_rounds,lose_rounds,rounddiff,winrate,points FROM teams WHERE teamname = ? OR fullteamname = ?");
+		$getteam->bind_param("ss", $this->pointteam1, $this->pointteam1);
+		$getteam->execute();
+		$getteam->store_result();
+
+		if($getteam->num_rows == 1){
+
+			$getteam->bind_result($played,$wins,$loses,$won_rounds,$lose_rounds,$rounddiff,$winrate,$points);
+
+			while($getteam->fetch()){
+
+				
+
+				$matches = array_map('intval', explode('-', $this->pointscore));
+
+
+				if($matches[0] > $matches[1]){
+
+					$newwins = $wins + 1;
+
+					if($matches[0] > 16){
+
+						$newpoints = $points + 2;
+
+					}else{
+						$newpoints = $points + 3;
+					}
+
+					$newloses = $loses;
+				}else{
+					if($matches[1] > 16){
+
+						$newpoints = $points + 1;
+						$newloses = $loses + 1;
+					}
+					$newwins = $wins;
+				}
+				$newplayed = $played + 1;
+
+				$newwonrounds = $won_rounds + $matches[0];
+				$newloserounds = $lose_rounds + $matches[1];
+
+				$newrounddiff = $newwonrounds - $newloserounds;
+
+				$newinrate = $newwins / $newplayed * 100;
+				$getwinrate = round($newinrate, 2);
+
+				$updateteamstats = $DB->prepare("UPDATE teams SET played = ?, wins = ?, loses = ?, won_rounds = ?, lose_rounds = ?, rounddiff = ?, winrate = ?, points = ? WHERE teamname = ? OR fullteamname = ?");
+				$updateteamstats->bind_param("ssssssssss", $newplayed,$newwins,$newloses,$newwonrounds,$newloserounds,$newrounddiff,$getwinrate,$newpoints, $this->pointteam1,$this->pointteam1);
+
+				if($updateteamstats->execute()){
+
+
+
+				}
+
+
+			}
+
+
+		}
+
+	}
+
+	private $pointteam2;
+	private $pointscore2;
+
+	public function updateTeamsPoints2($score,$team2){
+
+		$DB = new DB();
+		$DB->connect();
+
+		$this->pointteam2 = $DB->secret($team2);
+		$this->pointscore2 = $DB->secret($score);
+
+		$getteam = $DB->prepare("SELECT played,wins,loses,won_rounds,lose_rounds,rounddiff,winrate,points FROM teams WHERE teamname = ? OR fullteamname = ?");
+		$getteam->bind_param("ss", $this->pointteam2, $this->pointteam2);
+		$getteam->execute();
+		$getteam->store_result();
+
+		if($getteam->num_rows == 1){
+
+			$getteam->bind_result($played,$wins,$loses,$won_rounds,$lose_rounds,$rounddiff,$winrate,$points);
+
+			while($getteam->fetch()){
+
+				
+				
+
+				$matches = array_map('intval', explode('-', $this->pointscore));
+
+
+				if($matches[1] > $matches[0]){
+
+					$newwins = $wins + 1;
+
+					if($matches[1] > 16){
+
+						$newpoints = $points + 2;
+
+					}else{
+						$newpoints = $points + 3;
+					}
+
+					$newloses = $loses;
+				}else{
+					if($matches[0] > 16){
+
+						$newpoints = $points + 1;
+						$newloses = $loses + 1;
+					}else{
+					    $newloses = $loses + 1;
+					}
+					$newwins = $wins;
+				}
+
+				$newwonrounds = $won_rounds + $matches[1];
+				$newloserounds = $lose_rounds + $matches[0];
+				$newrounddiff = $newwonrounds - $newloserounds;
+
+				$newplayed = $played + 1;
+
+				$newinrate = $newwins / $newplayed * 100;
+				$getwinrate = round($newinrate, 2);
+
+				$updateteamstats = $DB->prepare("UPDATE teams SET played = ?, wins = ?, loses = ?, won_rounds = ?, lose_rounds = ?, rounddiff = ?, winrate = ?, points = ? WHERE teamname = ? OR fullteamname = ?");
+				$updateteamstats->bind_param("ssssssssss", $newplayed,$newwins,$newloses,$newwonrounds,$newloserounds,$newrounddiff,$getwinrate,$newpoints, $this->pointteam2,$this->pointteam2);
+
+				if($updateteamstats->execute()){
+
+					
+
+				}
+
+
+			}
+
+
+		}
+
+	}
 
 }
 ?>

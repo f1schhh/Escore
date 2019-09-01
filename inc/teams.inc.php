@@ -12,14 +12,14 @@ class Teams extends DB{
 		$DB->connect();
 		$this->team1 = $DB->secret($team);
 
-		$getTeamInfo = $DB->prepare("SELECT * FROM teams WHERE teamname = ? OR fullteamname = ?");
+		$getTeamInfo = $DB->prepare("SELECT teamname,teamlogo,fullteamname FROM teams WHERE teamname = ? OR fullteamname = ?");
 		$getTeamInfo->bind_Param("ss", $this->team1, $this->team1);
 		$getTeamInfo->execute();
 		$getTeamInfo->store_result();
 
 		if($getTeamInfo->num_rows == 1){
 
-			$getTeamInfo->bind_result($id,$teamname,$teamlogo,$fullteamname,$played,$wins,$loses,$winrate);
+			$getTeamInfo->bind_result($teamname,$teamlogo,$fullteamname);
 
 			while ($getTeamInfo->fetch()) {
 
@@ -178,14 +178,14 @@ class Teams extends DB{
 		$DB->connect();
 		$this->team1 = $DB->secret($team);
 
-		$getTeamInfo = $DB->prepare("SELECT * FROM teams WHERE teamname = ? OR fullteamname = ?");
+		$getTeamInfo = $DB->prepare("SELECT teamlogo FROM teams WHERE teamname = ? OR fullteamname = ?");
 		$getTeamInfo->bind_Param("ss", $this->team1, $this->team1);
 		$getTeamInfo->execute();
 		$getTeamInfo->store_result();
 
 		if($getTeamInfo->num_rows == 1){
 
-			$getTeamInfo->bind_result($id,$teamname,$teamlogo,$fullteamname,$played,$wins,$loses,$winrate);
+			$getTeamInfo->bind_result($teamlogo);
 
 			while ($getTeamInfo->fetch()) {
 

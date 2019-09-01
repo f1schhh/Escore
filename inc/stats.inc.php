@@ -191,14 +191,14 @@ class Stats extends DB{
 		$DB = new DB();
 		$DB->connect();
 
-		$getKD = $DB->prepare("SELECT nickname,player_picture,total_deaths,played_matches FROM players WHERE played_matches >= ? ORDER BY played_matches DESC LIMIT 5");
+		$getKD = $DB->prepare("SELECT nickname,player_picture,total_deaths,played_matches FROM players ORDER BY played_matches DESC LIMIT 5");
 		$getKD->execute();
 		$getKD->store_result();
 
 
 		if($getKD->num_rows == 0){
 
-			echo "<div style='padding: 15px;'>Statistik kommer inom kort</div>";
+			
 
 			}else{
 
@@ -643,6 +643,58 @@ class Stats extends DB{
 
 				';
 				}
+			}
+
+		}
+	}
+
+	public function getTeamLeaderboard(){
+
+		$DB = new DB();
+		$DB->connect();
+
+		$getleaderboard = $DB->prepare("SELECT * FROM teams ORDER BY points DESC, rounddiff DESC");
+		$getleaderboard->execute();
+		$getleaderboard->store_result();
+		
+		if($getleaderboard->num_rows == 0){
+			echo "Fel...";
+		}else {
+
+			$getleaderboard->bind_result($id,$teamname,$teamlogo,$fullteamname,$played,$wins,$loses,$won_rounds,$lose_rounds,$rounddiff,$winrate,$points);
+
+			while($getleaderboard->fetch()){
+
+				if($won_rounds > $lose_rounds){
+					$getdiff = "+$rounddiff";
+				}else{
+					if($rounddiff == 0){
+						$getdiff = $rounddiff;
+					}else{
+						$getdiff = $rounddiff;
+					}
+					
+				}
+
+				echo '
+
+				<tr>
+                <th>
+                 '.$this->place++.'.
+                <img src="'.$teamlogo.'" class="teamlogol" />
+                <a href="../teams/'.$teamname.'">'.$fullteamname.'</a>
+                </th>
+                <th>'.$played.'</th>
+                <th><font color="green">'.$wins.'</font>-<font color="red">'.$loses.'</font></th>
+                <th>'.$getdiff.'</th>
+                <th>'.$points.'</th>
+                </tr>
+
+				';
+
+
+
+
 			}
 
 		}

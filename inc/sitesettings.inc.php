@@ -46,7 +46,8 @@ class SiteSettings extends DB{
 
 		echo '
 
-		        <li><a href="index.php">Hem</a></li><br />
+				<li><a href="index.php">Hem</a></li><br />
+				<li><a href="tabell/">Tabell</a></li><br />
                 <li><a href="results/1">Tidigare resultat</a></li><br />
                 <li><a href="stats/">Statistik</a></li><br />
 		';
@@ -56,7 +57,8 @@ class SiteSettings extends DB{
 
 		echo '
 
-		        <li><a href="../index.php">Hem</a></li><br />
+				<li><a href="../index.php">Hem</a></li><br />
+				<li><a href="../tabell/">Tabell</a></li><br />
                 <li><a href="../results/1">Tidigare resultat</a></li><br />
                 <li><a href="../stats/">Statistik</a></li><br />
 		';

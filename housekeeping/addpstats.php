@@ -189,7 +189,10 @@ $admin->CheckIfUserIsInlogged($_SESSION['loginsession']);
       			}else{
       				$adminadd->addGamePlayerStats($matchid,$nick10,$kills10,$deaths10,$team2,$score);
       			}
-            $adminadd->updateMatchStatus($score,$mvp,$matchid);
+				$adminadd->updateMatchStatus($score,$mvp,$matchid);
+				$adminadd->updateTeamsPoints1($score,$team1);
+				$adminadd->updateTeamsPoints2($score,$team2);
+				
       			echo "<font color='green'>Statistiken är nu inlagt! </font>";
 
       	    }else{

@@ -4,14 +4,14 @@ function getTeamLogo($teamname){
 		$DB->connect();
 		$team = $DB->secret($teamname);
 
-		$getTeamInfo = $DB->prepare("SELECT * FROM teams WHERE teamname = ? OR fullteamname = ?");
+		$getTeamInfo = $DB->prepare("SELECT teamlogo FROM teams WHERE teamname = ? OR fullteamname = ?");
 		$getTeamInfo->bind_Param("ss", $team, $team);
 		$getTeamInfo->execute();
 		$getTeamInfo->store_result();
 
 		if($getTeamInfo->num_rows == 1){
 
-			$getTeamInfo->bind_result($id,$teamname,$teamlogo,$fullteamname,$played,$wins,$loses,$winrate);
+			$getTeamInfo->bind_result($teamlogo);
 
 			while ($getTeamInfo->fetch()) {
 

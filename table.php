@@ -1,24 +1,15 @@
 <?php
 include 'inc/main.inc.php';
 $settings = new SiteSettings();
-$matches = new Matches();
+$players = new Players();
+$stats = new Stats();
 if($settings->checkMaintenanace() == 1){
-  header("location: maintenance/");
-}
-@$page = $_GET['page'];
-@$pageid = str_replace("results/", "", $page);
-if(isset($_GET['page'])){
-
-	  @$page = $_GET['page'];
-    @$pageid = str_replace("results/", "", $page);
-
-}else{
-	$page = 1;
+  header("location: ../maintenance/");
 }
 ?>
 <html lang="sv">
 <head>
-	<title><?php echo $settings->getTitle(); ?></title>
+	<title><?php echo $settings->getTitle(); ?> </title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <meta http-equiv="Content-Language" content="sv" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,11 +21,10 @@ if(isset($_GET['page'])){
   <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="../img/logo-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="../img/logo-16x16.png" />
-  <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico" />
 	<link rel="stylesheet" href="../css/style.css" /> 
 	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,600,700" rel="stylesheet">
   <link href="../css/lightbox.css" rel="stylesheet" />
-  <link href="../css/results.css" rel="stylesheet" />
+  <link href="../css/stats.css" rel="stylesheet" />
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -51,7 +41,35 @@ if(isset($_GET['page'])){
     $(document).ready(function(){
     $('.modal').modal();
      });
-    </script>        
+    </script>
+    <style type="text/css">
+    th{
+      border-right: 1px solid rgba(0,0,0,0.12);
+    }
+    .leaderboardtabell{
+      width: 100%; 
+      border: 1px solid #e3e3e3;
+      color: #4e4e4e;
+      background: whitesmoke;
+    }
+    .teamlogol{
+      width: 24px; 
+      height: 24px; 
+      position:relative; 
+      top: 5px;
+    }
+    @media screen and (max-width:400px){
+      .leaderboardtabell{
+        font-size: 1em;
+      }
+    }
+    @media screen and (max-width:360px){
+      .leaderboardtabell{
+        font-size: 0.85em;
+      }
+
+    }
+    </style>        
 </head>
 <body>
 
@@ -68,7 +86,7 @@ if(isset($_GET['page'])){
       </a>
 
       </div>
-      <a href="#"><div id="logo"><div class="mainlogo"></div></div></a>
+      <a href="../index.php"><div id="logo"><div class="mainlogo"></div></div></a>
 
                 <div class="fixmobilepos">
                   <?php $settings->getMenyOutside(); ?>
@@ -95,24 +113,26 @@ if(isset($_GET['page'])){
 
     <!----Start utav mid content----->
 		<div id="midcontent">
-		<h4 class="upcomingMatchesTitle">Tidigare resultat</h4>
-        <div class="matchesFix">
-        	<?php 
-        	$matches->AllMatches($pageid);
-        	$matches->AllMatchesMeny($pageid);
-        	?>
+      <h4 class="upcomingMatchesTitle">Tabellen</h4>
+      <div class="matchesFix">
+      <table class="leaderboardtabell">
+      <tr>
+        <th>Lagnamn</th>
+        <th>Spelade matcher</th>
+        <th>W-L</th>
+        <th>Rundskillnad</th>
+        <th>Poäng</th>
+      </tr>
+      <tr>
+        <?php
+        $stats->getTeamLeaderboard();
+        ?>
+      </table>
 
-        </div>
 
-        </div> 
-        
-
-    <!--- Slut utav mid content----> 
-
-      </div>
-
-    </div> 
   </div>
+  </div>
+</div>
 
   <div id="footer">
     <span class="insidefooter">
