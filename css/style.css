@@ -188,7 +188,6 @@ img{
 .activeScore{
 	float: right;
 	padding: 8px;
-	top: 0.5vw;
 	position: relative;
 	word-spacing: none;
 	font-weight: bolder;

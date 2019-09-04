@@ -1,5 +1,5 @@
 .fullteambox{
-	width: 16%;
+	width: 22%;
     height: auto;
     min-width: 90px;
     color: #4e4e4e;
@@ -69,7 +69,7 @@
 }
 
 .upcomingmatches{
-    width: 92%;
+    width: 100%;
     height: auto;
     margin-top: 10px;
     color: #4e4e4e;
@@ -92,7 +92,7 @@
 
 }
 .matchtitle{
-    width: 92%;
+    width: 100%;
     margin-top: 10px;
 }
 @media screen and (max-width:800px){

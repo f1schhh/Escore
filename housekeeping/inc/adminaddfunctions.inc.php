@@ -28,9 +28,10 @@ class AdminAdd extends DB{
 		$score = "not started";
 		$mvp = "";
 		$id = null;
+		$stream = "";
 
-		$addMatch = $DB->prepare("INSERT INTO matches (id,matchid,starttime,starttdate,startyear,team1,team2,match_status,map,score,league,mvp) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
-		$addMatch->bind_param("ssssssssssss", $id,$matchid,$this->starttime,$this->startdate,$this->year,$this->team1,$this->team2,$this->status,$this->map,$score,$this->league,$mvp);
+		$addMatch = $DB->prepare("INSERT INTO matches (id,matchid,starttime,starttdate,startyear,team1,team2,match_status,map,score,league,stream,mvp) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		$addMatch->bind_param("sssssssssssss", $id,$matchid,$this->starttime,$this->startdate,$this->year,$this->team1,$this->team2,$this->status,$this->map,$score,$this->league,$stream,$mvp);
 
 		if($addMatch->execute()){
 
@@ -535,7 +536,7 @@ class AdminAdd extends DB{
 				
 				
 
-				$matches = array_map('intval', explode('-', $this->pointscore));
+				$matches = array_map('intval', explode('-', $this->pointscore2));
 
 
 				if($matches[1] > $matches[0]){
@@ -576,7 +577,7 @@ class AdminAdd extends DB{
 
 				if($updateteamstats->execute()){
 
-					
+					 
 
 				}
 

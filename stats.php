@@ -220,7 +220,7 @@ $badlink = $_SERVER['REQUEST_URI'];
                   <!--- Average kills---->
             <div class="bykd">
             <br />
-            <span class="statsfix">Top 5 bäst genomsnitt kills per match <a href="averagekills" class="all" style="float: right; margin-right: 5px;">Visa alla</a>
+            <span class="statsfix">Top 5 mest kills per match <a href="averagekills" class="all" style="float: right; margin-right: 5px;">Visa alla</a>
               <div>
               </div>
             </span>
@@ -232,7 +232,7 @@ $badlink = $_SERVER['REQUEST_URI'];
             <!--- Average deaths---->
             <div class="bykd">
             <br />
-            <span class="statsfix">Top 5 bäst genomsnitt deaths per match <a href="averagedeaths" class="all" style="float: right; margin-right: 5px;">Visa alla</a>
+            <span class="statsfix">Top 5 minst deaths per match <a href="averagedeaths" class="all" style="float: right; margin-right: 5px;">Visa alla</a>
               <div>
               </div>
             </span>

@@ -120,7 +120,11 @@ $teams->showTeamName($teamsearch);
   </div>
 
   <div id="footer">
-
+    <span class="insidefooter">
+    <?php
+    echo $settings->getFooter();
+    ?>
+  </span>
   </div>
 
   <script src="js/jquery.timeago.js"></script>

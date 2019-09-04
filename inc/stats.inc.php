@@ -283,7 +283,7 @@ class Stats extends DB{
 		$DB = new DB();
 		$DB->connect();
 
-		$getKD = $DB->prepare("SELECT nickname,player_picture,average_deaths,played_matches FROM players WHERE played_matches >= ? ORDER BY average_deaths DESC LIMIT 5");
+		$getKD = $DB->prepare("SELECT nickname,player_picture,average_deaths,played_matches FROM players WHERE played_matches >= ? ORDER BY average_deaths ASC LIMIT 5");
 		$getKD->bind_param("s", $this->played_matches);
 		$getKD->execute();
 		$getKD->store_result();
@@ -607,7 +607,7 @@ class Stats extends DB{
 		$DB = new DB();
 		$DB->connect();
 
-		$getKD = $DB->prepare("SELECT nickname,player_picture,average_deaths,played_matches FROM players ORDER BY average_deaths DESC");
+		$getKD = $DB->prepare("SELECT nickname,player_picture,average_deaths,played_matches FROM players ORDER BY average_deaths ASC");
 		$getKD->execute();
 		$getKD->store_result();
 
