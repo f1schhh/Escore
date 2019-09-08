@@ -437,8 +437,7 @@ class AdminAdd extends DB{
 	
 	private $pointteam1;
 	private $pointscore;
-
-	public function updateTeamsPoints1($score,$team1){
+    public function updateTeamsPoints1($score,$team1){
 
 		$DB = new DB();
 		$DB->connect();
@@ -447,16 +446,16 @@ class AdminAdd extends DB{
 		$this->pointscore = $DB->secret($score);
 		
 
-		$getteam = $DB->prepare("SELECT played,wins,loses,won_rounds,lose_rounds,rounddiff,winrate,points FROM teams WHERE teamname = ? OR fullteamname = ?");
-		$getteam->bind_param("ss", $this->pointteam1, $this->pointteam1);
-		$getteam->execute();
-		$getteam->store_result();
+		$getteam1 = $DB->prepare("SELECT played,wins,loses,won_rounds,lose_rounds,rounddiff,winrate,points FROM teams WHERE teamname = ? OR fullteamname = ?");
+		$getteam1->bind_param("ss", $this->pointteam1, $this->pointteam1);
+		$getteam1->execute();
+		$getteam1->store_result();
 
-		if($getteam->num_rows == 1){
+		if($getteam1->num_rows == 1){
 
-			$getteam->bind_result($played,$wins,$loses,$won_rounds,$lose_rounds,$rounddiff,$winrate,$points);
+			$getteam1->bind_result($played,$wins,$loses,$won_rounds,$lose_rounds,$rounddiff,$winrate,$points);
 
-			while($getteam->fetch()){
+			while($getteam1->fetch()){
 
 				
 
@@ -482,8 +481,12 @@ class AdminAdd extends DB{
 						$newpoints = $points + 1;
 						$newloses = $loses + 1;
 					}
+					$newpoints = $points;
 					$newwins = $wins;
+					$newloses = $loses;
+					
 				}
+
 				$newplayed = $played + 1;
 
 				$newwonrounds = $won_rounds + $matches[0];
@@ -494,33 +497,37 @@ class AdminAdd extends DB{
 				$newinrate = $newwins / $newplayed * 100;
 				$getwinrate = round($newinrate, 2);
 
-				$updateteamstats = $DB->prepare("UPDATE teams SET played = ?, wins = ?, loses = ?, won_rounds = ?, lose_rounds = ?, rounddiff = ?, winrate = ?, points = ? WHERE teamname = ? OR fullteamname = ?");
-				$updateteamstats->bind_param("ssssssssss", $newplayed,$newwins,$newloses,$newwonrounds,$newloserounds,$newrounddiff,$getwinrate,$newpoints, $this->pointteam1,$this->pointteam1);
+				$updateteamstats1 = $DB->prepare("UPDATE teams SET played = ?, wins = ?, loses = ?, won_rounds = ?, lose_rounds = ?, rounddiff = ?, winrate = ?, points = ? WHERE teamname = ? OR fullteamname = ?");
+				$updateteamstats1->bind_param("ssssssssss", $newplayed,$newwins,$newloses,$newwonrounds,$newloserounds,$newrounddiff,$getwinrate,$newpoints, $this->pointteam1,$this->pointteam1);
 
-				if($updateteamstats->execute()){
+				if($updateteamstats1->execute()){
 
+					
 
-
+				}else{
+				printf("Error: %s.\n", $updateteamstats1->error);
 				}
 
+				
 
 			}
-
+			
 
 		}
+		
 
 	}
 
 	private $pointteam2;
 	private $pointscore2;
 
-	public function updateTeamsPoints2($score,$team2){
+	public function updateTeamsPoints2($score1,$team2){
 
 		$DB = new DB();
 		$DB->connect();
 
 		$this->pointteam2 = $DB->secret($team2);
-		$this->pointscore2 = $DB->secret($score);
+		$this->pointscore2 = $DB->secret($score1);
 
 		$getteam = $DB->prepare("SELECT played,wins,loses,won_rounds,lose_rounds,rounddiff,winrate,points FROM teams WHERE teamname = ? OR fullteamname = ?");
 		$getteam->bind_param("ss", $this->pointteam2, $this->pointteam2);
@@ -560,7 +567,9 @@ class AdminAdd extends DB{
 					}else{
 					    $newloses = $loses + 1;
 					}
+					$newpoints = $points;
 					$newwins = $wins;
+					$newloses = $loses;
 				}
 
 				$newwonrounds = $won_rounds + $matches[1];
@@ -577,8 +586,10 @@ class AdminAdd extends DB{
 
 				if($updateteamstats->execute()){
 
-					 
+					
 
+				}else{
+					
 				}
 
 
