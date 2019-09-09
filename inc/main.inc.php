@@ -7,4 +7,7 @@ include('players.inc.php');
 include('matches.inc.php');
 include('teams.inc.php');
 include('stats.inc.php');
+require('loginfunctions/steamauth.php');
+require('loginfunctions/steamconfig.php');
+require('loginfunctions/userfunctions.inc.php');
 ?>

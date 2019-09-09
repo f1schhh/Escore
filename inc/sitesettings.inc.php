@@ -16,6 +16,7 @@ class SiteSettings extends DB{
 		
         <a class="footerbtns modal-trigger" href="#contactmodal">Kontakta</a>  
         <a class="footerbtns modal-trigger" href="#donatemodal">Donera</a> 
+        <a class="footerbtns modal-trigger" href="#loginmodal">Logga in</a>
 		<i>&copy; Copyright Escore.nu - 2019</i>
 
 		  <!-- Kontakt modal -->
@@ -34,6 +35,20 @@ class SiteSettings extends DB{
          <div class="modal-content" style="color: #4e4e4e;">
          <h4>Donera till oss</h4>
          <p class="insidemodal">Känner du att du vill stödja oss? Då kan du donera till oss för att stödja oss att utveckla <b>Escore</b> till något ännu bättre och större. Donationer är frivilliga och du ska inte känna dig tvingad till och donera. Just nu har vi endast paypal som donationsalternativ men vi jobbar på att utveckla så man kan donera via swish. Klicka <a href="https://paypal.me/escorenu1" target="_blank">här</a> för att donera</p>
+        </div>
+        <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-red btn-flat">Stäng</a>
+        </div>
+        </div>
+
+         <!-- Logga modal -->
+         <div id="loginmodal" class="modal modal-fixed-footer" style="height: 30%;">
+         <div class="modal-content" style="color: #4e4e4e;">
+         <h4>Logga in</h4>
+         <p class="insidemodal">
+         Klicka på knappen nedanför för att logga in via steam för att få tillgång till att kommentera och fler funktioner i framtiden <br />
+         <a href="http://localhost/SVTV/?login"><img src="../img/steamloginbtn.png" style="position: relative; right: 5px;" /></a>
+         </p>
         </div>
         <div class="modal-footer">
         <a href="#!" class="modal-close waves-effect waves-red btn-flat">Stäng</a>

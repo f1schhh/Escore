@@ -11,10 +11,11 @@ class Admin extends DB{
 		$DB->connect();
 
 		$this->user = $DB->secret($username);
-		$this->pass = $DB->secret(md5($password));
+		$this->pass = $DB->secret(sha1($password));
+		$rankfix = 1;
 
-		$loginuser = $DB->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
-		$loginuser->bind_Param("ss", $this->user, $this->pass);
+		$loginuser = $DB->prepare("SELECT * FROM users WHERE username = ? AND password = ? AND rank >= ? ");
+		$loginuser->bind_Param("ssi", $this->user, $this->pass, $rankfix);
 		$loginuser->execute();
 		$loginuser->store_result();
 

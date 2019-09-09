@@ -295,6 +295,38 @@ $matches->getMatchInformation($matchid);
       </div>  
     </div>  
     <!----- Slut----->
+
+    <!---- Kommentarsfält  ---->
+    <div class="matchesFix">
+    <div class="team1before" style="padding: 10px; margin-bottom: 5px;">
+        <span class="commentstitle">Kommentarer</span> 
+      </div>
+     <div id="commentfield">
+      <div class="comment-top-box">
+        <div class="userinfo">
+        <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/1f/1f8fc136713d1abada18f2ee8c4c42482075d3c0_full.jpg" style="width: 32px; height: 32px; "/> 
+        <span class="user_nick"><b>f1schmonsta</b></span>
+      </div>
+      <div class="user_comment">
+        <span class="usercommentinside">Heja Wind And rain! Curre du är maskin</span>
+      </div>
+      <div class="user_comment">
+        <span class="usercommentinside"><i>2019-09-09</i> 12:34</span>
+      </div>
+      </div>
+    </div>
+    <div id="commentform">
+    <form method="POST" action="#">
+      <input type="text" id="commenttext" maxlength="100" placeholder="Kommentar..." />
+     <input type="submit" name="subbtn" class="waves-effect waves-light btn" style="background-color: #1087e8; color: white;" value="Kommentera" />
+    </form>
+    <div class="comment-top-box">
+      <div class="insidenologin">
+      Du måste <a class="modal-trigger" href="#loginmodal">logga in</a> för att kunna kommentera
+      </div>
+    </div>
+    </div>  
+  </div>
         </div>  
 
       </div>
