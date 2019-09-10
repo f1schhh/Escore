@@ -15,7 +15,7 @@ class Admin extends DB{
 		$rankfix = 1;
 
 		$loginuser = $DB->prepare("SELECT * FROM users WHERE username = ? AND password = ? AND rank >= ? ");
-		$loginuser->bind_Param("ssi", $this->user, $this->pass, $rankfix);
+		$loginuser->bind_Param("sss", $this->user, $this->pass, $rankfix);
 		$loginuser->execute();
 		$loginuser->store_result();
 
@@ -30,7 +30,7 @@ class Admin extends DB{
 
 	}
 
-	private $loginid;
+	public $loginid;
 
 	public function CheckIfUserIsInlogged($sessionid){
 
@@ -38,6 +38,18 @@ class Admin extends DB{
 		$DB->connect();
 
 		$this->loginid = $DB->secret($sessionid);
+		$rank = 2;
+		
+			$check = $DB->prepare("SELECT * FROM users WHERE username = ?");
+		    $check->bind_Param("s", $this->loginid);
+		    $check->execute();
+		    $check->store_result();
+
+		    if($check->num_rows == 1){
+			
+		    }else{
+			header("location: ../index.php");
+		    }
 
 		$check = $DB->prepare("SELECT * FROM users WHERE username = ?");
 		$check->bind_Param("s", $this->loginid);
@@ -45,7 +57,7 @@ class Admin extends DB{
 		$check->store_result();
 
 		if($check->num_rows == 1){
-
+			
 		}else{
 			header("location: ../index.php");
 		}

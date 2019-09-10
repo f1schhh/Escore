@@ -10,4 +10,3 @@ if (empty($steamauth['domainname'])) {$steamauth['domainname'] = $_SERVER['SERVE
 if (empty($steamauth['logoutpage'])) {$steamauth['logoutpage'] = $_SERVER['PHP_SELF'];}
 if (empty($steamauth['loginpage'])) {$steamauth['loginpage'] = $_SERVER['PHP_SELF'];}
 ?>
-,

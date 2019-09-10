@@ -27,8 +27,8 @@ class User{
 		$this->steam_avatar = $this->db->secret($steamavatar);
 		$this->time_joined = date("Y-m-d H:i");
 		$this->ip = $_SERVER['REMOTE_ADDR'];
-		$this->username = "";
-		$this->password = "";
+		$this->username = "none";
+		$this->password = "none";
 		$this->id = null;
 		$this->rank = 0;
 
