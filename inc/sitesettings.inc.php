@@ -12,11 +12,18 @@ class SiteSettings extends DB{
 
 
 	public function getFooter(){
+
+		if(@$_SESSION['userssession'] == null){
+			$status4login = '<a class="footerbtns modal-trigger" href="#loginmodal">Logga in</a>';
+		}else{
+			$status4login = '<a class="footerbtns modal-trigger" href="https://escore.nu/?logout">Logga ut</a>';
+		}
+
 		return '
 		
         <a class="footerbtns modal-trigger" href="#contactmodal">Kontakta</a>  
         <a class="footerbtns modal-trigger" href="#donatemodal">Donera</a> 
-        <a class="footerbtns modal-trigger" href="#loginmodal">Logga in</a>
+        '.$status4login.'
 		<i>&copy; Copyright Escore.nu - 2019</i>
 
 		  <!-- Kontakt modal -->
@@ -47,7 +54,7 @@ class SiteSettings extends DB{
          <h4>Logga in</h4>
          <p class="insidemodal">
          Klicka på knappen nedanför för att logga in via steam för att få tillgång till att kommentera och fler funktioner i framtiden <br />
-         <a href="http://localhost/SVTV/?login"><img src="../img/steamloginbtn.png" style="position: relative; right: 5px;" /></a>
+         <a href="https://escore.nu/?login"><img src="https://escore.nu/img/steamloginbtn.png" style="position: relative; right: 5px;" /></a>
          </p>
         </div>
         <div class="modal-footer">

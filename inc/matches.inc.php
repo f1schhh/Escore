@@ -1,109 +1,16 @@
 <?php 
-function getTeamLogo($teamname){
-	    $DB = new DB();
-		$DB->connect();
-		$team = $DB->secret($teamname);
-
-		$getTeamInfo = $DB->prepare("SELECT teamlogo FROM teams WHERE teamname = ? OR fullteamname = ?");
-		$getTeamInfo->bind_Param("ss", $team, $team);
-		$getTeamInfo->execute();
-		$getTeamInfo->store_result();
-
-		if($getTeamInfo->num_rows == 1){
-
-			$getTeamInfo->bind_result($teamlogo);
-
-			while ($getTeamInfo->fetch()) {
-
-				if($teamlogo == ""){
-					$teamlogo = "http://localhost/svtv/img/teamicons/nologo.png";
-				}
-
-				return $teamlogo;
-
-			}
-		}
-	}
-function getPlayer($player){
-
-	$DB = new DB();
-	$DB->connect();
-
-	$playerid = $DB->secret($player);
-	$nopicture = "../img/avatars/noavatar.png";
-
-	$getplayerinfo = $DB->prepare("SELECT nickname,player_picture FROM players WHERE nickname = ?");
-	$getplayerinfo->bind_Param("s", $playerid);
-	$getplayerinfo->execute();
-	$getplayerinfo->store_result();
-
-	if($getplayerinfo->num_rows == 1){
-
-		$getplayerinfo->bind_result($nickname,$player_picture);
-
-		while ($getplayerinfo->fetch()) {
-
-		   if($player_picture == ""){
-             $player_picture = "../img/avatars/noavatar.png";
-           }
-
-			echo '
-			<a href="../players/'.$nickname.'">
-			 <div class="playerpicture"><img src="'.$player_picture.'" class="playerpos" />
-              <span class="playernickname"><center>'.$nickname.'</center></span>
-             </div>
-             </a>
-			';
-
-		}
-
-	}else{
-		echo '
-		 <div class="playerpicture"><img src="'.$nopicture.'" class="playerpos" />
-              <span class="playernickname"><center>'.$playerid.'</center></span>
-             </div>
-		';
-	}
-
-}
-function getTBA(){
-	echo '<a href="#">
-			 <div class="playerpicture"><img src="../img/avatars/noavatar.png" class="playerpos" />
-              <span class="playernickname"><center>TBA</center></span>
-             </div>
-             </a>';
-}
-
-function getFullTeamName($team){
-
-	$DB = new DB();
-	$DB->connect();
-
-	$teamid = $DB->secret($team);
-
-	$getteamname = $DB->prepare("SELECT fullteamname FROM teams WHERE teamname = ?");
-	$getteamname->bind_Param("s", $teamid);
-	$getteamname->execute();
-	$getteamname->store_result();
-
-	if($getteamname->num_rows == 1){
-
-		$getteamname->bind_result($fullteamname);
-
-		while ($getteamname->fetch()) {
-
-			return $fullteamname;
-
-		}
-
-	}else{
-	}
-
-}	
 class Matches extends DB{
 
 	private $matchstatusen;
-	private $matchstatusen2; 
+	private $matchstatusen2;
+
+	public $delete; 
+
+	public function __construct(){
+
+		$this->delete = new Delete();
+
+	}
 
 	public function ShowMatchesFront(){
 
@@ -756,6 +663,108 @@ class Matches extends DB{
 
     }
 
+    private $midcomments;
+
+    public function showMatchComments($matchid){
+
+    	$DB = new DB();
+		$DB->connect();
+
+		$this->midcomments = $DB->secret($matchid);
+
+		$getcomments = $DB->prepare("SELECT id,steamid,match_comment,post_date FROM match_comments WHERE matchid = ? ORDER BY id DESC");
+		$getcomments->bind_Param("s", $this->midcomments);
+		$getcomments->execute();
+		$getcomments->store_result();
+
+		if($getcomments->num_rows == 0){
+
+		}else{
+			$getcomments->bind_Result($id,$steamid,$matchcomment,$post_date);
+
+			while ($getcomments->fetch()) {
+				
+
+				$currenttime = date("Y-m-d");
+				$post_month = date("Y-m-d", strtotime($post_date));
+				$normal_date = date("Y-m-d H:i", strtotime($post_date));
+
+				if($currenttime == $post_month){
+					$published_time = 'Postad <time class="timeago" datetime="'.$post_date.'">';
+				}else{
+					$published_time = $normal_date;
+				}
+
+				if(getUserRank($steamid) > 1){
+					$classfornick = "admin_nick";
+				}else{
+					$classfornick = "user_nick";
+				}
+				echo '
+
+				<div id="commentfield">
+                    <div class="comment-top-box">
+                        <div class="userinfo">
+                            <img src="'.getUserSteamAvatar($steamid).'" style="width: 32px; height: 32px; "/> 
+                                <span class="'.$classfornick.'"><b>'.getUserSteamName($steamid).'</b> ';
+
+                                if(getUserRank($steamid) > 1){
+        	                        echo '<img src="../img/icons/adminicon.png" class="adminicon" title="Admin" />
+        	                        ';
+                                }
+                                if(getUserRank(@$_SESSION['userssession']) > 1){
+                                	echo '
+                                	<form method="POST" action="" style="float:right;">
+                                	 <input type="hidden" name="commentid1" value="'.$id.'" />
+                                	<input type="submit" style="width: 32px; height: 32px; border:none; background: url(../img/icons/deleteicon.png)" class="deleteicon" name="deletebtn4comment" value="" />
+                                	</form>';
+                                	if(@$_POST['deletebtn4comment'] !== null){
+                                		 $this->delete->DeleteComment($_POST['commentid1'],$_SESSION['userssession']);
+                                	}
+                                }
+        	                        echo '</span>
+                                    </div>
+                                    <div class="user_comment">
+                                        <span class="usercommentinside">'.$matchcomment.'</span>
+                                    </div>
+                                    <div class="user_comment">
+                                        <span class="usercommentinside"><i>'.$published_time.'</i></span>
+                                    </div>
+                                    </div>
+                </div>
+				
+				';
+			}
+		}
+    }
+
+
+    private $comment1; 
+    private $sessionid1;
+    private $matchid1;
+
+    public function AddComment($matchid,$comment,$sessionid){
+
+
+    	$DB = new DB();
+		$DB->connect();
+
+		$this->matchid1 = $DB->secret($matchid);
+		$this->comment1 = $DB->secret($comment);
+		$this->sessionid1 = $DB->secret($sessionid);
+		$datum = date("Y-m-d H:i");
+		$id = null;
+
+		$addc = $DB->prepare("INSERT INTO match_comments (id,matchid,steamid,match_comment,post_date) VALUES (?,?,?,?,?)");
+		$addc->bind_param("sssss", $id,$this->matchid1,$this->sessionid1,$this->comment1,$datum);
+
+		if($addc->execute()){
+
+		}else{
+			printf("Error: %s.\n", $addc->error);
+		}
+
+    }
 
 
 }

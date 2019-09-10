@@ -35,16 +35,10 @@ $matches->getMatchInformation($matchid);
    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-    (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-4862063650191114",
-    enable_page_level_ads: true
-    });
-    </script>
     <script src="../js/lightbox.js"></script>
     <script src="../js/automatches.js"></script>
     <script src="../js/mobile.js"></script>
+    <script src="../js/escorecomments.js"></script>
     <script>
     $(document).ready(function(){
     $('.modal').modal();
@@ -297,35 +291,60 @@ $matches->getMatchInformation($matchid);
     <!----- Slut----->
 
     <!---- Kommentarsfält  ---->
-    <div class="matchesFix">
+    <div class="matchesFix" id="commentsection">
     <div class="team1before" style="padding: 10px; margin-bottom: 5px;">
         <span class="commentstitle">Kommentarer</span> 
       </div>
-     <div id="commentfield">
-      <div class="comment-top-box">
-        <div class="userinfo">
-        <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/1f/1f8fc136713d1abada18f2ee8c4c42482075d3c0_full.jpg" style="width: 32px; height: 32px; "/> 
-        <span class="user_nick"><b>f1schmonsta</b></span>
-      </div>
-      <div class="user_comment">
-        <span class="usercommentinside">Heja Wind And rain! Curre du är maskin</span>
-      </div>
-      <div class="user_comment">
-        <span class="usercommentinside"><i>2019-09-09</i> 12:34</span>
-      </div>
-      </div>
-    </div>
+      <?php
+      $matches->showMatchComments($matchid);
+      ?>
+    <?php 
+    if($user->CheckIfUserIsInlogged(@$_SESSION['userssession']) == 1){
+
+    ?>
+    <?php
+    @$commentbtn = $_POST['subbtn'];
+    @$commentuser = $_POST['usercomment'];
+
+    if(isset($commentbtn)){
+      if($commentbtn == ""){
+    }else{
+      if(strlen($commentuser) > 100){
+        echo "Kommentaren är för många tecken...";
+      }else{
+        $matches->AddComment($matchid,$commentuser,$_SESSION['userssession']);
+      }
+      ?>
+      <script>
+        $(document).ready(function(){
+           $('html, body').animate({
+            scrollTop: $("#commentsection").offset().top
+            }, 1500);
+            $("#commentsection").load(location.href+" #commentsection>*");
+            $(".commentfix").css("padding-top","0px");
+         });
+        </script>
+      <?php
+    }
+  }
+    ?>
     <div id="commentform">
     <form method="POST" action="#">
-      <input type="text" id="commenttext" maxlength="100" placeholder="Kommentar..." />
-     <input type="submit" name="subbtn" class="waves-effect waves-light btn" style="background-color: #1087e8; color: white;" value="Kommentera" />
+      <input type="text" id="commenttext" name="usercomment" maxlength="100" placeholder="Kommentar..." />
+     <input type="submit" name="subbtn" id="postcomment" class="waves-effect waves-light btn" style="background-color: #1087e8; color: white; padding-top: 0px;" value="Kommentera" />
     </form>
+    </div>
+    <?php
+  }else{
+    ?> 
     <div class="comment-top-box">
       <div class="insidenologin">
       Du måste <a class="modal-trigger" href="#loginmodal">logga in</a> för att kunna kommentera
       </div>
     </div>
-    </div>  
+    <?php
+    }
+    ?> 
   </div>
         </div>  
 
@@ -342,6 +361,6 @@ $matches->getMatchInformation($matchid);
   </span>
   </div>
 
-  <script src="js/jquery.timeago.js"></script>
+  <script src="../js/jquery.timeago.js"></script>
 </body>
 </html>

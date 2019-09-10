@@ -38,8 +38,8 @@ class User{
 		$IfUserAlreadyExists->store_result();
 		if($IfUserAlreadyExists->num_rows == 1){
 
-			$updateuserinfo = $this->db->prepare("UPDATE users SET steam_avatar = ?, steam_name = ?, last_login = ? WHERE steam_id = ?");
-			$updateuserinfo->bind_Param("ssss", $this->steam_avatar,$this->steam_name,$this->time_joined,$this->steam_id);
+			$updateuserinfo = $this->db->prepare("UPDATE users SET steam_avatar = ?, steam_name = ?, last_login = ?, ip = ? WHERE steam_id = ?");
+			$updateuserinfo->bind_Param("sssss", $this->steam_avatar,$this->steam_name,$this->time_joined,$this->steam_id,$this->ip);
 			if($updateuserinfo->execute()){
 				$_SESSION['userssession'] = $this->steam_id;
 			    header("location: index.php");
@@ -54,6 +54,27 @@ class User{
 				echo "Fel...";
 			}
 		}
+	}
+
+	private $user_session;
+
+	public function CheckIfUserIsInlogged($usersession){
+
+		$this->db->connect();
+
+		$this->user_session = $this->db->secret($usersession);
+
+		$checkuser = $this->db->prepare("SELECT * FROM users WHERE steam_id = ?");
+		$checkuser->bind_Param("s", $this->user_session);
+		$checkuser->execute();
+		$checkuser->store_result();
+
+		if($checkuser->num_rows == 1){
+			return 1;
+		}else{
+			return 0;
+		}
+
 
 	}
 

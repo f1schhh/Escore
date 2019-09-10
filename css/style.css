@@ -300,6 +300,20 @@ img{
 .insidemodal{
 	font-weight: 400;
 }
+.admin_nick{
+	position: relative;
+    bottom: 7px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.adminicon{
+	position: relative;
+	top: 7px;
+}
+.deleteicon{
+	position: relative;
+	top: 5px;
+}
 @media screen and (max-width:1380px){
 	#smh{
 		width: 90%;

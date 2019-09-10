@@ -55,7 +55,7 @@
         seconds: "mindre än en minut",
         minute: "en minut",
         minutes: "%d minuter",
-        hour: "timme",
+        hour: "en timme",
         hours: "%d timmar",
         day: "en dag",
         days: "%d dagar",
