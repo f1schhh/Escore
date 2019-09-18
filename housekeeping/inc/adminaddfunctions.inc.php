@@ -475,15 +475,16 @@ class AdminAdd extends DB{
 					}
 
 					$newloses = $loses;
+
 				}else{
 					if($matches[1] > 16){
 
 						$newpoints = $points + 1;
-						$newloses = $loses + 1;
+						
 					}
 					$newpoints = $points;
 					$newwins = $wins;
-					$newloses = $loses;
+					$newloses = $loses + 1;
 					
 				}
 
@@ -563,13 +564,11 @@ class AdminAdd extends DB{
 					if($matches[0] > 16){
 
 						$newpoints = $points + 1;
-						$newloses = $loses + 1;
-					}else{
-					    $newloses = $loses + 1;
+						
 					}
 					$newpoints = $points;
 					$newwins = $wins;
-					$newloses = $loses;
+					$newloses = $loses + 1;
 				}
 
 				$newwonrounds = $won_rounds + $matches[1];
