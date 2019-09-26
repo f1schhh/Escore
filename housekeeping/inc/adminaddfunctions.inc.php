@@ -477,7 +477,7 @@ class AdminAdd extends DB{
 					$newloses = $loses;
 
 				}else{
-					if($matches[1] > 16){
+					if($matches[1] > 16 || $matches[1] == 16){
 
 						$newpoints = $points + 1;
 						
@@ -561,7 +561,7 @@ class AdminAdd extends DB{
 
 					$newloses = $loses;
 				}else{
-					if($matches[0] > 16){
+					if($matches[0] > 16 || $matches[0] == 16){
 
 						$newpoints = $points + 1;
 						
