@@ -131,7 +131,7 @@ class Players extends DB{
     @$rightarray = implode(",",array_map('intval', $this->publicmatchid));
     @$types = str_repeat('i', count($this->publicmatchid));    
 
-    $matchesOfPlayer = $DB->prepare("SELECT matchid,starttime,starttdate,startyear,team1,team2,match_status,score FROM matches WHERE matchid IN ($rightarray) ORDER by id DESC LIMIT 6");
+    $matchesOfPlayer = $DB->prepare("SELECT matchid,starttime,starttdate,startyear,team1,team2,match_status,score FROM matches WHERE matchid IN ($rightarray) ORDER by id DESC");
     @$matchesOfPlayer->bind_param($types, ...$this->publicmatchid);
     $matchesOfPlayer->execute();
     $matchesOfPlayer->store_result();
