@@ -546,7 +546,7 @@ class Matches extends DB{
 		$DB->connect();
 
 		$status = "ended";
-		$perpage = "8";
+		$perpage = 12;
 
 		$this->startfrom = ($page-1) * $perpage;
 
@@ -649,7 +649,7 @@ class Matches extends DB{
 			$getmeny->bind_Result($total);
 
 			while($getmeny->fetch()){
-				$total_pages = ceil($total / 8);
+				$total_pages = ceil($total / 12);
 				
 			}
 

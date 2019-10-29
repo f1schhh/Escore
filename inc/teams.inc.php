@@ -104,7 +104,7 @@ class Teams extends DB{
 		$this->teamid = $DB->secret($team);
 		$this->mstatus = "ended";
 
-		$getmatches = $DB->prepare("SELECT * FROM matches WHERE team1 = ? AND match_status = ? OR team2 = ? AND match_status = ? ORDER BY id DESC LIMIT 5");
+		$getmatches = $DB->prepare("SELECT * FROM matches WHERE team1 = ? AND match_status = ? OR team2 = ? AND match_status = ? ORDER BY id DESC");
 		$getmatches->bind_Param("ssss", $this->teamid, $this->mstatus,$this->teamid, $this->mstatus);
 		$getmatches->execute();
 		$getmatches->store_result();

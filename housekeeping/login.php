@@ -3,7 +3,7 @@ include '../inc/main.inc.php';
 include '../inc/admin.inc.php';
 $settings = new SiteSettings();
 $admin = new Admin();
-$admin->IfalreadyInlogged($_SESSION['loginsession']);
+@$admin->IfalreadyInlogged($_SESSION['loginsession']);
 ?>
 <html lang="sv">
 <head>
@@ -84,6 +84,7 @@ $admin->IfalreadyInlogged($_SESSION['loginsession']);
               echo "Du har inte fyllt i alla fält...";
           }
         }
+        
         ?>
 
         <form method="POST" action="login.php">

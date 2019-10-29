@@ -1,7 +1,7 @@
 <?php
 class Stats extends DB{
 
-	public $played_matches = "1";
+	public $played_matches = 7;
 	public $place = 1;	
 
 	public function getStatsKD(){
@@ -514,8 +514,7 @@ class Stats extends DB{
 		$DB = new DB();
 		$DB->connect();
 
-		$getKD = $DB->prepare("SELECT nickname,player_picture,played_matches FROM players WHERE played_matches >= ? ORDER BY played_matches DESC");
-		$getKD->bind_param("s", $this->played_matches);
+		$getKD = $DB->prepare("SELECT nickname,player_picture,played_matches FROM players ORDER BY played_matches DESC");
 		$getKD->execute();
 		$getKD->store_result();
 
@@ -697,6 +696,71 @@ class Stats extends DB{
 
 			}
 
+		}
+	}
+
+	public function getMostMapsPlayed(){
+
+		$DB = new DB();
+		$DB->connect();
+
+		$getmaps = $DB->prepare("SELECT map, COUNT(map) AS value_oc FROM matches GROUP BY map ORDER BY value_oc DESC LIMIT 5");
+		$getmaps->execute();
+		$getmaps->store_result();
+
+		$getmaps->bind_result($map, $valueoc);
+
+		while($getmaps->fetch()){
+			if($map == "TBA"){
+
+			}else{
+				echo '
+			<div class="statsinsidebox">
+			<div class="insidename">
+			<img src="../img/maps/'. $map .'.png" style="width: 40px; height: 30px;" />
+			<a href="#" class="namefix">'.$map.'</a>
+			</div>
+			<span class="rightext" style="right: 4px;">
+			'.$valueoc.' gånger
+			</span>
+			</div>
+			';
+			}
+		}
+	}
+	public function getFullMaps(){
+
+		$DB = new DB();
+		$DB->connect();
+
+		$getmaps = $DB->prepare("SELECT map, COUNT(map) AS value_oc FROM matches GROUP BY map ORDER BY value_oc DESC");
+		$getmaps->execute();
+		$getmaps->store_result();
+
+		$getmaps->bind_result($map, $valueoc);
+
+		while($getmaps->fetch()){
+			if($map == "TBA"){
+
+			}else{
+				if($valueoc == 1){
+					$rightword = " gång";
+				}else{
+					$rightword = " gånger";
+				}
+				echo '
+				<div class="statsinsidebox">
+				<div class="insidename">
+				<span class="place">'.$this->place++.'</span>
+				<img src="../img/maps/'. $map .'.png" style="width: 40px; height: 30px;" />
+				<a href="#" class="namefix">'.$map.'</a>
+				</div>
+				<span class="rightext">
+				'.$valueoc.''.$rightword.'
+				</span>
+			</div>
+			';
+			}
 		}
 	}
 

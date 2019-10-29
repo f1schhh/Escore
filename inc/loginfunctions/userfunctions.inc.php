@@ -39,7 +39,7 @@ class User{
 		if($IfUserAlreadyExists->num_rows == 1){
 
 			$updateuserinfo = $this->db->prepare("UPDATE users SET steam_avatar = ?, steam_name = ?, last_login = ?, ip = ? WHERE steam_id = ?");
-			$updateuserinfo->bind_Param("sssss", $this->steam_avatar,$this->steam_name,$this->time_joined,$this->steam_id,$this->ip);
+			$updateuserinfo->bind_Param("sssss", $this->steam_avatar,$this->steam_name,$this->time_joined,$this->ip,$this->steam_id);
 			if($updateuserinfo->execute()){
 				$_SESSION['userssession'] = $this->steam_id;
 			    header("location: index.php");

@@ -12,11 +12,11 @@ $statsen = str_replace("stats/", "", $statsid);
 $currentlink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
 $badlink = $_SERVER['REQUEST_URI'];
 
-  if($statsen == "kills" || $statsen == "deaths" || $statsen == "kr" || $statsen == "kd" || $statsen == "matches" || $statsen == "averagekills" || $statsen == "averagedeaths"){
+  if($statsen == "kills" || $statsen == "deaths" || $statsen == "kr" || $statsen == "kd" || $statsen == "matches" || $statsen == "averagekills" || $statsen == "averagedeaths" || $statsen == "maps"){
 
 
     }else{
-      if($statsen == "kills/" || $statsen == "deaths/" || $statsen == "kr/" || $statsen == "kd/" || $statsen == "matches/" || $statsen == "averagekills/" || $statsen == "averagedeaths/"){
+      if($statsen == "kills/" || $statsen == "deaths/" || $statsen == "kr/" || $statsen == "kd/" || $statsen == "matches/" || $statsen == "averagekills/" || $statsen == "averagedeaths/" || $statsen == "maps/"){
         header("location: ../index.php");
       }else{
       if($statsid == "stats/"){
@@ -52,12 +52,6 @@ $badlink = $_SERVER['REQUEST_URI'];
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script src="../js/lightbox.js"></script>
     <script src="../js/mobile.js"></script>
-    <script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-4862063650191114",
-    enable_page_level_ads: true
-  });
-  </script>
     <script>
     $(document).ready(function(){
     $('.modal').modal();
@@ -106,7 +100,7 @@ $badlink = $_SERVER['REQUEST_URI'];
 
     <!----Start utav mid content----->
 		<div id="midcontent">
-      <h4 class="upcomingMatchesTitle">Statistik</h4>
+      <h4 class="upcomingMatchesTitle">Statistik - minst 7 matcher spelade</h4>
       <div class="matchesFix">
         <div id="fullstats">
           <?php 
@@ -195,6 +189,20 @@ $badlink = $_SERVER['REQUEST_URI'];
             </div>
             <?php
             }else{
+            ?> 
+            <?php
+            if($statsen == "maps"){
+            ?>
+            <div class="bykd" style="width: 100%">
+            <br />
+            <span class="statsfix">Statistik över mest antal spelade kartor
+            <div></div> 
+            </span>
+            <div class="line"></div>  
+            <?php $stats->getFullMaps(); ?>
+            </div>
+            <?php
+            }else{
             ?>    
             <!---- Kill / death ratio ----->
             <div class="bykd">
@@ -276,6 +284,17 @@ $badlink = $_SERVER['REQUEST_URI'];
             <?php $stats->getStatsMatches(); ?>
 
             </div>      
+            <!--- Maps ---->
+            <div class="bykd">
+            <br />
+            <span class="statsfix">Top 5 mest spelade kartor <a href="maps" class="all" style="float: right; margin-right: 5px;">Visa alla</a>
+              <div>
+              </div>
+            </span>
+            <div class="line"></div> 
+            <?php $stats->getMostMapsPlayed(); ?>
+
+            </div>      
                 <?php
               }
             }
@@ -284,6 +303,7 @@ $badlink = $_SERVER['REQUEST_URI'];
       }
     }
   }
+}
           ?> 
 
             </div> 

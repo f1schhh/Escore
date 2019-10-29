@@ -21,17 +21,18 @@ input[type=submit]{
 .team1{
     float: left;
     position: relative;
+    text-align: center;
     display: inline-block;
     top: 10px;
-    width: 20%;
+    width: 15%;
 }
 .team2{
     float: right;
     position: relative;
     top: 10px;
     display: inline-block;
-    max-width: 15%;
-    width: auto;
+    max-width: 20%;
+    width: 15%;
 }
 .teamname{
     font-weight: bold;
@@ -43,11 +44,11 @@ input[type=submit]{
     font-weight: bold;
     font-size: 24px;
     float: right;
-    right: 15px;
+    right: 25px;
     position: relative;
 }
 .middleinfo{
-    width: 60%;
+    width: 70%;
     height: 200px;
     display: inline-block;
 }
@@ -131,7 +132,6 @@ input[type=submit]{
 .logosizeright{
     width: 92px;
     height: 92px;
-    float: right;
     margin-right: 10px;
 }
 .playersteam1{

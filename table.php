@@ -32,12 +32,6 @@ if($settings->checkMaintenanace() == 1){
     <script src="../js/lightbox.js"></script>
     <script src="../js/mobile.js"></script>
     <script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-4862063650191114",
-    enable_page_level_ads: true
-  });
-  </script>
-    <script>
     $(document).ready(function(){
     $('.modal').modal();
      });

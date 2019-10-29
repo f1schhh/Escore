@@ -143,7 +143,7 @@ $matches->getMatchInformation($matchid);
           <a href="../teams/<?php echo $matches->getTeamTwo(); ?>">
           <div class="team2">
             <img src="<?php echo $teams->TeamLogo($matches->getTeamTwo()); ?>" class="logosizeright" /><br />
-            <span class="teamnameright"><?php echo $matches->getTeamTwo(); ?></span>
+            <span class="teamname" style=""><?php echo $matches->getTeamTwo(); ?></span>
           </div> 
         </a>
         </div>
