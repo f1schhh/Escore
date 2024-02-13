@@ -1,6 +1,6 @@
 <?php
 //Version 4.0
-$steamauth['apikey'] = "4FD1CA494FC40FDA38140D4B288DCFEA"; 
+$steamauth['apikey'] = "API_KEY"; 
 $steamauth['domainname'] = "https://escore.nu/"; 
 $steamauth['logoutpage'] = "index.php"; 
 $steamauth['loginpage'] = "login.php"; 
